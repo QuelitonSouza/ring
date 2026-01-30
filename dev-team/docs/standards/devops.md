@@ -173,28 +173,28 @@ resource "aws_instance" "example" {
 
 ```dockerfile
 # Multi-stage build for minimal images
-FROM golang:1.22-alpine AS builder
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS builder
 
 WORKDIR /app
 
 # Cache dependencies
-COPY go.mod go.sum ./
-RUN go mod download
+COPY *.csproj ./
+RUN dotnet restore
 
 # Build
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /app/server ./cmd/api
+RUN dotnet publish -c Release -o /app/publish --no-restore
 
 # Production image
-FROM gcr.io/distroless/static-debian12:nonroot
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 
-COPY --from=builder /app/server /server
+COPY --from=builder /app/publish /app
 
-USER nonroot:nonroot
+USER app
 
 EXPOSE 8080
 
-ENTRYPOINT ["/server"]
+ENTRYPOINT ["dotnet", "/app/Server.dll"]
 ```
 
 ### Image Guidelines
@@ -487,7 +487,7 @@ All projects **MUST** include a Makefile with standardized commands for consiste
 | Command | Purpose | Category |
 |---------|---------|----------|
 | `make build` | Build all components | Core |
-| `make lint` | Run linters (golangci-lint) | Code Quality |
+| `make lint` | Run linters (dotnet format) | Code Quality |
 | `make test` | Run all tests | Testing |
 | `make cover` | Generate test coverage report | Testing |
 | `make test-unit` | Run unit tests only | Testing |
@@ -562,8 +562,8 @@ cover:
 .PHONY: lint
 lint:
 	@for dir in $(COMPONENTS); do \
-		if find "$$dir" -name "*.go" -type f | grep -q .; then \
-			(cd $$dir && golangci-lint run --fix ./...) || exit 1; \
+		if find "$$dir" -name "*.cs" -type f | grep -q .; then \
+			(cd $$dir && dotnet format --verify-no-changes) || exit 1; \
 		fi; \
 	done
 	@echo "[ok] Linting completed successfully"
@@ -679,13 +679,13 @@ ARTIFACTS_DIR := ./artifacts
 .PHONY: build test lint up down
 
 build:
-	@go build -o $(ARTIFACTS_DIR)/$(SERVICE_NAME) ./cmd/app
+	@dotnet build -o $(ARTIFACTS_DIR)/$(SERVICE_NAME)
 
 test:
-	@go test -v ./...
+	@dotnet test --verbosity normal
 
 lint:
-	@golangci-lint run --fix ./...
+	@dotnet format --verify-no-changes
 
 up:
 	@docker compose -f docker-compose.yml up -d

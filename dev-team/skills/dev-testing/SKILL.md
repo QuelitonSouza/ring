@@ -84,8 +84,8 @@ output_schema:
 
 verification:
   automated:
-    - command: "go test ./... -covermode=atomic -coverprofile=coverage.out && go tool cover -func=coverage.out | grep total"
-      description: "Go tests pass with coverage"
+    - command: "dotnet test --collect:\"XPlat Code Coverage\" && dotnet reportgenerator | grep total"
+      description: "C# tests pass with coverage"
       success_pattern: "total:.*[8-9][0-9]|100"
     - command: "npm test -- --coverage | grep -E 'All files|Statements'"
       description: "TypeScript tests pass with coverage"
@@ -219,8 +219,8 @@ Task:
     [list implementation_files]
 
     ## Standards Reference
-    For Go: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/golang.md
-    For TS: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md
+    For C#: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md
+    For TS: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md
 
     Focus on: Testing Patterns section
 
@@ -232,7 +232,7 @@ Task:
     - Edge cases REQUIRED (null, empty, boundary, error conditions)
 
     ### Test Naming
-    - Go: `Test{Unit}_{Method}_{Scenario}`
+    - C#: `{Unit}_{Method}_{Scenario}`
     - TS: `describe('{Unit}', () => { it('should {scenario}', ...) })`
 
     ### Test Structure
@@ -328,7 +328,7 @@ if verdict == "FAIL" or coverage_actual < coverage_threshold:
 
 ```yaml
 Task:
-  subagent_type: "[implementation_agent from Gate 0]"  # e.g., "ring:backend-engineer-golang"
+  subagent_type: "[implementation_agent from Gate 0]"  # e.g., "ring:backend-engineer-csharp"
   model: "opus"
   description: "Add tests to meet coverage threshold for [unit_id]"
   prompt: |

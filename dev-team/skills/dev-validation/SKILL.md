@@ -86,7 +86,7 @@ See [shared-patterns/shared-pressure-resistance.md](../shared-patterns/shared-pr
 
 **Important:** "Different agent" means different human/entity. The same human using different agent roles (ring:backend-engineer-* → ring:code-reviewer) is STILL self-approval and PROHIBITED.
 
-See [CLAUDE.md](https://raw.githubusercontent.com/LerianStudio/ring/main/CLAUDE.md) for the canonical validation policy.
+See [CLAUDE.md](https://raw.githubusercontent.com/QuelitonSouza/ring/main/CLAUDE.md) for the canonical validation policy.
 
 ---
 

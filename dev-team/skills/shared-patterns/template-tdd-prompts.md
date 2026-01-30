@@ -13,7 +13,7 @@ Canonical source for TDD dispatch prompts used by ring:dev-cycle and ring:dev-im
 
 **Anti-Duplication Check:** Before accepting PROJECT_RULES.md content, verify entries (tech stack, external integrations, domain terminology) do not overlap or contradict Ring Standards; reject duplicates.
 
-See [standards-workflow.md](https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/skills/shared-patterns/standards-workflow.md) for the complete loading process.
+See [standards-workflow.md](https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/skills/shared-patterns/standards-workflow.md) for the complete loading process.
 
 ### What Each Source Provides (no OVERLAP)
 
@@ -76,7 +76,7 @@ Example failure output:
 
 ## ⛔ CRITICAL: all Ring Standards Apply from Task 1 (no DEFERRAL)
 
-**See [shared-anti-rationalization.md](https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/skills/shared-patterns/shared-anti-rationalization.md) → "Standards Deferral Anti-Rationalizations" section.**
+**See [shared-anti-rationalization.md](https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/skills/shared-patterns/shared-anti-rationalization.md) → "Standards Deferral Anti-Rationalizations" section.**
 
 **Summary:** Ring Standards are not phased. They apply IMMEDIATELY to every task. PM defines WHAT, Ring Standards define HOW.
 
@@ -95,12 +95,12 @@ Example failure output:
 **⛔ RING STANDARDS REQUIREMENTS (MANDATORY - all MUST BE IMPLEMENTED):**
 
 **You MUST WebFetch and implement all sections from Ring Standards for your language:**
-- **Go:** `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/golang.md`
-- **TypeScript:** `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md`
+- **C#:** `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md`
+- **TypeScript:** `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md`
 
-**⛔ HARD GATE: You MUST implement all sections listed in [standards-coverage-table.md](https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/skills/shared-patterns/standards-coverage-table.md).**
+**⛔ HARD GATE: You MUST implement all sections listed in [standards-coverage-table.md](https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/skills/shared-patterns/standards-coverage-table.md).**
 
-- **Go projects:** See `ring:backend-engineer-golang → golang.md` section index (20 sections)
+- **C# projects:** See `ring:backend-engineer-csharp → csharp.md` section index (20 sections)
 - **TypeScript projects:** See `ring:backend-engineer-typescript → typescript.md` section index (13 sections)
 
 **You CANNOT skip any section. Mark N/A only with explicit justification.**
@@ -125,7 +125,7 @@ Example failure output:
 
 ## Standards Coverage Table
 
-**You MUST output a Standards Coverage Table per [standards-coverage-table.md](https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/skills/shared-patterns/standards-coverage-table.md).**
+**You MUST output a Standards Coverage Table per [standards-coverage-table.md](https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/skills/shared-patterns/standards-coverage-table.md).**
 
 **Format:**
 ```markdown
@@ -222,7 +222,7 @@ if "all STANDARDS MET" = no:
 
 ### Anti-Rationalization for Standards Compliance
 
-See [standards-coverage-table.md](https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/skills/shared-patterns/standards-coverage-table.md) for the complete anti-rationalization table.
+See [standards-coverage-table.md](https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/skills/shared-patterns/standards-coverage-table.md) for the complete anti-rationalization table.
 
 **Key rules:**
 - all sections from standards-coverage-table.md MUST be checked

@@ -37,7 +37,7 @@ input_schema:
       description: "Type of service being validated"
     - name: implementation_agent
       type: string
-      description: "Agent that performed Gate 0 (e.g., ring:backend-engineer-golang)"
+      description: "Agent that performed Gate 0 (e.g., ring:backend-engineer-csharp)"
     - name: implementation_files
       type: array
       items: string
@@ -98,10 +98,10 @@ examples:
   - name: "API service observability validation"
     input:
       unit_id: "task-001"
-      language: "go"
+      language: "csharp"
       service_type: "api"
-      implementation_agent: "ring:backend-engineer-golang"
-      implementation_files: ["internal/handler/user.go", "internal/service/user.go"]
+      implementation_agent: "ring:backend-engineer-csharp"
+      implementation_files: ["src/Handlers/UserHandler.cs", "src/Services/UserService.cs"]
     expected_output: |
       ## Validation Result
       **Status:** PASS
@@ -213,7 +213,7 @@ Task:
     - **External Dependencies:** [external_dependencies or "None"]
 
     ## Standards Reference
-    WebFetch: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/sre.md
+    WebFetch: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/sre.md
 
     ## Your Role
     - VALIDATE that observability is implemented correctly
@@ -229,12 +229,12 @@ Task:
     Any occurrence = CRITICAL severity, automatic FAIL verdict.
 
     <forbidden>
-    - fmt.Println() in Go code
-    - fmt.Printf() in Go code
-    - log.Println() in Go code
-    - log.Printf() in Go code
-    - log.Fatal() in Go code
-    - println() in Go code
+    - Console.WriteLine() in C# code
+    - Console.Write() in C# code
+    - Debug.WriteLine() in C# code
+    - Debug.Print() in C# code
+    - Trace.WriteLine() in C# code
+    - System.Diagnostics.Debug.WriteLine() in C# code
     - console.log() in TypeScript
     - console.error() in TypeScript
     - console.warn() in TypeScript
@@ -244,12 +244,12 @@ Task:
     
     | Language | FORBIDDEN Pattern | Search For |
     |----------|-------------------|------------|
-    | Go | `fmt.Println()` | `fmt.Println` in *.go files |
-    | Go | `fmt.Printf()` | `fmt.Printf` in *.go files |
-    | Go | `log.Println()` | `log.Println` in *.go files |
-    | Go | `log.Printf()` | `log.Printf` in *.go files |
-    | Go | `log.Fatal()` | `log.Fatal` in *.go files |
-    | Go | `println()` | `println(` in *.go files |
+    | C# | `Console.WriteLine()` | `Console.WriteLine` in *.cs files |
+    | C# | `Console.Write()` | `Console.Write` in *.cs files |
+    | C# | `Debug.WriteLine()` | `Debug.WriteLine` in *.cs files |
+    | C# | `Debug.Print()` | `Debug.Print` in *.cs files |
+    | C# | `Trace.WriteLine()` | `Trace.WriteLine` in *.cs files |
+    | C# | `System.Diagnostics.Debug.WriteLine()` | `System.Diagnostics.Debug.WriteLine` in *.cs files |
     | TypeScript | `console.log()` | `console.log` in *.ts files |
     | TypeScript | `console.error()` | `console.error` in *.ts files |
     | TypeScript | `console.warn()` | `console.warn` in *.ts files |
@@ -367,7 +367,7 @@ if validation_state.iteration >= validation_state.max_iterations:
 
 ```yaml
 Task:
-  subagent_type: "[implementation_agent from input]"  # e.g., "ring:backend-engineer-golang"
+  subagent_type: "[implementation_agent from input]"  # e.g., "ring:backend-engineer-csharp"
   model: "opus"
   description: "Fix observability issues for [unit_id]"
   prompt: |
@@ -387,8 +387,8 @@ Task:
     **Current:** [validation_state.sre_result.instrumentation_coverage]%
 
     ## Standards Reference
-    For Go: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/golang.md
-    For TS: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md
+    For C#: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md
+    For TS: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md
 
     Focus on: Telemetry & Observability section
 

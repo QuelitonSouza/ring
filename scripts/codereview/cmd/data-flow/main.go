@@ -9,9 +9,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/ast"
-	"github.com/lerianstudio/ring/scripts/codereview/internal/dataflow"
-	"github.com/lerianstudio/ring/scripts/codereview/internal/fileutil"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/ast"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/dataflow"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/fileutil"
 )
 
 // ScopeFile represents the scope.json structure from Phase 0.

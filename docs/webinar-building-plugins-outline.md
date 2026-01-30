@@ -567,7 +567,7 @@ echo '{"success": true, "message": "My plugin loaded!"}'
 
 ## Slide 33: Resources
 
-- **Ring Repository:** github.com/LerianStudio/ring
+- **Ring Repository:** github.com/QuelitonSouza/ring
 - **Claude Code Documentation:** docs.anthropic.com
 - **Plugin Examples:** See Ring's `default/`, `dev-team/`, `pm-team/` directories
 

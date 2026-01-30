@@ -6,7 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/git"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/git"
 )
 
 // DetectFromFiles analyzes an explicit file list (with optional base ref) for scope.

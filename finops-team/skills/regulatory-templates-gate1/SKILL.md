@@ -460,7 +460,7 @@ If you catch yourself thinking ANY of these, STOP and re-read the NO EXCEPTIONS 
 ## Critical Validations
 
 Ensure these patterns are followed:
-- Use EXACT patterns from Lerian documentation
+- Use EXACT patterns from QuelitonSouza documentation
 - Apply filters like `slice`, `floatformat` as shown in docs
 - Follow tipoRemessa rules: "I" for new/rejected, "S" for approved only
 - Date formats must match regulatory requirements (YYYY/MM, YYYY-MM-DD)
@@ -481,7 +481,7 @@ Ensure these patterns are followed:
 | Documentation not accessible | Try alternative URLs or cached versions |
 | Field names don't match Midaz | Mark as uncertain for Gate 2 validation |
 | Missing mandatory fields | Mark as Critical gap, must resolve |
-| Format specifications unclear | Consult both Lerian docs and government specs |
+| Format specifications unclear | Consult both QuelitonSouza docs and government specs |
 
 ---
 
@@ -502,7 +502,7 @@ Ensure these patterns are followed:
 2. **Use MCP for dynamic discovery** - Never hardcode field paths
 3. **CRM first for banking/personal data** - It has the most complete holder info
 4. **Official specs are SOURCE OF TRUTH** - Regulatory requirements from government
-5. **Lerian docs show IMPLEMENTATION** - How to create templates in their system
+5. **QuelitonSouza docs show IMPLEMENTATION** - How to create templates in their system
 6. **Template-specific knowledge is valuable** - Always check for existing sub-skills
 7. **Confidence scoring is key** - Always calculate and document confidence
 8. **Be conservative with mappings** - Mark uncertain rather than guess
@@ -514,7 +514,7 @@ Ensure these patterns are followed:
 
 ⚠️ **Regulatory Compliance vs Implementation**
 - **WHAT** (Requirements) = Official government documentation
-- **HOW** (Implementation) = Lerian documentation examples
+- **HOW** (Implementation) = QuelitonSouza documentation examples
 - When validating compliance → Use official specs
-- When creating templates → Use Lerian patterns
+- When creating templates → Use QuelitonSouza patterns
 - Never confuse implementation examples with regulatory requirements

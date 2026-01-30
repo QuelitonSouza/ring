@@ -136,7 +136,7 @@ See [shared-patterns/standards-workflow.md](../skills/shared-patterns/standards-
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL** | `https://raw.githubusercontent.com/LerianStudio/ring/main/ops-team/docs/standards/platform.md` |
+| **WebFetch URL** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/ops-team/docs/standards/platform.md` |
 | **Standards File** | platform.md |
 | **Prompt** | "Extract all platform engineering standards, patterns, and requirements" |
 

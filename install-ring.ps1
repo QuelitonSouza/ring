@@ -13,9 +13,9 @@ Write-Host "Ring Plugin Marketplace Installer"
 Write-Host "================================================"
 Write-Host ""
 
-$MARKETPLACE_SOURCE = "lerianstudio/ring"
+$MARKETPLACE_SOURCE = "QuelitonSouza/ring"
 $MARKETPLACE_NAME = "ring"
-$MARKETPLACE_JSON_URL = "https://raw.githubusercontent.com/lerianstudio/ring/main/.claude-plugin/marketplace.json"
+$MARKETPLACE_JSON_URL = "https://raw.githubusercontent.com/QuelitonSouza/ring/main/.claude-plugin/marketplace.json"
 
 # Ensure TLS 1.2+ is used for secure connections
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12

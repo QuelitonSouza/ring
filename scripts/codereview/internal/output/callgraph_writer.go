@@ -7,7 +7,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/callgraph"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/callgraph"
 )
 
 // CallGraphWriter handles writing call graph analysis results.

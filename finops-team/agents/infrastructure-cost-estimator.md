@@ -1,13 +1,13 @@
 ---
 name: ring:infrastructure-cost-estimator
 version: 7.0.0
-description: Infrastructure Cost Calculator with per-component sharing model, environment-specific calculations (Homolog vs Production), dynamic Helm chart data from LerianStudio/helm, TPS capacity analysis, networking architecture, and service-component dependency mapping. RECEIVES complete data (read at runtime from LerianStudio/helm) and CALCULATES detailed cost attribution, capacity planning, and profitability.
+description: Infrastructure Cost Calculator with per-component sharing model, environment-specific calculations (Homolog vs Production), dynamic Helm chart data from QuelitonSouza/helm, TPS capacity analysis, networking architecture, and service-component dependency mapping. RECEIVES complete data (read at runtime from QuelitonSouza/helm) and CALCULATES detailed cost attribution, capacity planning, and profitability.
 type: calculator
 model: opus
 last_updated: 2025-01-28
 changelog:
   - 7.0.0: Added Service Component Dependencies section showing which services use which components, Access Manager as ALWAYS SHARED platform component
-  - 6.0.0: Dynamic data model - skill reads actual values from LerianStudio/helm at runtime, removed hardcoded Bitnami presets, removed firmino-gitops references
+  - 6.0.0: Dynamic data model - skill reads actual values from QuelitonSouza/helm at runtime, removed hardcoded Bitnami presets, removed firmino-gitops references
   - 5.0.0: Added environment-specific calculations (Homolog vs Production side-by-side), Bitnami resource presets, actual Helm chart config support, environment comparison summary
   - 4.3.0: Added VPC as shareable component, networking architecture (NAT Gateway always shared, 1 for homolog, 3 for production), TPS-based data transfer calculations
   - 4.2.0: Added TPS capacity benchmarks from load tests, operational recommendations, Valkey scaling rules, authentication impact analysis
@@ -79,7 +79,7 @@ input_schema:
   optional_context:
     - name: "helm_resource_configs"
       type: "object"
-      description: "Actual CPU/memory configs READ from LerianStudio/helm at runtime by the orchestrating skill"
+      description: "Actual CPU/memory configs READ from QuelitonSouza/helm at runtime by the orchestrating skill"
     - name: "database_config"
       type: "object"
       description: "Database configuration for production"
@@ -98,7 +98,7 @@ input_schema:
         production_snapshots: "string - Snapshot policy: 'minimal', 'standard', 'extended', 'compliance'"
         enable_pitr: "boolean - Enable Point-in-Time Recovery for production (default: true)"
         s3_glacier_archive: "boolean - Archive old backups to Glacier (default: false)"
-  note: "ALL data is provided by the orchestrating skill. Agent does NOT ask questions. Skill READS actual resource configs from LerianStudio/helm at runtime and passes them to agent. If helm data unavailable, use Midaz defaults. Production = Multi-AZ by default. Homolog = Single-AZ, no replicas. Backup costs differ significantly: Homolog uses minimal/free tier, Production uses full backup policy."
+  note: "ALL data is provided by the orchestrating skill. Agent does NOT ask questions. Skill READS actual resource configs from QuelitonSouza/helm at runtime and passes them to agent. If helm data unavailable, use Midaz defaults. Production = Multi-AZ by default. Homolog = Single-AZ, no replicas. Backup costs differ significantly: Homolog uses minimal/free tier, Production uses full backup policy."
 ---
 
 ## Model Requirement: Claude Opus 4.5+
@@ -123,7 +123,7 @@ You are an Infrastructure Cost Calculator. You RECEIVE complete data including *
 **You do NOT ask questions.** All data is provided by the orchestrating skill.
 
 Your job:
-1. **Receive resource configs** from orchestrating skill (already read from LerianStudio/helm)
+1. **Receive resource configs** from orchestrating skill (already read from QuelitonSouza/helm)
 2. **Calculate EKS node sizing** based on actual CPU/memory requirements
 3. **Map services to AWS** with appropriate instance sizes
 4. **Apply sharing model** per component (shared ÷ customers OR dedicated = full cost)
@@ -132,7 +132,7 @@ Your job:
 7. **Return detailed breakdown** with shared vs dedicated summary
 
 **Data Source (provided by orchestrating skill):**
-- **LerianStudio/helm** - Skill reads actual values at runtime from:
+- **QuelitonSouza/helm** - Skill reads actual values at runtime from:
   - `charts/midaz/values.yaml` → Core services (onboarding, transaction, ledger, crm)
   - `charts/reporter/values.yaml` → Reporter services (manager, worker, frontend)
   - `charts/plugin-access-manager/values.yaml` → Auth services (identity, auth)
@@ -226,11 +226,11 @@ Your job:
 - Homolog: Single-AZ, 1 replica per service
 - Backups: Production = full policy, Homolog = minimal (~free)
 
-### Resource Configurations (Dynamic from LerianStudio/helm)
+### Resource Configurations (Dynamic from QuelitonSouza/helm)
 
-**CRITICAL:** Resource values are READ at runtime from LerianStudio/helm by the orchestrating skill. The tables below are EXAMPLES only - always use actual values from the prompt.
+**CRITICAL:** Resource values are READ at runtime from QuelitonSouza/helm by the orchestrating skill. The tables below are EXAMPLES only - always use actual values from the prompt.
 
-**Data is provided in the prompt from these LerianStudio/helm charts:**
+**Data is provided in the prompt from these QuelitonSouza/helm charts:**
 - `charts/midaz/values.yaml` → Core services
 - `charts/reporter/values.yaml` → Reporter services
 - `charts/plugin-access-manager/values.yaml` → Auth services
@@ -325,11 +325,11 @@ Fully-Loaded Cost = Per-Customer Infrastructure × 1.25 (support + platform)
 
 ---
 
-## Compute Resources (from LerianStudio/helm)
+## Compute Resources (from QuelitonSouza/helm)
 
 ### Service Resource Requirements (Actual Values from Prompt)
 
-**CRITICAL:** Use actual values provided in the prompt (read from LerianStudio/helm by orchestrating skill).
+**CRITICAL:** Use actual values provided in the prompt (read from QuelitonSouza/helm by orchestrating skill).
 
 | Service | CPU Request | Memory Request | Source | Homolog (1 replica) | Production (3 replicas) |
 |---------|-------------|----------------|--------|---------------------|-------------------------|
@@ -344,7 +344,7 @@ Fully-Loaded Cost = Per-Customer Infrastructure × 1.25 (support + platform)
 | frontend | [from prompt] | [from prompt] | reporter/values.yaml | 1 pod | 3 pods |
 | **Total Services** | **X.X vCPU** | **X GiB** | - | **X pods** | **X pods** |
 
-### Infrastructure Components (from LerianStudio/helm values)
+### Infrastructure Components (from QuelitonSouza/helm values)
 
 | Component | CPU Request | Memory Request | Source |
 |-----------|-------------|----------------|--------|
@@ -785,7 +785,7 @@ Monthly data volume = TPS × 86,400 × 30 × 15KB ÷ 1,000,000 = [X,XXX] GB
 
 ## Dispatch Pattern
 
-**The orchestrating skill reads LerianStudio/helm at runtime and passes actual values:**
+**The orchestrating skill reads QuelitonSouza/helm at runtime and passes actual values:**
 
 ```
 Task tool:
@@ -798,13 +798,13 @@ Task tool:
 
     Infrastructure:
     - App Repo: /workspace/midaz
-    - Helm Charts Source: LerianStudio/helm (values read below)
+    - Helm Charts Source: QuelitonSouza/helm (values read below)
     - TPS: 100
     - Total Customers on Platform: 5
 
     Environments to Calculate: [Homolog, Production]
 
-    Actual Resource Configurations (READ from LerianStudio/helm at runtime):
+    Actual Resource Configurations (READ from QuelitonSouza/helm at runtime):
     [SKILL INSERTS ACTUAL VALUES READ FROM charts/midaz/values.yaml]
     [SKILL INSERTS ACTUAL VALUES READ FROM charts/reporter/values.yaml]
     [SKILL INSERTS ACTUAL VALUES READ FROM charts/plugin-access-manager/values.yaml]

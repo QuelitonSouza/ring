@@ -44,21 +44,21 @@ Specifying technologies in TRD creates:
 
 **Auto-detection:** `go.mod` exists → Go | `package.json` with react/next → Frontend TS | `package.json` with express/fastify/nestjs → Backend TS
 
-**If ambiguous, AskUserQuestion:** "What is the primary technology stack?" Options: Go (Backend), TypeScript (Backend), TypeScript (Frontend), Full-Stack TypeScript
+**If ambiguous, AskUserQuestion:** "What is the primary technology stack?" Options: C# (Backend), TypeScript (Backend), TypeScript (Frontend), Full-Stack TypeScript
 
 ### Step 0.2: Load Ring Standards via WebFetch
 
 | Standard | URL | Purpose |
 |----------|-----|---------|
-| **golang.md** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/golang.md` | Go patterns, DDD |
-| **typescript.md** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md` | TS patterns, async |
-| **frontend.md** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/frontend.md` | React, Next.js, a11y |
-| **devops.md** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/devops.md` | Docker, CI/CD |
-| **sre.md** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/sre.md` | Health checks, logging |
+| **csharp.md** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md` | C# patterns, DDD |
+| **typescript.md** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md` | TS patterns, async |
+| **frontend.md** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/frontend.md` | React, Next.js, a11y |
+| **devops.md** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/devops.md` | Docker, CI/CD |
+| **sre.md** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/sre.md` | Health checks, logging |
 
 | Tech Stack | Load |
 |------------|------|
-| Go Backend | golang.md + devops.md + sre.md |
+| C# Backend | csharp.md + devops.md + sre.md |
 | TypeScript Backend | typescript.md + devops.md + sre.md |
 | TypeScript Frontend | frontend.md + devops.md |
 | Full-Stack TypeScript | typescript.md + frontend.md + devops.md + sre.md |
@@ -83,7 +83,7 @@ This metadata flows to Gates 4-6.
 
 | Pressure | Response |
 |----------|----------|
-| "Tech stack doesn't matter for architecture" | "Architecture patterns vary by language. Go patterns ≠ TypeScript patterns. Define stack first." |
+| "Tech stack doesn't matter for architecture" | "Architecture patterns vary by language. C# patterns ≠ TypeScript patterns. Define stack first." |
 | "We'll decide tech stack later" | "Later = Dependency Map. But architecture NOW needs to know capabilities. Define stack." |
 | "Just use generic patterns" | "Generic patterns miss stack-specific best practices. 5 min to define saves rework." |
 | "Skip to save time" | "Skipping causes Gates 4-6 to ask again. Define once here, inherit everywhere." |
@@ -186,10 +186,10 @@ If feature requires authentication or authorization (as determined in Question 2
 
 | Auth Type | TRD Description (Abstract) | Implementation Reference |
 |-----------|---------------------------|-------------------------|
-| User authentication only | "Token-based authentication with stateless validation" | For Go: `golang.md` → Access Manager Integration |
-| User + permissions | "Token-based authentication with role-based access control (RBAC)" | For Go: `golang.md` → Access Manager Integration |
-| Service-to-service | "Machine-to-machine authentication with client credentials" | For Go: `golang.md` → Access Manager Integration (GetApplicationToken) |
-| Full (user + S2S) | "Dual-layer authentication: user tokens for end-users, client credentials for services" | For Go: `golang.md` → Access Manager Integration |
+| User authentication only | "Token-based authentication with stateless validation" | For C#: `csharp.md` → Access Manager Integration |
+| User + permissions | "Token-based authentication with role-based access control (RBAC)" | For C#: `csharp.md` → Access Manager Integration |
+| Service-to-service | "Machine-to-machine authentication with client credentials" | For C#: `csharp.md` → Access Manager Integration (GetApplicationToken) |
+| Full (user + S2S) | "Dual-layer authentication: user tokens for end-users, client credentials for services" | For C#: `csharp.md` → Access Manager Integration |
 
 **Document in TRD:** `Security Architecture → Authentication/Authorization → Strategy + Implementation Reference`
 
@@ -198,7 +198,7 @@ If feature requires authentication or authorization (as determined in Question 2
 - Pattern: `auth.Authorize(applicationName, resource, action)` on each route
 - Engineers will implement per-route protection following the referenced standard
 
-**Note for Go Services:** Lerian's Access Manager (plugin-auth + identity + lib-auth) is the standard authentication system. Reference `golang.md` → Access Manager Integration section in the TRD so engineers know where to find implementation patterns including route middleware protection.
+**Note for C# Services:** QuelitonSouza's Access Manager (plugin-auth + identity + lib-auth) is the standard authentication system. Reference `csharp.md` → Access Manager Integration section in the TRD so engineers know where to find implementation patterns including route middleware protection.
 
 ## License Manager Architecture (If Required)
 
@@ -206,8 +206,8 @@ If feature is a licensed product/plugin (as determined in Question 3 of pre-dev 
 
 | License Type | TRD Description (Abstract) | Implementation Reference |
 |--------------|---------------------------|-------------------------|
-| Single-org (global) | "Global license validation at service startup with fail-fast behavior" | For Go: `golang.md` → License Manager Integration |
-| Multi-org | "Per-request license validation with organization context" | For Go: `golang.md` → License Manager Integration |
+| Single-org (global) | "Global license validation at service startup with fail-fast behavior" | For C#: `csharp.md` → License Manager Integration |
+| Multi-org | "Per-request license validation with organization context" | For C#: `csharp.md` → License Manager Integration |
 
 **Document in TRD:** `Security Architecture → Licensing → Strategy + Implementation Reference`
 
@@ -217,7 +217,7 @@ If feature is a licensed product/plugin (as determined in Question 3 of pre-dev 
 - Graceful shutdown integration for license manager resources
 - Built-in skip paths for health/readiness endpoints
 
-**Note for Go Services:** Lerian's License Manager (lib-license-go) is the standard licensing system. Reference `golang.md` → License Manager Integration section in the TRD so engineers know where to find implementation patterns including global middleware and graceful shutdown.
+**Note for C# Services:** QuelitonSouza's License Manager (LibLicense) is the standard licensing system. Reference `csharp.md` → License Manager Integration section in the TRD so engineers know where to find implementation patterns including global middleware and graceful shutdown.
 
 ## ADR Template
 

@@ -7,7 +7,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/git"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/git"
 )
 
 // Language represents the programming language of code files.

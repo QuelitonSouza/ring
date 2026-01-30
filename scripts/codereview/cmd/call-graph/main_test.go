@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/callgraph"
-	"github.com/lerianstudio/ring/scripts/codereview/internal/fileutil"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/callgraph"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/fileutil"
 )
 
 func TestReadJSONFileWithLimit(t *testing.T) {

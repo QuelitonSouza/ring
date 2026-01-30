@@ -25,7 +25,7 @@ related:
 
 The ring-finance-team plugin provides 6 specialized financial agents. Use them via `Task tool with subagent_type:`.
 
-See [CLAUDE.md](https://raw.githubusercontent.com/LerianStudio/ring/main/CLAUDE.md) and [ring:using-ring](https://raw.githubusercontent.com/LerianStudio/ring/main/default/skills/using-ring/SKILL.md) for canonical workflow requirements and ORCHESTRATOR principle. This skill introduces finance-team-specific agents.
+See [CLAUDE.md](https://raw.githubusercontent.com/QuelitonSouza/ring/main/CLAUDE.md) and [ring:using-ring](https://raw.githubusercontent.com/QuelitonSouza/ring/main/default/skills/using-ring/SKILL.md) for canonical workflow requirements and ORCHESTRATOR principle. This skill introduces finance-team-specific agents.
 
 **Remember:** Follow the **ORCHESTRATOR principle** from `ring:using-ring`. Dispatch agents to handle complexity; don't operate tools directly.
 

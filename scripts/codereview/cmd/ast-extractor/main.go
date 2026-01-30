@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/ast"
-	"github.com/lerianstudio/ring/scripts/codereview/internal/fileutil"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/ast"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/fileutil"
 )
 
 var (

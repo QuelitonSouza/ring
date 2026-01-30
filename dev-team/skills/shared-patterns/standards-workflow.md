@@ -91,7 +91,7 @@ Read docs/PROJECT_RULES.md
 | Rationalization | Why It's WRONG | Required Action |
 |-----------------|----------------|-----------------|
 | "I know the patterns from training" | Training data may be outdated. Standards evolve. | **MUST WebFetch current standards** |
-| "I'll use general best practices" | General ≠ Lerian standards. Compliance requires specifics. | **MUST WebFetch current standards** |
+| "I'll use general best practices" | General ≠ QuelitonSouza standards. Compliance requires specifics. | **MUST WebFetch current standards** |
 | "WebFetch is slow, I'll skip it" | Speed ≠ correctness. Wrong patterns = rework. | **MUST WebFetch, wait for result** |
 | "I'll add the patterns I remember" | Memory ≠ source of truth. Standards file is authoritative. | **MUST WebFetch current standards** |
 | "Standards haven't changed recently" | You don't know this. Always fetch latest. | **MUST WebFetch current standards** |
@@ -100,15 +100,14 @@ Read docs/PROJECT_RULES.md
 
 | Agent | Standards File | URL |
 |-------|---------------|-----|
-| `ring:backend-engineer-golang` | golang.md | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/golang.md` |
-| `ring:backend-engineer-typescript` | typescript.md | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md` |
-| `frontend-bff-engineer-typescript` | typescript.md | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md` |
-| `ring:backend-engineer-csharp` | csharp.md | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/csharp.md` |
-| `ring:frontend-engineer` | frontend.md | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/frontend.md` |
-| `ring:frontend-designer` | frontend.md | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/frontend.md` |
-| `ring:devops-engineer` | devops.md | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/devops.md` |
-| `ring:sre` | sre.md | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/sre.md` |
-| `ring:qa-analyst` | golang.md or typescript.md | Based on project language (check PROJECT_RULES.md first) |
+| `ring:backend-engineer-typescript` | typescript.md | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md` |
+| `frontend-bff-engineer-typescript` | typescript.md | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md` |
+| `ring:backend-engineer-csharp` | csharp.md | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md` |
+| `ring:frontend-engineer` | frontend.md | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/frontend.md` |
+| `ring:frontend-designer` | frontend.md | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/frontend.md` |
+| `ring:devops-engineer` | devops.md | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/devops.md` |
+| `ring:sre` | sre.md | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/sre.md` |
+| `ring:qa-analyst` | csharp.md or typescript.md | Based on project language (check PROJECT_RULES.md first) |
 | `prompt-quality-reviewer` | N/A | Domain-independent (no standards WebFetch required) |
 
 ---
@@ -171,11 +170,11 @@ Read docs/PROJECT_RULES.md
 > This file documents only project-specific information not covered by Ring Standards.
 >
 > Ring Standards URLs:
-> - Go: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/golang.md
-> - TypeScript: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md
-> - Frontend: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/frontend.md
-> - DevOps: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/devops.md
-> - SRE: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/sre.md
+> - C#: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md
+> - TypeScript: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md
+> - Frontend: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/frontend.md
+> - DevOps: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/devops.md
+> - SRE: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/sre.md
 
 ## What Ring Standards Cover (DO not DUPLICATE HERE)
 
@@ -186,7 +185,7 @@ The following are defined in Ring Standards and MUST not be duplicated in this f
 - Architecture patterns (Hexagonal, Clean Architecture)
 - Observability (OpenTelemetry via lib-commons)
 - lib-commons / lib-common-js usage and patterns
-- API directory structure (Lerian pattern)
+- API directory structure (QuelitonSouza pattern)
 - Database connections (PostgreSQL, MongoDB, Redis via lib-commons)
 - Bootstrap pattern (config.go, service.go, server.go)
 
@@ -322,7 +321,6 @@ I'll help you create `docs/PROJECT_RULES.md` with only project-specific informat
 
 | Agent Type | Signs of Non-Compliant Code |
 |------------|----------------------------|
-| **Go Backend** | `panic()` for errors, `fmt.Println` instead of structured logging, ignored errors with `result, _ :=`, no context propagation |
 | **C# Backend** | `Console.WriteLine` instead of structured logging, `throw new Exception()` instead of specific types, no `CancellationToken` propagation, `#nullable disable`, empty catch blocks, sync-over-async (`.Result`, `.Wait()`) |
 | **TypeScript Backend** | `any` types, no Zod validation, `// @ts-ignore`, missing Result type for errors |
 | **Frontend** | No component tests, inline styles instead of design system, missing accessibility attributes |
@@ -387,7 +385,7 @@ See [shared-patterns/standards-workflow.md](../skills/shared-patterns/standards-
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/{file}.md` |
+| **WebFetch URL** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/{file}.md` |
 | **Standards File** | {file}.md |
 | **Prompt** | "Extract all [domain] standards, patterns, and requirements" |
 ```

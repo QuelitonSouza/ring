@@ -175,7 +175,7 @@ Invoke this agent when the task involves:
 - Cross-account deployments with assume role
 
 ### Build & Release
-- GoReleaser configuration for Go binaries
+- dotnet publish configuration for C# binaries
 - npm/yarn build optimization
 - Semantic release automation
 - Changelog generation
@@ -210,7 +210,7 @@ Invoke this agent when the task involves:
 - **IaC**: Terraform (advanced), Terragrunt, Pulumi, CloudFormation, Ansible
 - **Cloud**: AWS, GCP, Azure, DigitalOcean
 - **Registries**: Docker Hub, ECR, GCR, Harbor
-- **Release**: GoReleaser, semantic-release, changesets
+- **Release**: dotnet publish, semantic-release, changesets
 - **Scripting**: Bash, Python, Make
 - **Multi-Tenancy**: Tenant isolation, tenant provisioning, resource management
 
@@ -227,7 +227,7 @@ See [shared-patterns/standards-compliance-detection.md](../skills/shared-pattern
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/devops.md` |
+| **WebFetch URL** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/devops.md` |
 | **Standards File** | devops.md |
 
 **Example sections from devops.md to check:**
@@ -243,7 +243,7 @@ See [shared-patterns/standards-compliance-detection.md](../skills/shared-pattern
 ## Standards Loading (MANDATORY)
 
 <fetch_required>
-https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/devops.md
+https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/devops.md
 </fetch_required>
 
 MUST WebFetch the URL above before any implementation work.
@@ -258,7 +258,7 @@ See [shared-patterns/standards-workflow.md](../skills/shared-patterns/standards-
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/devops.md` |
+| **WebFetch URL** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/devops.md` |
 | **Standards File** | devops.md |
 | **Prompt** | "Extract all DevOps standards, patterns, and requirements" |
 
@@ -383,9 +383,9 @@ See [shared-patterns/standards-workflow.md](../skills/shared-patterns/standards-
 
 ## Standards Compliance Report (MANDATORY when invoked from ring:dev-refactor)
 
-See [docs/AGENT_DESIGN.md](https://raw.githubusercontent.com/LerianStudio/ring/main/docs/AGENT_DESIGN.md) for canonical output schema requirements.
+See [docs/AGENT_DESIGN.md](https://raw.githubusercontent.com/QuelitonSouza/ring/main/docs/AGENT_DESIGN.md) for canonical output schema requirements.
 
-When invoked from the `ring:dev-refactor` skill with a codebase-report.md, you MUST produce a Standards Compliance section comparing the infrastructure against Lerian/Ring DevOps Standards.
+When invoked from the `ring:dev-refactor` skill with a codebase-report.md, you MUST produce a Standards Compliance section comparing the infrastructure against QuelitonSouza/Ring DevOps Standards.
 
 ### Sections to Check (MANDATORY)
 
@@ -448,7 +448,7 @@ When invoked from the `ring:dev-refactor` skill with a codebase-report.md, you M
 ```markdown
 ## Standards Compliance
 
-✅ **Fully Compliant** - Infrastructure follows all Lerian/Ring DevOps Standards.
+✅ **Fully Compliant** - Infrastructure follows all QuelitonSouza/Ring DevOps Standards.
 
 No migration actions required.
 ```
@@ -457,7 +457,7 @@ No migration actions required.
 ```markdown
 ## Standards Compliance
 
-### Lerian/Ring Standards Comparison
+### QuelitonSouza/Ring Standards Comparison
 
 | Category | Current Pattern | Expected Pattern | Status | File/Location |
 |----------|----------------|------------------|--------|---------------|
@@ -645,7 +645,7 @@ terraform providers lock -platform=linux_amd64
 |---------|---------------|---------|-------------------|
 | Resource naming | `terraform/main.tf` | L15-20 | Follows `{env}-{service}-{resource}` pattern |
 | Helm values structure | `charts/app/values.yaml` | L1-50 | Matches nested structure |
-| Docker base image | `Dockerfile` | L1 | Uses same `golang:1.21-alpine` pattern |
+| Docker base image | `Dockerfile` | L1 | Uses same `mcr.microsoft.com/dotnet/sdk:8.0` pattern |
 ```
 
 #### Completeness Check
@@ -711,8 +711,8 @@ Stopping app_postgres_1 ... done
 
 ## What This Agent Does not Handle
 
-- Application code development (use `ring:backend-engineer-golang`, `ring:backend-engineer-typescript`, or `frontend-bff-engineer-typescript`)
+- Application code development (use `ring:backend-engineer-csharp`, `ring:backend-engineer-typescript`, or `frontend-bff-engineer-typescript`)
 - Production monitoring and incident response (use `ring:sre`)
 - Test case design and execution (use `ring:qa-analyst`)
 - Application performance optimization (use `ring:sre`)
-- Business logic implementation (use `ring:backend-engineer-golang`)
+- Business logic implementation (use `ring:backend-engineer-csharp`)

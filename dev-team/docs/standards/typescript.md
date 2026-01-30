@@ -24,7 +24,7 @@ This file defines the specific standards for TypeScript (backend) development.
 | 9 | [Error Handling](#error-handling) | Custom error classes |
 | 10 | [Function Design](#function-design-mandatory) | Single responsibility principle |
 | 11 | [Naming Conventions](#naming-conventions) | Files, interfaces, types |
-| 12 | [Directory Structure](#directory-structure) | Project layout (Lerian pattern) |
+| 12 | [Directory Structure](#directory-structure) | Project layout (QuelitonSouza pattern) |
 | 13 | [RabbitMQ Worker Pattern](#rabbitmq-worker-pattern) | Async message processing |
 | 14 | [Always-Valid Domain Model](#always-valid-domain-model-mandatory) | Constructor validation, invariant protection |
 
@@ -636,7 +636,7 @@ function applyDiscount(total: number, couponCode?: string): number {
 
 ## Directory Structure
 
-The directory structure follows the **Lerian pattern** - a simplified hexagonal architecture without explicit DDD folders.
+The directory structure follows the **QuelitonSouza pattern** - a simplified hexagonal architecture without explicit DDD folders.
 
 ```
 /src

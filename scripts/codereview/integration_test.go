@@ -5,8 +5,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/lint"
-	"github.com/lerianstudio/ring/scripts/codereview/internal/scope"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/lint"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/scope"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

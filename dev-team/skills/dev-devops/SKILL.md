@@ -259,7 +259,7 @@ Task:
     - .env.example: [EXISTS/MISSING]
 
     ## Standards Reference
-    WebFetch: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/devops.md
+    WebFetch: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/devops.md
 
     You MUST implement all sections from devops.md.
 
@@ -359,7 +359,7 @@ Task:
     [list ❌ sections and FAIL verifications]
 
     ## Standards Reference
-    WebFetch: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/devops.md
+    WebFetch: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/devops.md
 
     Fix all issues and re-run verification commands.
     Return updated Standards Coverage Table with all ✅.

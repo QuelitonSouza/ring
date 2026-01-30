@@ -28,11 +28,11 @@ Each agent has a specific WebFetch URL for Ring standards:
 
 | Agent | WebFetch URL |
 |-------|--------------|
-| platform-engineer | `https://raw.githubusercontent.com/LerianStudio/ring/main/ops-team/docs/standards/platform.md` |
-| incident-responder | `https://raw.githubusercontent.com/LerianStudio/ring/main/ops-team/docs/standards/incident.md` |
-| cloud-cost-optimizer | `https://raw.githubusercontent.com/LerianStudio/ring/main/ops-team/docs/standards/cost.md` |
-| infrastructure-architect | `https://raw.githubusercontent.com/LerianStudio/ring/main/ops-team/docs/standards/architecture.md` |
-| security-operations | `https://raw.githubusercontent.com/LerianStudio/ring/main/ops-team/docs/standards/security.md` |
+| platform-engineer | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/ops-team/docs/standards/platform.md` |
+| incident-responder | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/ops-team/docs/standards/incident.md` |
+| cloud-cost-optimizer | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/ops-team/docs/standards/cost.md` |
+| infrastructure-architect | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/ops-team/docs/standards/architecture.md` |
+| security-operations | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/ops-team/docs/standards/security.md` |
 
 **WebFetch Prompt Template:**
 ```

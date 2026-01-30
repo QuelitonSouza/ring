@@ -51,11 +51,11 @@ Read `docs/pre-dev/{feature-name}/trd.md` and extract: `deployment.model`, `tech
 
 | Standard | URL | Purpose |
 |----------|-----|---------|
-| **golang.md** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/golang.md` | Go coding patterns |
-| **typescript.md** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md` | TypeScript patterns |
-| **frontend.md** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/frontend.md` | Frontend patterns |
-| **devops.md** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/devops.md` | DevOps patterns |
-| **sre.md** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/sre.md` | Observability, logging |
+| **csharp.md** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md` | C# coding patterns |
+| **typescript.md** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md` | TypeScript patterns |
+| **frontend.md** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/frontend.md` | Frontend patterns |
+| **devops.md** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/devops.md` | DevOps patterns |
+| **sre.md** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/sre.md` | Observability, logging |
 
 **Ring Standards** = coding patterns, observability, logging, error handling (shared across ALL projects)
 **PROJECT_RULES.md** = specific technologies, versions, database choices (specific to THIS project)
@@ -146,18 +146,18 @@ If you catch yourself writing any of these in a Dependency Map, **STOP**:
 | Violation | Wrong | Correct |
 |-----------|-------|---------|
 | **Vague Versions** | `Fiber (latest), PostgreSQL (current), Zap (newest stable)` | `gofiber/fiber/v2@v2.52.0` with purpose, alternatives considered, trade-offs; `lib/pq@v1.10.9` with constraint; `go.uber.org/zap@v1.27.0` with rationale |
-| **Missing Security** | `JWT Library: golang-jwt/jwt@v5.0.0` (no analysis) | Package + purpose + security (CVE check date, OWASP compliance, update history) + alternatives |
+| **Missing Security** | `JWT Library: System.IdentityModel.Tokens.Jwt@v7.0.0` (no analysis) | Package + purpose + security (CVE check date, OWASP compliance, update history) + alternatives |
 | **Undefined Infrastructure** | `Some database (probably Postgres), Cache (Redis or Valkey), Storage for files` | Per component: product + version + rationale + configuration + cost (managed vs self-hosted) |
 
 ## Dependency Resolution Patterns
 
 ### Standards-Driven Validation
 
-If language cannot be auto-detected, use AskUserQuestion with tech stack options (Go Backend, TypeScript Backend, TypeScript Frontend, Full-Stack TypeScript).
+If language cannot be auto-detected, use AskUserQuestion with tech stack options (C# Backend, TypeScript Backend, TypeScript Frontend, Full-Stack TypeScript).
 
 | Selection | Standards to Load |
 |-----------|-------------------|
-| Go Backend | golang.md + devops.md + sre.md |
+| C# Backend | csharp.md + devops.md + sre.md |
 | TypeScript Backend | typescript.md + devops.md + sre.md |
 | TypeScript Frontend | frontend.md + devops.md |
 | Full-Stack TypeScript | typescript.md + frontend.md + devops.md + sre.md |
@@ -175,29 +175,29 @@ If language cannot be auto-detected, use AskUserQuestion with tech stack options
 
 | Tech Stack | Auth Requirement | Mandatory Dependency | Reference |
 |------------|------------------|---------------------|-----------|
-| Go Backend | User authentication | `github.com/LerianStudio/lib-auth/v2` | `golang.md` → Access Manager Integration |
-| Go Backend | Service-to-service auth | `github.com/LerianStudio/lib-auth/v2` | `golang.md` → Access Manager Integration |
-| Go Backend | User + permissions (RBAC) | `github.com/LerianStudio/lib-auth/v2` | `golang.md` → Access Manager Integration |
+| C# Backend | User authentication | `QuelitonSouza.LibAuth` | `csharp.md` → Access Manager Integration |
+| C# Backend | Service-to-service auth | `QuelitonSouza.LibAuth` | `csharp.md` → Access Manager Integration |
+| C# Backend | User + permissions (RBAC) | `QuelitonSouza.LibAuth` | `csharp.md` → Access Manager Integration |
 
-**For Go services, the dependency entry MUST include:**
+**For C# services, the dependency entry MUST include:**
 
 ```markdown
 ### Authentication
 
-**Package:** `github.com/LerianStudio/lib-auth/v2@vX.Y.Z`
-**Purpose:** Integration with Lerian Access Manager (plugin-auth + identity)
-**Rationale:** Standard authentication library for all Lerian Go services
+**Package:** `QuelitonSouza.LibAuth@X.Y.Z`
+**Purpose:** Integration with QuelitonSouza Access Manager (plugin-auth + identity)
+**Rationale:** Standard authentication library for all QuelitonSouza C# services
 **Environment Variables:** PLUGIN_AUTH_ADDRESS, PLUGIN_AUTH_ENABLED
 **Additional (if S2S):** CLIENT_ID, CLIENT_SECRET
-**Reference:** See `golang.md` → Access Manager Integration for implementation patterns
+**Reference:** See `csharp.md` → Access Manager Integration for implementation patterns
 ```
 
-**CRITICAL:** Go services MUST use lib-auth for authentication. Direct integration with plugin-auth is FORBIDDEN.
+**CRITICAL:** C# services MUST use LibAuth for authentication. Direct integration with plugin-auth is FORBIDDEN.
 
 **Implementation Requirement (from TRD):**
 - Every protected endpoint MUST have route middleware: `auth.Authorize(applicationName, resource, action)`
 - Middleware is applied per-route, not globally
-- See `golang.md` → Access Manager Integration → Router Setup for patterns
+- See `csharp.md` → Access Manager Integration → Router Setup for patterns
 
 ### Licensing Dependencies (Mandatory for Licensed Products)
 
@@ -205,29 +205,29 @@ If language cannot be auto-detected, use AskUserQuestion with tech stack options
 
 | Tech Stack | License Requirement | Mandatory Dependency | Reference |
 |------------|---------------------|---------------------|-----------|
-| Go Backend | Single-org (global) license | `github.com/LerianStudio/lib-license-go/v2` | `golang.md` → License Manager Integration |
-| Go Backend | Multi-org license | `github.com/LerianStudio/lib-license-go/v2` | `golang.md` → License Manager Integration |
+| C# Backend | Single-org (global) license | `QuelitonSouza.LibLicense` | `csharp.md` → License Manager Integration |
+| C# Backend | Multi-org license | `QuelitonSouza.LibLicense` | `csharp.md` → License Manager Integration |
 
-**For Go services, the dependency entry MUST include:**
+**For C# services, the dependency entry MUST include:**
 
 ```markdown
 ### Licensing
 
-**Package:** `github.com/LerianStudio/lib-license-go/v2/middleware@vX.Y.Z`
-**Purpose:** Integration with Lerian License Manager for product licensing
-**Rationale:** Standard licensing library for all Lerian licensed Go services
+**Package:** `QuelitonSouza.LibLicense@X.Y.Z`
+**Purpose:** Integration with QuelitonSouza License Manager for product licensing
+**Rationale:** Standard licensing library for all QuelitonSouza licensed C# services
 **Environment Variables:** LICENSE_KEY, ORGANIZATION_IDS
 **Mode:** Global (ORGANIZATION_IDS=global) or Multi-org (comma-separated org IDs)
-**Reference:** See `golang.md` → License Manager Integration for implementation patterns
+**Reference:** See `csharp.md` → License Manager Integration for implementation patterns
 ```
 
-**CRITICAL:** Go services MUST use lib-license-go for licensing. Custom license validation is FORBIDDEN.
+**CRITICAL:** C# services MUST use LibLicense for licensing. Custom license validation is FORBIDDEN.
 
 **Implementation Requirement (from TRD):**
-- License middleware applied GLOBALLY: `f.Use(lc.Middleware())`
-- Middleware applied early in chain (first after Fiber creation)
+- License middleware applied GLOBALLY: `app.UseMiddleware<LicenseMiddleware>()`
+- Middleware applied early in pipeline (first after app creation)
 - Graceful shutdown MUST include: `licenseClient.GetLicenseManagerShutdown()`
-- See `golang.md` → License Manager Integration → Router Setup for patterns
+- See `csharp.md` → License Manager Integration → Router Setup for patterns
 
 ## License & Cost Templates
 

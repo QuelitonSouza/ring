@@ -33,7 +33,7 @@ output_schema:
       required: true
 ```
 
-**Used by:** `ring:backend-engineer-golang`, `ring:backend-engineer-typescript`, `frontend-bff-engineer-typescript`, `ring:devops-engineer`, `ring:qa-analyst`, `ring:sre`, `finops-automation`
+**Used by:** `ring:backend-engineer-csharp`, `ring:backend-engineer-typescript`, `frontend-bff-engineer-typescript`, `ring:devops-engineer`, `ring:qa-analyst`, `ring:sre`, `finops-automation`
 
 ---
 
@@ -169,7 +169,7 @@ All ring-dev-team agents include this in their `output_schema`:
 - name: "Standards Compliance"
   pattern: "^## Standards Compliance"
   required: false  # In schema, but MANDATORY when invoked from ring:dev-refactor
-  description: "Comparison of codebase against Lerian/Ring standards. MANDATORY when invoked from ring:dev-refactor skill."
+  description: "Comparison of codebase against QuelitonSouza/Ring standards. MANDATORY when invoked from ring:dev-refactor skill."
 ```
 
 ### Conditional Requirement: `invoked_from_dev_refactor`
@@ -204,7 +204,7 @@ All ring-dev-team agents support Standards Compliance:
 
 | Agent | Standards Source | Categories Checked |
 |-------|------------------|-------------------|
-| `ring:backend-engineer-golang` | `golang.md` | lib-commons, Error Handling, Logging, Config |
+| `ring:backend-engineer-csharp` | `csharp.md` | lib-commons, Error Handling, Logging, Config |
 | `ring:backend-engineer-typescript` | `typescript.md` | Type Safety, Error Handling, Validation |
 | `ring:devops-engineer` | `devops.md` | Dockerfile, docker-compose, CI/CD |
 | `frontend-bff-engineer-typescript` | `frontend.md` | Component patterns, State management |
@@ -218,7 +218,7 @@ All ring-dev-team agents support Standards Compliance:
 ```markdown
 ## Standards Compliance
 
-Fully Compliant - Codebase follows all Lerian/Ring Standards.
+Fully Compliant - Codebase follows all QuelitonSouza/Ring Standards.
 
 No migration actions required.
 ```
@@ -227,7 +227,7 @@ No migration actions required.
 ```markdown
 ## Standards Compliance
 
-### Lerian/Ring Standards Comparison
+### QuelitonSouza/Ring Standards Comparison
 
 | Category | Current Pattern | Expected Pattern | Status | File/Location |
 |----------|----------------|------------------|--------|---------------|
@@ -252,7 +252,7 @@ No migration actions required.
 2. **Logging Migration**
    - Replace: `fmt.Println("debug info")`
    - With: `logger.Info("debug info", zap.String("key", "value"))`
-   - Import: `import "github.com/LerianStudio/lib-commons/zap"`
+   - Import: `import "github.com/QuelitonSouza/lib-commons/zap"`
    - Files affected: internal/service/*.go
 ```
 

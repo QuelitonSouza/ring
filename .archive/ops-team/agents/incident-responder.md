@@ -153,7 +153,7 @@ See [shared-patterns/standards-workflow.md](../skills/shared-patterns/standards-
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL** | `https://raw.githubusercontent.com/LerianStudio/ring/main/ops-team/docs/standards/incident.md` |
+| **WebFetch URL** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/ops-team/docs/standards/incident.md` |
 | **Standards File** | incident.md |
 | **Prompt** | "Extract all incident response standards, RCA templates, and communication requirements" |
 

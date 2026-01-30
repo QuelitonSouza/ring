@@ -1,4 +1,4 @@
-module github.com/lerianstudio/ring/scripts/codereview
+module github.com/QuelitonSouza/ring/scripts/codereview
 
 go 1.25
 

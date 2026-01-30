@@ -8,7 +8,7 @@ last_updated: 2026-01-13
 changelog:
   - 2.1.8: Added MANDATORY Standards Verification output section - MUST be first section to prove standards were loaded
   - 2.1.7: Added Pre-Submission Self-Check section (MANDATORY) with AI slop detection reference, npm dependency verification, scope boundary checks, and evidence-of-reading requirements
-  - 2.1.6: Renamed Midaz → Lerian pattern
+  - 2.1.6: Renamed Midaz → QuelitonSouza pattern
   - 2.1.5: Added Model Requirements section (HARD GATE - requires Claude Opus 4.5+)
   - 2.1.4: Enhanced Standards Compliance mode detection with robust pattern matching (case-insensitive, partial markers, explicit requests, fail-safe behavior)
   - 2.1.2: Added required_when condition to Standards Compliance for ring:dev-refactor gate enforcement
@@ -45,7 +45,7 @@ output_schema:
       required_when:
         invocation_context: "ring:dev-refactor"
         prompt_contains: "**MODE: ANALYSIS only**"
-      description: "Comparison of codebase against Lerian/Ring standards. MANDATORY when invoked from ring:dev-refactor skill. Optional otherwise."
+      description: "Comparison of codebase against QuelitonSouza/Ring standards. MANDATORY when invoked from ring:dev-refactor skill. Optional otherwise."
     - name: "Blockers"
       pattern: "^## Blockers"
       required: false
@@ -233,7 +233,7 @@ See [shared-patterns/standards-compliance-detection.md](../skills/shared-pattern
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md` |
+| **WebFetch URL** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md` |
 | **Standards File** | typescript.md |
 
 **Example sections from typescript.md to check:**
@@ -252,7 +252,7 @@ See [shared-patterns/standards-compliance-detection.md](../skills/shared-pattern
 ## Standards Loading (MANDATORY)
 
 <fetch_required>
-https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md
+https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md
 </fetch_required>
 
 MUST WebFetch the URL above before any implementation work.
@@ -267,7 +267,7 @@ See [shared-patterns/standards-workflow.md](../skills/shared-patterns/standards-
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md` |
+| **WebFetch URL** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md` |
 | **Standards File** | typescript.md |
 | **Prompt** | "Extract all TypeScript coding standards, patterns, and requirements" |
 
@@ -363,7 +363,7 @@ See [shared-patterns/standards-workflow.md](../skills/shared-patterns/standards-
 
 ## Architecture Patterns
 
-You have deep expertise in Clean Architecture and Hexagonal Architecture. The **Lerian pattern** (simplified hexagonal without explicit DDD folders) is MANDATORY for all BFF services.
+You have deep expertise in Clean Architecture and Hexagonal Architecture. The **QuelitonSouza pattern** (simplified hexagonal without explicit DDD folders) is MANDATORY for all BFF services.
 
 ### Strategic Patterns (Knowledge)
 
@@ -441,7 +441,7 @@ You have deep expertise in TDD. **TDD is MANDATORY when invoked by ring:dev-cycl
 
 1. **Load Ring Standards FIRST (MANDATORY):**
    ```
-   WebFetch: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md
+   WebFetch: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md
    Prompt: "Extract all TypeScript coding standards, patterns, and requirements"
    ```
 2. Read the requirements and acceptance criteria
@@ -475,7 +475,7 @@ FAIL  src/use-cases/get-user.test.ts
 
 1. **Load Ring Standards FIRST (MANDATORY):**
    ```
-   WebFetch: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md
+   WebFetch: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md
    Prompt: "Extract all TypeScript coding standards, patterns, and requirements"
    ```
 2. Review the test file and failure output from TDD-RED
@@ -574,15 +574,15 @@ If code is ALREADY compliant with all standards:
 
 ## Standards Compliance Report (MANDATORY when invoked from ring:dev-refactor)
 
-See [docs/AGENT_DESIGN.md](https://raw.githubusercontent.com/LerianStudio/ring/main/docs/AGENT_DESIGN.md) for canonical output schema requirements.
+See [docs/AGENT_DESIGN.md](https://raw.githubusercontent.com/QuelitonSouza/ring/main/docs/AGENT_DESIGN.md) for canonical output schema requirements.
 
-When invoked from the `ring:dev-refactor` skill with a codebase-report.md, you MUST produce a Standards Compliance section comparing the BFF layer against Lerian/Ring TypeScript Standards.
+When invoked from the `ring:dev-refactor` skill with a codebase-report.md, you MUST produce a Standards Compliance section comparing the BFF layer against QuelitonSouza/Ring TypeScript Standards.
 
 ### ⛔ HARD GATE: always Compare all Categories
 
 **Every category MUST be checked and reported. No exceptions.**
 
-Canonical policy: see [CLAUDE.md](https://raw.githubusercontent.com/LerianStudio/ring/main/CLAUDE.md) for the definitive standards compliance requirements.
+Canonical policy: see [CLAUDE.md](https://raw.githubusercontent.com/QuelitonSouza/ring/main/CLAUDE.md) for the definitive standards compliance requirements.
 
 **Anti-Rationalization:**
 
@@ -591,7 +591,7 @@ See [shared-patterns/shared-anti-rationalization.md](../skills/shared-patterns/s
 | Rationalization | Why It's WRONG | Required Action |
 |-----------------|----------------|------------------|
 | "Codebase already uses lib-commons-js" | Partial usage ≠ full compliance. Check everything. | **Verify all categories** |
-| "Already follows Lerian standards" | Assumption ≠ verification. Prove it with evidence. | **Verify all categories** |
+| "Already follows QuelitonSouza standards" | Assumption ≠ verification. Prove it with evidence. | **Verify all categories** |
 
 ### Sections to Check (MANDATORY)
 
@@ -627,7 +627,7 @@ See [shared-patterns/shared-anti-rationalization.md](../skills/shared-patterns/s
 ```markdown
 ## Standards Compliance
 
-✅ **Fully Compliant** - BFF layer follows all Lerian/Ring TypeScript Standards.
+✅ **Fully Compliant** - BFF layer follows all QuelitonSouza/Ring TypeScript Standards.
 
 No migration actions required.
 ```
@@ -636,7 +636,7 @@ No migration actions required.
 ```markdown
 ## Standards Compliance
 
-### Lerian/Ring Standards Comparison
+### QuelitonSouza/Ring Standards Comparison
 
 | Category | Current Pattern | Expected Pattern | Status | File/Location |
 |----------|----------------|------------------|--------|---------------|
@@ -648,19 +648,19 @@ No migration actions required.
 1. **Logging Migration**
    - Replace: `console.log()` / `console.error()`
    - With: `const logger = createLogger({ service: 'my-bff' })`
-   - Import: `import { createLogger } from '@lerianstudio/lib-commons-js'`
+   - Import: `import { createLogger } from '@QuelitonSouza/lib-commons-js'`
    - Files affected: [list]
 
 2. **Error Handling Migration**
    - Replace: Custom error classes or plain `Error`
    - With: `throw new AppError('message', { code: 'ERR_CODE', statusCode: 400 })`
-   - Import: `import { AppError, isAppError } from '@lerianstudio/lib-commons-js'`
+   - Import: `import { AppError, isAppError } from '@QuelitonSouza/lib-commons-js'`
    - Files affected: [list]
 
 3. **Graceful Shutdown Migration**
    - Replace: `app.listen(port)`
    - With: `startServerWithGracefulShutdown(app, { port })`
-   - Import: `import { startServerWithGracefulShutdown } from '@lerianstudio/lib-commons-js'`
+   - Import: `import { startServerWithGracefulShutdown } from '@QuelitonSouza/lib-commons-js'`
    - Files affected: [list]
 ```
 

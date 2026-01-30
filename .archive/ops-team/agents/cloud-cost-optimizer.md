@@ -142,7 +142,7 @@ See [shared-patterns/standards-workflow.md](../skills/shared-patterns/standards-
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL** | `https://raw.githubusercontent.com/LerianStudio/ring/main/ops-team/docs/standards/cost.md` |
+| **WebFetch URL** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/ops-team/docs/standards/cost.md` |
 | **Standards File** | cost.md |
 | **Prompt** | "Extract all cloud cost standards, optimization thresholds, and FinOps requirements" |
 

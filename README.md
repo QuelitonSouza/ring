@@ -33,7 +33,7 @@ Ring solves this by:
 - Use `/ring:codereview` command to orchestrate parallel review workflow
 
 **Developer Agents (dev-team plugin):**
-- `ring:backend-engineer-golang` - Go backend specialist for financial systems
+- `ring:backend-engineer-csharp` - C# backend specialist for financial systems
 - `ring:backend-engineer-typescript` - TypeScript/Node.js backend specialist (Express, NestJS, Fastify)
 - `ring:devops-engineer` - DevOps infrastructure specialist
 - `frontend-bff-engineer-typescript` - BFF & React/Next.js frontend with Clean Architecture
@@ -105,10 +105,10 @@ The Ring installer automatically detects installed platforms and transforms cont
 **Linux/macOS/Git Bash:**
 ```bash
 # Interactive installer (auto-detects platforms)
-curl -fsSL https://raw.githubusercontent.com/lerianstudio/ring/main/install-ring.sh | bash
+curl -fsSL https://raw.githubusercontent.com/QuelitonSouza/ring/main/install-ring.sh | bash
 
 # Or clone and run locally
-git clone https://github.com/lerianstudio/ring.git ~/ring
+git clone https://github.com/QuelitonSouza/ring.git ~/ring
 cd ~/ring
 ./installer/install-ring.sh
 ```
@@ -116,10 +116,10 @@ cd ~/ring
 **Windows PowerShell:**
 ```powershell
 # Interactive installer (auto-detects platforms)
-irm https://raw.githubusercontent.com/lerianstudio/ring/main/install-ring.ps1 | iex
+irm https://raw.githubusercontent.com/QuelitonSouza/ring/main/install-ring.ps1 | iex
 
 # Or clone and run locally
-git clone https://github.com/lerianstudio/ring.git $HOME\ring
+git clone https://github.com/QuelitonSouza/ring.git $HOME\ring
 cd $HOME\ring
 .\installer\install-ring.ps1
 ```
@@ -179,7 +179,7 @@ For Claude Code users, you can also install from the marketplace:
 
 ```bash
 # Clone the marketplace repository
-git clone https://github.com/lerianstudio/ring.git ~/ring
+git clone https://github.com/QuelitonSouza/ring.git ~/ring
 
 # Skills auto-load at session start via hooks
 # No additional configuration needed for Claude Code
@@ -468,7 +468,7 @@ ring/                                  # Monorepo root
 │   └── docs/                       # Documentation
 ├── dev-team/                      # Developer Agents plugin (ring-dev-team)
 │   └── agents/                      # 9 specialized developer agents
-│       ├── ring:backend-engineer-golang.md  # Go backend specialist
+│       ├── ring:backend-engineer-csharp.md  # C# backend specialist
 │       ├── ring:backend-engineer-typescript.md # TypeScript/Node.js backend specialist
 │       ├── ring:devops-engineer.md          # DevOps infrastructure
 │       ├── frontend-bff-engineer-typescript.md # BFF & React/Next.js frontend specialist
@@ -577,7 +577,7 @@ ring/                                  # Monorepo root
      "description": "Product XYZ specific skills",
      "version": "0.1.0",
      "source": "./product-xyz",
-     "homepage": "https://github.com/lerianstudio/ring/tree/product-xyz"
+     "homepage": "https://github.com/QuelitonSouza/ring/tree/product-xyz"
    }
    ```
 
@@ -634,7 +634,7 @@ Ring is built on decades of collective software engineering wisdom, incorporatin
 - Agile methodologies
 - DevOps practices
 
-Special thanks to the Lerian Team for battle-testing these skills in production.
+Special thanks to the QuelitonSouza Team for battle-testing these skills in production.
 
 ## 📄 License
 
@@ -642,8 +642,8 @@ MIT - See [LICENSE](LICENSE) file
 
 ## 🔗 Links
 
-- [GitHub Repository](https://github.com/lerianstudio/ring)
-- [Issue Tracker](https://github.com/lerianstudio/ring/issues)
+- [GitHub Repository](https://github.com/QuelitonSouza/ring)
+- [Issue Tracker](https://github.com/QuelitonSouza/ring/issues)
 - [Plugin Marketplace](https://claude.ai/marketplace/ring)
 
 ---

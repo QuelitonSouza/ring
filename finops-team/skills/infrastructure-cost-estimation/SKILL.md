@@ -106,11 +106,11 @@ AskUserQuestion:
 | Input | Required | Question | Example |
 |-------|----------|----------|---------|
 | **Repo Path** | Yes | "What is the application repository path?" | `/workspace/midaz` |
-| **Helm Charts Repo** | Optional | "Path to LerianStudio/helm repository?" | `/workspace/helm` |
+| **Helm Charts Repo** | Optional | "Path to QuelitonSouza/helm repository?" | `/workspace/helm` |
 | **TPS** | Yes | "What is the expected TPS?" | `100` |
 | **Total Customers** | Yes | "How many customers share the platform?" | `5` |
 
-**Why Helm Charts Repo?** LerianStudio/helm contains actual CPU/memory configurations per service. Without it, the agent uses Midaz default values.
+**Why Helm Charts Repo?** QuelitonSouza/helm contains actual CPU/memory configurations per service. Without it, the agent uses Midaz default values.
 
 ---
 
@@ -195,7 +195,7 @@ Skip: charts/reporter/values.yaml               → Not selected
 
 ### 4c. Extract Resource Configurations
 
-**Source:** `git@github.com:LerianStudio/helm.git`
+**Source:** `git@github.com:QuelitonSouza/helm.git`
 
 **For each service, extract:**
 ```yaml
@@ -208,7 +208,7 @@ autoscaling:
   maxReplicas: ?   # Maximum replicas
 ```
 
-**Example from LerianStudio/helm values.yaml:**
+**Example from QuelitonSouza/helm values.yaml:**
 ```yaml
 transaction:
   replicaCount: 3
@@ -227,11 +227,11 @@ transaction:
 
 **If no Helm repo available**, use Midaz default values from this document.
 
-### 4d. Read Actual Resources (DYNAMIC - from LerianStudio/helm)
+### 4d. Read Actual Resources (DYNAMIC - from QuelitonSouza/helm)
 
 **MUST read actual values at runtime - DO NOT use hardcoded values.**
 
-**Source Repository:** `git@github.com:LerianStudio/helm.git`
+**Source Repository:** `git@github.com:QuelitonSouza/helm.git`
 
 **Files to Read:**
 
@@ -265,9 +265,9 @@ autoscaling:
 
 1. If local clone exists: `Read tool` on values.yaml files
 2. If no local clone: `WebFetch` from GitHub raw URLs:
-   - `https://raw.githubusercontent.com/LerianStudio/helm/main/charts/midaz/values.yaml`
-   - `https://raw.githubusercontent.com/LerianStudio/helm/main/charts/reporter/values.yaml`
-   - `https://raw.githubusercontent.com/LerianStudio/helm/main/charts/plugin-access-manager/values.yaml`
+   - `https://raw.githubusercontent.com/QuelitonSouza/helm/main/charts/midaz/values.yaml`
+   - `https://raw.githubusercontent.com/QuelitonSouza/helm/main/charts/reporter/values.yaml`
+   - `https://raw.githubusercontent.com/QuelitonSouza/helm/main/charts/plugin-access-manager/values.yaml`
 
 **Fallback:** If plugin/service not found, use Midaz core setup as baseline.
 
@@ -447,7 +447,7 @@ AskUserQuestion:
 
 **BEFORE dispatching, skill MUST read actual resource configs:**
 
-### 8a. Read Current Values from LerianStudio/helm (Based on Selected Products)
+### 8a. Read Current Values from QuelitonSouza/helm (Based on Selected Products)
 
 ```
 # ALWAYS read (platform-level, shared)
@@ -483,13 +483,13 @@ Task tool:
 
     Infrastructure:
     - App Repo: /workspace/midaz
-    - Helm Charts Source: LerianStudio/helm (values read below)
+    - Helm Charts Source: QuelitonSouza/helm (values read below)
     - TPS: 100
     - Total Customers on Platform: 5
 
     Environments to Calculate: [Homolog, Production]
 
-    Actual Resource Configurations (READ from LerianStudio/helm for selected products):
+    Actual Resource Configurations (READ from QuelitonSouza/helm for selected products):
 
     # Access Manager (ALWAYS - shared platform)
     [INSERT VALUES FROM charts/plugin-access-manager/values.yaml]
@@ -553,7 +553,7 @@ Task tool:
 
 The agent returns 11 required sections:
 1. Discovered Services
-2. Compute Resources (from LerianStudio/helm)
+2. Compute Resources (from QuelitonSouza/helm)
 3. Homolog Environment Costs
 4. Production Environment Costs
 5. Environment Comparison
@@ -599,7 +599,7 @@ Billing:
 - Volume: 1,000,000/month
 ```
 
-### Step 8a: Skill Reads LerianStudio/helm (for selected products)
+### Step 8a: Skill Reads QuelitonSouza/helm (for selected products)
 ```
 # ALWAYS read (platform-level)
 Read: charts/plugin-access-manager/values.yaml
@@ -663,7 +663,7 @@ Agent receives: Products selected + actual Helm values + all collected data
 [ ] TPS collected?
 [ ] Total customers collected?
 [ ] Environments selected (Homolog, Production, Both)?
-[ ] LerianStudio/helm values read for selected products?
+[ ] QuelitonSouza/helm values read for selected products?
 
 DATABASE COMPONENTS (CRITICAL - verify BOTH):
 [ ] PostgreSQL sharing model collected? (SHARED or DEDICATED)

@@ -79,7 +79,7 @@ examples:
 **Before any gate execution, you MUST load Ring standards:**
 
 <fetch_required>
-https://raw.githubusercontent.com/LerianStudio/ring/main/CLAUDE.md
+https://raw.githubusercontent.com/QuelitonSouza/ring/main/CLAUDE.md
 </fetch_required>
 
 Fetch URL above and extract: Agent Modification Verification requirements, Anti-Rationalization Tables requirements, and Critical Rules.
@@ -125,10 +125,10 @@ See [shared-patterns/shared-orchestrator-principle.md](../shared-patterns/shared
 ### What Orchestrator CANNOT Do (FORBIDDEN)
 
 <forbidden>
-- Read source code (`Read` on `*.go`, `*.ts`, `*.tsx`) - Agent reads code, not orchestrator
-- Write source code (`Write`/`Create` on `*.go`, `*.ts`) - Agent writes code, not orchestrator
-- Edit source code (`Edit` on `*.go`, `*.ts`, `*.tsx`) - Agent edits code, not orchestrator
-- Run tests (`Execute` with `go test`, `npm test`) - Agent runs tests in TDD cycle
+- Read source code (`Read` on `*.cs`, `*.ts`, `*.tsx`) - Agent reads code, not orchestrator
+- Write source code (`Write`/`Create` on `*.cs`, `*.ts`) - Agent writes code, not orchestrator
+- Edit source code (`Edit` on `*.cs`, `*.ts`, `*.tsx`) - Agent edits code, not orchestrator
+- Run tests (`Execute` with `dotnet test`, `npm test`) - Agent runs tests in TDD cycle
 - Analyze code (Direct pattern analysis) - `ring:codebase-explorer` analyzes
 - Make architectural decisions (Choosing patterns/libraries) - User decides, agent implements
 </forbidden>
@@ -143,7 +143,7 @@ Any of these actions by orchestrator = IMMEDIATE VIOLATION. Dispatch agent inste
 
 This is not negotiable:
 - 1-3 files of non-source content (markdown, json, yaml) → Orchestrator MAY edit directly
-- 1+ source code files (`*.go`, `*.ts`, `*.tsx`) → MUST dispatch agent
+- 1+ source code files (`*.cs`, `*.ts`, `*.tsx`) → MUST dispatch agent
 - 4+ files of any type → MUST dispatch agent
 
 ### Orchestrator Workflow Order (MANDATORY)
@@ -203,7 +203,7 @@ Between "WebFetch standards" and "Task(agent)" there MUST be "Skill(sub-skill)".
 
 ```yaml
 Task tool:
-  subagent_type: "ring:backend-engineer-golang"
+  subagent_type: "ring:backend-engineer-csharp"
   model: "opus"
   prompt: |
     **CUSTOM CONTEXT (from user):**
@@ -260,7 +260,7 @@ Task tool:
 **If you catch yourself doing any of these, STOP IMMEDIATELY:**
 
 ```text
-🚨 RED FLAG: About to Read *.go or *.ts file
+🚨 RED FLAG: About to Read *.cs or *.ts file
    → STOP. Dispatch agent instead.
 
 🚨 RED FLAG: About to Write/Create source code
@@ -576,13 +576,13 @@ State is persisted to `{state_path}` (either `docs/ring:dev-cycle/current-cycle.
           "started_at": "...",
           "tdd_red": {
             "status": "pending|in_progress|completed",
-            "test_file": "path/to/test_file.go",
+            "test_file": "path/to/TestFile.cs",
             "failure_output": "FAIL: TestFoo - expected X got nil",
             "completed_at": "ISO timestamp"
           },
           "tdd_green": {
             "status": "pending|in_progress|completed",
-            "implementation_file": "path/to/impl.go",
+            "implementation_file": "path/to/Impl.cs",
             "test_pass_output": "PASS: TestFoo (0.003s)",
             "completed_at": "ISO timestamp"
           }
@@ -596,7 +596,7 @@ State is persisted to `{state_path}` (either `docs/ring:dev-cycle/current-cycle.
       "artifacts": {},
       "agent_outputs": {
         "implementation": {
-          "agent": "ring:backend-engineer-golang",
+          "agent": "ring:backend-engineer-csharp",
           "output": "## Summary\n...",
           "timestamp": "ISO timestamp",
           "duration_ms": 0,
@@ -734,7 +734,7 @@ State is persisted to `{state_path}` (either `docs/ring:dev-cycle/current-cycle.
   "section": "Error Handling (MANDATORY)",
   "status": "❌",
   "reason": "Missing error wrapping with context",
-  "file": "internal/handler/user.go",
+  "file": "src/Handlers/UserHandler.cs",
   "line": 45,
   "evidence": "return err // should wrap with additional context"
 }
@@ -744,13 +744,13 @@ State is persisted to `{state_path}` (either `docs/ring:dev-cycle/current-cycle.
 
 ```json
 {
-  "test_name": "TestUserCreate_InvalidEmail",
-  "test_file": "internal/handler/user_test.go",
+  "test_name": "UserCreate_InvalidEmail_ThrowsValidationException",
+  "test_file": "tests/Handlers/UserHandlerTests.cs",
   "error_type": "assertion",
-  "expected": "ErrInvalidEmail",
-  "actual": "nil",
+  "expected": "ValidationException",
+  "actual": "null",
   "message": "Expected validation error for invalid email format",
-  "stack_trace": "user_test.go:42 → user.go:28"
+  "stack_trace": "UserHandlerTests.cs:42 → UserHandler.cs:28"
 }
 ```
 
@@ -761,9 +761,9 @@ State is persisted to `{state_path}` (either `docs/ring:dev-cycle/current-cycle.
   "severity": "MEDIUM",
   "category": "error-handling",
   "description": "Error not wrapped with context before returning",
-  "file": "internal/handler/user.go",
+  "file": "src/Handlers/UserHandler.cs",
   "line": 45,
-  "suggestion": "Use fmt.Errorf(\"failed to create user: %w\", err)",
+  "suggestion": "Use throw new InvalidOperationException(\"Failed to create user\", ex)",
   "fixed": false,
   "fixed_in_iteration": null
 }
@@ -775,8 +775,8 @@ State is persisted to `{state_path}` (either `docs/ring:dev-cycle/current-cycle.
 {
   "check": "docker_build",
   "status": "FAIL",
-  "error": "COPY failed: file not found in build context: go.sum",
-  "suggestion": "Ensure go.sum exists and is not in .dockerignore"
+  "error": "COPY failed: file not found in build context: *.csproj",
+  "suggestion": "Ensure *.csproj exists and is not in .dockerignore"
 }
 ```
 
@@ -786,10 +786,10 @@ State is persisted to `{state_path}` (either `docs/ring:dev-cycle/current-cycle.
 {
   "check": "structured_logging",
   "status": "FAIL",
-  "file": "internal/handler/user.go",
+  "file": "src/Handlers/UserHandler.cs",
   "line": 32,
-  "error": "Using fmt.Printf instead of structured logger",
-  "suggestion": "Use logger.Info().Str(\"user_id\", id).Msg(\"user created\")"
+  "error": "Using Console.WriteLine instead of structured logger",
+  "suggestion": "Use _logger.LogInformation(\"User created: {UserId}\", id)"
 }
 ```
 
@@ -1326,8 +1326,8 @@ Create tool:
     > Generated from PM documents (PRD/TRD/Feature Map).
     >
     > Ring Standards URLs:
-    > - Go: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/golang.md
-    > - TypeScript: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md
+    > - C#: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md
+    > - TypeScript: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md
     
     ## What Ring Standards Cover (DO not DUPLICATE HERE)
     
@@ -1338,9 +1338,9 @@ Create tool:
     - Architecture patterns (Hexagonal, Clean Architecture)
     - Observability (OpenTelemetry via lib-commons)
     - lib-commons / lib-common-js usage and patterns
-    - API directory structure (Lerian pattern)
+    - API directory structure (QuelitonSouza pattern)
     - Database connections (PostgreSQL, MongoDB, Redis via lib-commons)
-    - Bootstrap pattern (config.go, service.go, server.go)
+    - Bootstrap pattern (Config.cs, Service.cs, Server.cs)
     
     **Agents MUST WebFetch Ring Standards and output Standards Coverage Table.**
     
@@ -1605,7 +1605,7 @@ See [shared-patterns/shared-orchestrator-principle.md](../shared-patterns/shared
 2. Set `gate_progress.implementation.tdd_red.status = "in_progress"`
 
 3. Determine appropriate agent based on content:
-   - Go files/go.mod → ring:backend-engineer-golang
+   - C# files/.csproj → ring:backend-engineer-csharp
    - TypeScript backend → ring:backend-engineer-typescript
    - React/Frontend → ring:frontend-engineer-typescript
    - Infrastructure → ring:devops-engineer
@@ -1793,7 +1793,7 @@ Task tool:
     [list ❌ sections extracted from table]
     
     WebFetch your standards file:
-    [URL for agent's standards - golang.md, typescript.md, etc.]
+    [URL for agent's standards - csharp.md, typescript.md, etc.]
     
     Implement all missing sections.
     Return updated Standards Coverage Table with all ✅ or N/A.
@@ -1901,7 +1901,7 @@ devops_input = {
   unit_id: state.current_unit.id,
   
   // REQUIRED - from Gate 0 context
-  language: state.current_unit.language,  // "go" | "typescript" | "python"
+  language: state.current_unit.language,  // "csharp" | "typescript" | "python"
   service_type: state.current_unit.service_type,  // "api" | "worker" | "batch" | "cli"
   implementation_files: agent_outputs.implementation.files_changed,  // list of files from Gate 0
   
@@ -2014,9 +2014,9 @@ sre_input = {
   unit_id: state.current_unit.id,
   
   // REQUIRED - from Gate 0 context
-  language: state.current_unit.language,  // "go" | "typescript" | "python"
+  language: state.current_unit.language,  // "csharp" | "typescript" | "python"
   service_type: state.current_unit.service_type,  // "api" | "worker" | "batch" | "cli"
-  implementation_agent: agent_outputs.implementation.agent,  // e.g., "ring:backend-engineer-golang"
+  implementation_agent: agent_outputs.implementation.agent,  // e.g., "ring:backend-engineer-csharp"
   implementation_files: agent_outputs.implementation.files_changed,  // list of files from Gate 0
   
   // OPTIONAL - additional context
@@ -2130,7 +2130,7 @@ testing_input = {
   unit_id: state.current_unit.id,
   acceptance_criteria: state.current_unit.acceptance_criteria,  // list of ACs to test
   implementation_files: agent_outputs.implementation.files_changed,
-  language: state.current_unit.language,  // "go" | "typescript" | "python"
+  language: state.current_unit.language,  // "csharp" | "typescript" | "python"
   
   // OPTIONAL - additional context
   coverage_threshold: 85,  // Ring minimum, PROJECT_RULES.md can raise
@@ -2213,9 +2213,9 @@ testing_input = {
    ```json
    failures: [
      {
-       "test_name": "TestUserCreate_InvalidEmail",
-       "test_file": "internal/handler/user_test.go",
-       "error_type": "assertion|panic|timeout|compilation",
+       "test_name": "UserCreate_InvalidEmail_ShouldFail",
+       "test_file": "tests/Handlers/UserHandlerTests.cs",
+       "error_type": "assertion|exception|timeout|compilation",
        "expected": "[expected value]",
        "actual": "[actual value]",
        "message": "[error message from test output]",
@@ -2368,10 +2368,10 @@ review_input = {
        "severity": "CRITICAL|HIGH|MEDIUM|LOW|COSMETIC",
        "category": "error-handling|security|performance|maintainability|business-logic|...",
        "description": "[detailed description of the issue]",
-       "file": "internal/handler/user.go",
+       "file": "src/Handlers/UserHandler.cs",
        "line": 45,
-       "code_snippet": "return err",
-       "suggestion": "Use fmt.Errorf(\"failed to create user: %w\", err)",
+       "code_snippet": "throw ex;",
+       "suggestion": "Use throw new InvalidOperationException(\"Failed to create user\", ex)",
        "fixed": true|false,
        "fixed_in_iteration": [iteration number when fixed, null if not fixed]
      }
@@ -2549,7 +2549,7 @@ After completing all subtasks of a task:
    │ Assertiveness Score: XX% (Rating)               │
    │                                                  │
    │ Prompt Quality by Agent:                        │
-   │   ring:backend-engineer-golang: 90% (Excellent)     │
+   │   ring:backend-engineer-csharp: 90% (Excellent)     │
    │   ring:qa-analyst: 75% (Acceptable)                 │
    │   ring:code-reviewer: 88% (Good)               │
    │                                                  │
@@ -2560,8 +2560,8 @@ After completing all subtasks of a task:
    │ ═══════════════════════════════════════════════ │
    │                                                  │
    │ All Files Changed This Task:                    │
-   │   - file1.go                                    │
-   │   - file2.go                                    │
+   │   - File1.cs                                     │
+   │   - File2.cs                                     │
    │   - ...                                         │
    │                                                  │
    │ Next Task: [next_task_id] - [next_task_title]   │

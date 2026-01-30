@@ -30,7 +30,7 @@ related:
 
 ## Overview
 
-See [CLAUDE.md](https://raw.githubusercontent.com/LerianStudio/ring/main/CLAUDE.md) for canonical validation and gate requirements. This skill collects metrics and generates improvement reports.
+See [CLAUDE.md](https://raw.githubusercontent.com/QuelitonSouza/ring/main/CLAUDE.md) for canonical validation and gate requirements. This skill collects metrics and generates improvement reports.
 
 Continuous improvement system that tracks development cycle effectiveness through assertiveness scores, identifies recurring failure patterns, and generates actionable improvement suggestions.
 
@@ -334,7 +334,7 @@ Read `agent_outputs` from state file (`docs/ring:dev-cycle/current-cycle.json` o
 
 ```text
 Agents to analyze (if executed, not null):
-  - implementation: ring:backend-engineer-golang | ring:backend-engineer-typescript
+  - implementation: ring:backend-engineer-csharp | ring:backend-engineer-typescript
   - devops: ring:devops-engineer
   - ring:sre: ring:sre
   - testing: ring:qa-analyst

@@ -168,7 +168,7 @@ docs/pre-dev/{feature}/
 - **Use agents for specialist review** – Dispatch engineers to review TRD
 
 ### Good (ORCHESTRATOR):
-> "I need to plan payment system. Let me run /ring:pre-dev-full, then dispatch ring:backend-engineer-golang to review the architecture."
+> "I need to plan payment system. Let me run /ring:pre-dev-full, then dispatch ring:backend-engineer-csharp to review the architecture."
 
 ### Bad (OPERATOR):
 > "I'll start coding and plan as I go."

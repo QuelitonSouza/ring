@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/fileutil"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/fileutil"
 )
 
 func resolveFilePatterns(filesFlag, filesFrom string) ([]string, error) {

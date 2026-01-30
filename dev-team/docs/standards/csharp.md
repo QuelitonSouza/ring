@@ -3,7 +3,7 @@
 > **MAINTENANCE:** This file is indexed in `dev-team/skills/shared-patterns/standards-coverage-table.md`.
 > When adding/removing `## ` sections, follow FOUR-FILE UPDATE RULE in CLAUDE.md: (1) edit standards file, (2) update TOC, (3) update standards-coverage-table.md, (4) update agent file.
 
-This file defines the specific standards for C# / ASP.NET Core development at Lerian Studio.
+This file defines the specific standards for C# / ASP.NET Core development at QuelitonSouza.
 
 > **Reference**: Always consult `docs/PROJECT_RULES.md` for common project standards.
 
@@ -30,7 +30,7 @@ This file defines the specific standards for C# / ASP.NET Core development at Le
 | 15 | [Logging](#logging) | Serilog + Microsoft.Extensions.Logging |
 | 16 | [Code Analysis](#code-analysis) | Roslyn analyzers, .editorconfig |
 | 17 | [Architecture Patterns](#architecture-patterns) | Clean Architecture |
-| 18 | [Directory Structure](#directory-structure) | .NET project structure (Lerian pattern) |
+| 18 | [Directory Structure](#directory-structure) | .NET project structure (QuelitonSouza pattern) |
 | 19 | [Async/Await Patterns](#asyncawait-patterns) | Task, CancellationToken, Channel |
 | 20 | [RabbitMQ Worker Pattern](#rabbitmq-worker-pattern) | MassTransit / BackgroundService |
 | 21 | [Always-Valid Domain Model](#always-valid-domain-model-mandatory) | Constructor validation, invariant protection |
@@ -54,26 +54,26 @@ This file defines the specific standards for C# / ASP.NET Core development at Le
 
 ## Core Dependency: lib-commons-csharp (MANDATORY)
 
-All Lerian Studio C# projects **MUST** use `LerianStudio.LibCommons.CSharp` as the foundation NuGet package. This ensures consistency across all services.
+All QuelitonSouza C# projects **MUST** use `QuelitonSouza.LibCommons.CSharp` as the foundation NuGet package. This ensures consistency across all services.
 
 ### Required NuGet Package
 
 ```xml
 <!-- .csproj -->
-<PackageReference Include="LerianStudio.LibCommons.CSharp" Version="1.0.0" />
+<PackageReference Include="QuelitonSouza.LibCommons.CSharp" Version="1.0.0" />
 ```
 
 ### Required Namespaces
 
 ```csharp
-using LerianStudio.LibCommons.Logging;          // Structured logging wrappers
-using LerianStudio.LibCommons.Telemetry;         // OpenTelemetry helpers
-using LerianStudio.LibCommons.Configuration;     // Configuration utilities
-using LerianStudio.LibCommons.Http;              // HTTP middleware, response helpers
-using LerianStudio.LibCommons.Postgres;          // PostgreSQL connection management
-using LerianStudio.LibCommons.Mongo;             // MongoDB connection management
-using LerianStudio.LibCommons.Redis;             // Redis connection management
-using LerianStudio.LibCommons.Server;            // Server lifecycle, graceful shutdown
+using QuelitonSouza.LibCommons.Logging;          // Structured logging wrappers
+using QuelitonSouza.LibCommons.Telemetry;         // OpenTelemetry helpers
+using QuelitonSouza.LibCommons.Configuration;     // Configuration utilities
+using QuelitonSouza.LibCommons.Http;              // HTTP middleware, response helpers
+using QuelitonSouza.LibCommons.Postgres;          // PostgreSQL connection management
+using QuelitonSouza.LibCommons.Mongo;             // MongoDB connection management
+using QuelitonSouza.LibCommons.Redis;             // Redis connection management
+using QuelitonSouza.LibCommons.Server;            // Server lifecycle, graceful shutdown
 ```
 
 ### What lib-commons-csharp Provides
@@ -97,7 +97,7 @@ using LerianStudio.LibCommons.Server;            // Server lifecycle, graceful s
 
 | Library | Minimum Version | Purpose |
 |---------|-----------------|---------|
-| `LerianStudio.LibCommons.CSharp` | 1.0.0 | Core infrastructure |
+| `QuelitonSouza.LibCommons.CSharp` | 1.0.0 | Core infrastructure |
 | `Microsoft.AspNetCore` | 8.0 | HTTP framework |
 | `Microsoft.EntityFrameworkCore` | 8.0 | ORM (primary) |
 | `Dapper` | 2.1 | Micro-ORM (alternative) |
@@ -675,7 +675,7 @@ All services **MUST** integrate with the Access Manager system for authenticatio
 ### Required NuGet Package
 
 ```xml
-<PackageReference Include="LerianStudio.LibAuth.CSharp" Version="2.0.0" />
+<PackageReference Include="QuelitonSouza.LibAuth.CSharp" Version="2.0.0" />
 ```
 
 ### Required Configuration
@@ -699,7 +699,7 @@ All services **MUST** integrate with the Access Manager system for authenticatio
 builder.Services.Configure<AuthOptions>(
     builder.Configuration.GetSection(AuthOptions.SectionName));
 
-builder.Services.AddLerianAuth(builder.Configuration);
+builder.Services.AddQuelitonAuth(builder.Configuration);
 
 // Middleware pipeline
 app.UseAuthentication();
@@ -801,7 +801,7 @@ All licensed plugins/products **MUST** integrate with the License Manager system
 ### Required NuGet Package
 
 ```xml
-<PackageReference Include="LerianStudio.LibLicense.CSharp" Version="2.0.0" />
+<PackageReference Include="QuelitonSouza.LibLicense.CSharp" Version="2.0.0" />
 ```
 
 ### Required Configuration
@@ -825,10 +825,10 @@ All licensed plugins/products **MUST** integrate with the License Manager system
 
 ```csharp
 // Program.cs
-builder.Services.AddLerianLicense(builder.Configuration);
+builder.Services.AddQuelitonLicense(builder.Configuration);
 
 // Middleware pipeline (must be early)
-app.UseLerianLicenseValidation();
+app.UseQuelitonLicenseValidation();
 app.UseAuthentication();
 app.UseAuthorization();
 ```
@@ -852,13 +852,13 @@ app.UseAuthorization();
 
 ```csharp
 // FORBIDDEN: Hardcoded license keys
-services.AddLerianLicense("hardcoded-key", "global"); // NEVER
+services.AddQuelitonLicense("hardcoded-key", "global"); // NEVER
 
 // FORBIDDEN: Skipping license middleware
 app.MapPost("/v1/paid-feature", handler); // Missing license middleware
 
 // CORRECT: Always use configuration
-builder.Services.AddLerianLicense(builder.Configuration);
+builder.Services.AddQuelitonLicense(builder.Configuration);
 ```
 
 ---
@@ -962,7 +962,7 @@ Each service **MUST** define error codes with a service-specific prefix.
 
 | Service | Prefix | Example |
 |---------|--------|---------|
-| Lerian | LRN | LRN-0001 |
+| QuelitonSouza | QSZ | QSZ-0001 |
 | Plugin-Fees | FEE | FEE-0001 |
 | Plugin-Auth | AUT | AUT-0001 |
 | Platform | PLT | PLT-0001 |
@@ -1589,7 +1589,7 @@ public class UserRepository : IUserRepository
 
 ## Directory Structure
 
-The directory structure follows the **Lerian pattern** - Clean Architecture with clear layer separation.
+The directory structure follows the **QuelitonSouza pattern** - Clean Architecture with clear layer separation.
 
 ```text
 /src
@@ -1633,8 +1633,8 @@ Directory.Build.props                # Shared build properties
 .editorconfig                        # Code style
 ```
 
-**Key differences from Go Lerian pattern:**
-- **.NET uses project-per-layer** instead of package-per-layer
+**Key principles of the QuelitonSouza .NET pattern:**
+- **.NET uses project-per-layer** for clear separation
 - **Solution file** (`.sln`) groups all projects
 - **`Directory.Build.props`** shared across all projects
 - **Migrations** live inside Infrastructure project
@@ -2144,7 +2144,7 @@ app.UseHttpsRedirection();
 app.UseCors();
 
 // 5. License validation (must be before auth, after CORS)
-app.UseLerianLicenseValidation();
+app.UseQuelitonLicenseValidation();
 
 // 6. Authentication (identity verification)
 app.UseAuthentication();
@@ -2222,7 +2222,7 @@ When producing a Standards Compliance report (used by ring:dev-refactor workflow
 ```markdown
 ## Standards Compliance
 
-### Lerian/Ring Standards Comparison
+### QuelitonSouza/Ring Standards Comparison
 
 #### Bootstrap & Configuration
 | Category | Current Pattern | Expected Pattern | Status | Evidence |
@@ -2239,7 +2239,7 @@ When producing a Standards Compliance report (used by ring:dev-refactor workflow
 
 ### Verdict: FULLY COMPLIANT
 
-No migration actions required. All categories verified against Lerian/Ring C# Standards.
+No migration actions required. All categories verified against QuelitonSouza/Ring C# Standards.
 ```
 
 ### If any Category Is Non-Compliant
@@ -2247,7 +2247,7 @@ No migration actions required. All categories verified against Lerian/Ring C# St
 ```markdown
 ## Standards Compliance
 
-### Lerian/Ring Standards Comparison
+### QuelitonSouza/Ring Standards Comparison
 
 #### Bootstrap & Configuration
 | Category | Current Pattern | Expected Pattern | Status | File/Location |

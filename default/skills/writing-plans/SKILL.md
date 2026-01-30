@@ -79,7 +79,7 @@ Every plan: Header (goal, architecture, tech stack) | Verification commands with
 
 | Task Type | Agent |
 |-----------|-------|
-| Backend API/services | `backend-engineer-{golang,typescript}` |
+| Backend API/services | `backend-engineer-{csharp,typescript}` |
 | Frontend/BFF | `frontend-bff-engineer-typescript` |
 | Infra/CI/CD | `ring:devops-engineer` |
 | Testing | `ring:qa-analyst` |

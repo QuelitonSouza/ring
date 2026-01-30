@@ -172,36 +172,40 @@ The Coverage Table ensures nothing is skipped. The Detailed Findings provide act
 ```markdown
 ## Standards Coverage Table
 
-**Standards File:** golang.md (from WebFetch)
-**Total Sections Found:** 21
-**Table Rows:** 21 (MUST match)
+**Standards File:** csharp.md (from WebFetch)
+**Total Sections Found:** 24
+**Table Rows:** 24 (MUST match)
 
 | # | Section (from WebFetch) | Status | Evidence |
 |---|-------------------------|--------|----------|
-| 1 | Version | ✅ | go.mod:3 (Go 1.24) |
-| 2 | Core Dependency: lib-commons | ✅ | go.mod:5 |
-| 3 | Frameworks & Libraries | ✅ | Fiber v2, pgx/v5 in go.mod |
-| 4 | Configuration Loading | ⚠️ | internal/config/config.go:12 |
-| 5 | Telemetry & Observability | ❌ | Not implemented |
-| 6 | Bootstrap Pattern | ✅ | cmd/server/main.go:15 |
-| 7 | Access Manager Integration | ✅ | internal/middleware/auth.go:25 |
+| 1 | Version | ✅ | .csproj:3 (.NET 8) |
+| 2 | Core Dependency: lib-commons-csharp | ✅ | .csproj:5 |
+| 3 | Frameworks & Libraries | ✅ | ASP.NET Core, EF Core in .csproj |
+| 4 | Configuration | ⚠️ | src/Configuration/AppSettings.cs:12 |
+| 5 | Observability | ❌ | Not implemented |
+| 6 | Bootstrap | ✅ | src/Program.cs:15 |
+| 7 | Access Manager Integration | ✅ | src/Middleware/AuthMiddleware.cs:25 |
 | 8 | License Manager Integration | N/A | Not a licensed project |
-| 9 | Data Transformation | ✅ | internal/adapters/postgres/mapper.go:8 |
+| 9 | Data Transformation | ✅ | src/Adapters/Postgres/Mapper.cs:8 |
 | 10 | Error Codes Convention | ⚠️ | Uses generic codes |
-| 11 | Error Handling | ✅ | Consistent pattern |
-| 12 | Function Design | ✅ | Small functions, clear names |
+| 11 | Error Handling | ✅ | Consistent Result pattern |
+| 12 | Function Design | ✅ | Small methods, clear names |
 | 13 | Pagination Patterns | N/A | No list endpoints |
-| 14 | Testing Patterns | ❌ | No tests found |
-| 15 | Logging Standards | ⚠️ | Missing structured fields |
-| 16 | Linting | ✅ | .golangci.yml present |
-| 17 | Architecture Patterns | ✅ | Hexagonal structure |
-| 18 | Directory Structure | ✅ | Follows Lerian pattern |
-| 19 | Concurrency Patterns | N/A | No concurrent code |
+| 14 | Testing | ❌ | No tests found |
+| 15 | Logging | ⚠️ | Missing structured fields |
+| 16 | Code Analysis | ✅ | .editorconfig present |
+| 17 | Architecture Patterns | ✅ | Clean Architecture |
+| 18 | Directory Structure | ✅ | Follows QuelitonSouza pattern |
+| 19 | Async/Await Patterns | ✅ | CancellationToken propagation |
 | 20 | RabbitMQ Worker Pattern | N/A | No message queue |
+| 21 | Always-Valid Domain Model | ✅ | Constructor validation |
+| 22 | Nullable Reference Types | ✅ | NRT enabled |
+| 23 | Dependency Injection | ✅ | Built-in DI |
+| 24 | Middleware Pipeline | ✅ | Correct ordering |
 
 **Completeness Verification:**
-- Sections in standards: 20
-- Rows in table: 20
+- Sections in standards: 24
+- Rows in table: 24
 - Status: ✅ Complete
 ```
 
@@ -240,34 +244,6 @@ Standards files may contain these meta-sections that are not counted in section 
 - `## Standards Compliance Output Format` - Output templates
 
 These sections describe HOW to use the standards, not WHAT the standards are.
-
-### ring:backend-engineer-golang → golang.md
-
-| # | Section to Check | Anchor | Key Subsections |
-|---|------------------|--------|-----------------|
-| 1 | Version | `#version` | Go 1.24+ |
-| 2 | Core Dependency: lib-commons | `#core-dependency-lib-commons-mandatory` | |
-| 3 | Frameworks & Libraries | `#frameworks--libraries` | lib-commons v2, Fiber v2, pgx/v5, OpenTelemetry, zap, testify, gomock |
-| 4 | Configuration | `#configuration` | Environment variable handling |
-| 5 | Observability | `#observability` | OpenTelemetry integration |
-| 6 | Bootstrap | `#bootstrap` | Application initialization |
-| 7 | Access Manager Integration | `#access-manager-integration-mandatory` | **CONDITIONAL** - Check if project has auth |
-| 8 | License Manager Integration | `#license-manager-integration-mandatory` | **CONDITIONAL** - Check if project is licensed |
-| 9 | Data Transformation | `#data-transformation-toentityfromentity-mandatory` | ToEntity/FromEntity patterns |
-| 10 | Error Codes Convention | `#error-codes-convention-mandatory` | Service-prefixed codes |
-| 11 | Error Handling | `#error-handling` | Error wrapping and checking |
-| 12 | Function Design | `#function-design-mandatory` | Single responsibility |
-| 13 | Pagination Patterns | `#pagination-patterns` | Cursor and page-based |
-| 14 | Testing | `#testing` | Table-driven tests, edge cases |
-| 15 | Logging | `#logging` | Structured logging with lib-commons |
-| 16 | Linting | `#linting` | golangci-lint configuration |
-| 17 | Architecture Patterns | `#architecture-patterns` | Hexagonal architecture |
-| 18 | Directory Structure | `#directory-structure` | Lerian pattern |
-| 19 | Concurrency Patterns | `#concurrency-patterns` | Goroutines, channels, errgroup |
-| 20 | RabbitMQ Worker Pattern | `#rabbitmq-worker-pattern` | Async message processing |
-| 21 | Always-Valid Domain Model | `#always-valid-domain-model-mandatory` | Constructor validation, invariant protection |
-
----
 
 ### ring:backend-engineer-csharp → csharp.md
 
@@ -315,7 +291,7 @@ These sections describe HOW to use the standards, not WHAT the standards are.
 | 9 | Error Handling | `#error-handling` | Custom error classes |
 | 10 | Function Design | `#function-design-mandatory` | Single responsibility |
 | 11 | Naming Conventions | `#naming-conventions` | Files, interfaces, types |
-| 12 | Directory Structure | `#directory-structure` | Lerian pattern |
+| 12 | Directory Structure | `#directory-structure` | QuelitonSouza pattern |
 | 13 | RabbitMQ Worker Pattern | `#rabbitmq-worker-pattern` | Async message processing |
 | 14 | Always-Valid Domain Model | `#always-valid-domain-model-mandatory` | Constructor validation, invariant protection |
 
@@ -384,17 +360,17 @@ These sections describe HOW to use the standards, not WHAT the standards are.
 
 ---
 
-### ring:qa-analyst → golang.md or typescript.md
+### ring:qa-analyst → csharp.md or typescript.md
 
 **Note:** ring:qa-analyst checks testing-related sections based on project language.
 
-**For Go projects:**
+**For C# projects:**
 | # | Section to Check |
 |---|------------------|
-| 1 | Testing Patterns (MANDATORY) |
+| 1 | Testing (MANDATORY) |
 | 2 | Edge Case Coverage (MANDATORY) |
 | 3 | Test Naming Convention (MANDATORY) |
-| 4 | Linting (MANDATORY) |
+| 4 | Code Analysis (MANDATORY) |
 
 **For TypeScript projects:**
 | # | Section to Check |

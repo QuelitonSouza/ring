@@ -9,7 +9,7 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/git"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/git"
 )
 
 func TestLanguage_String(t *testing.T) {

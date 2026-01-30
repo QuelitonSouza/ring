@@ -148,7 +148,7 @@ See [shared-patterns/standards-workflow.md](../skills/shared-patterns/standards-
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL** | `https://raw.githubusercontent.com/LerianStudio/ring/main/ops-team/docs/standards/architecture.md` |
+| **WebFetch URL** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/ops-team/docs/standards/architecture.md` |
 | **Standards File** | architecture.md |
 | **Prompt** | "Extract all infrastructure architecture standards, HA patterns, and DR requirements" |
 

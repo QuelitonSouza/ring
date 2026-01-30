@@ -26,14 +26,13 @@ Canonical source for Standards Compliance detection logic used by all dev-team a
 
 | Agent | Standards File | When |
 |-------|---------------|------|
-| `ring:backend-engineer-golang` | golang.md | any implementation task |
 | `ring:backend-engineer-typescript` | typescript.md | any implementation task |
 | `frontend-bff-engineer-typescript` | typescript.md | any implementation task |
 | `ring:backend-engineer-csharp` | csharp.md | any implementation task |
 | `ring:frontend-engineer` | frontend.md | any implementation task |
 | `ring:devops-engineer` | devops.md | any artifact creation |
 | `ring:sre` | sre.md | any validation task |
-| `ring:qa-analyst` | golang.md/typescript.md | any testing task |
+| `ring:qa-analyst` | csharp.md/typescript.md | any testing task |
 
 **⛔ HARD GATE:** If agent does not output Standards Coverage Table → Output is INCOMPLETE → Orchestrator MUST re-dispatch.
 
@@ -161,16 +160,6 @@ If detection is ambiguous, output FULL compliance (table + findings). Better to 
 
 ### Section Name Validation
 
-**For golang.md, section names MUST be:**
-- Version, Core Dependency: lib-commons, Frameworks & Libraries, Configuration Loading, Telemetry & Observability, Bootstrap Pattern, Data Transformation: ToEntity/FromEntity, Error Codes Convention, Error Handling, Function Design, Pagination Patterns, Testing Patterns, Logging Standards, Linting, Architecture Patterns, Directory Structure, Concurrency Patterns, RabbitMQ Worker Pattern
-
-**not:**
-- "Error Handling" (missing "Error Codes Convention" as separate row)
-- "Logging" (should be "Logging Standards")
-- "Configuration" (should be "Configuration Loading")
-- "Security" (not a section in golang.md)
-- "Bootstrap" (should be "Bootstrap Pattern")
-
 **For csharp.md, section names MUST be:**
 - Version, Core Dependency: lib-commons-csharp, Frameworks & Libraries, Configuration, Observability, Bootstrap, Access Manager Integration, License Manager Integration, Data Transformation, Error Codes Convention, Error Handling, Function Design, Pagination Patterns, Testing, Logging, Code Analysis, Architecture Patterns, Directory Structure, Async/Await Patterns, RabbitMQ Worker Pattern, Always-Valid Domain Model, Nullable Reference Types, Dependency Injection, Middleware Pipeline
 
@@ -248,7 +237,7 @@ See [shared-patterns/standards-compliance-detection.md](../skills/shared-pattern
 - Anti-rationalization rules
 
 **Agent-Specific Standards:**
-- WebFetch URL: `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/{file}.md`
+- WebFetch URL: `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/{file}.md`
 - Sections to check: See [standards-coverage-table.md](../skills/shared-patterns/standards-coverage-table.md)
 
 **⛔ Standards Coverage Table is always required. No exceptions.**

@@ -87,9 +87,9 @@ output_schema:
 
 agent_selection:
   criteria:
-    - pattern: "*.go"
-      keywords: ["go.mod", "golang", "Go"]
-      agent: "ring:backend-engineer-golang"
+    - pattern: "*.cs"
+      keywords: [".csproj", "csharp", "C#"]
+      agent: "ring:backend-engineer-csharp"
     - pattern: "*.ts"
       keywords: ["express", "fastify", "nestjs", "backend", "api", "server"]
       agent: "ring:backend-engineer-typescript"
@@ -103,8 +103,8 @@ agent_selection:
 
 verification:
   automated:
-    - command: "go build ./... 2>&1 | grep -c 'error'"
-      description: "Go code compiles"
+    - command: "dotnet build 2>&1 | grep -c 'error'"
+      description: "C# code compiles"
       success_pattern: "^0$"
     - command: "npm run build 2>&1 | grep -c 'error'"
       description: "TypeScript compiles"
@@ -114,16 +114,16 @@ verification:
     - "Implementation follows project standards from PROJECT_RULES.md"
 
 examples:
-  - name: "Go backend implementation"
+  - name: "C# backend implementation"
     input:
       unit_id: "task-001"
       requirements: "Add user authentication endpoint with JWT"
-      language: "go"
+      language: "csharp"
       service_type: "api"
     expected_output: |
       ## Implementation Summary
       **Status:** PASS
-      **Agent:** ring:backend-engineer-golang
+      **Agent:** ring:backend-engineer-csharp
       
       ## TDD Results
       | Phase | Status | Output |
@@ -208,7 +208,7 @@ If condition is true, STOP and return error to orchestrator.
    
    | Language | Service Type | Agent |
    |----------|--------------|-------|
-   | go | api, worker, batch, cli | ring:backend-engineer-golang |
+   | csharp | api, worker, batch, cli | ring:backend-engineer-csharp |
    | typescript | api, worker | ring:backend-engineer-typescript |
    | typescript | frontend, bff | frontend-bff-engineer-typescript |
    
@@ -245,7 +245,7 @@ Write failing test for unit_id following TDD-RED methodology.
 
 ```yaml
 Task:
-  subagent_type: "[selected_agent]"  # e.g., "ring:backend-engineer-golang"
+  subagent_type: "[selected_agent]"  # e.g., "ring:backend-engineer-csharp"
   model: "opus"
   description: "TDD-RED: Write failing test for [unit_id]"
   prompt: |
@@ -261,8 +261,8 @@ Task:
     Read and follow: [project_rules_path]
 
     ## Ring Standards Reference
-    For Go: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/golang.md
-    For TS: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md
+    For C#: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md
+    For TS: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md
 
     ## Your Task
     1. Write a test that captures the expected behavior
@@ -358,8 +358,8 @@ Task:
     Read and follow: [project_rules_path]
 
     ## Ring Standards Reference
-    For Go: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/golang.md
-    For TS: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md
+    For C#: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md
+    For TS: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md
 
     ## ⛔ CRITICAL: all Ring Standards Apply (no DEFERRAL)
     See Ring Standards for mandatory requirements:
@@ -401,7 +401,7 @@ Task:
 
     | Language | Standards File | REQUIRED Sections to WebFetch |
     |----------|----------------|-------------------------------|
-    | **Go** | `golang.md` | "Telemetry & Observability (MANDATORY)", "Child Spans", "Context Propagation", "Anti-Patterns" |
+    | **C#** | `csharp.md` | "Telemetry & Observability (MANDATORY)", "Child Spans", "Context Propagation", "Anti-Patterns" |
     | **TypeScript** | `typescript.md` | "Observability", "Telemetry Patterns", "Context Propagation", "Anti-Patterns" |
 
     **⛔ NON-NEGOTIABLE: Agent MUST implement EXACTLY the patterns from standards. no deviations. no shortcuts.**
@@ -417,7 +417,7 @@ Task:
     
     **Agent MUST WebFetch standards and check Anti-Patterns table. Violations = REJECTED.**
 
-    - **Go:** `golang.md` → "Anti-Patterns" table - MUST check all rows
+    - **C#:** `csharp.md` → "Anti-Patterns" table - MUST check all rows
     - **TypeScript:** `typescript.md` → "Anti-Patterns" table - MUST check all rows
 
     **If agent uses any forbidden pattern → Implementation is INVALID. Start over.**
@@ -568,7 +568,7 @@ See [shared-patterns/shared-anti-rationalization.md](../shared-patterns/shared-a
 
 | Language | Service Type | Agent |
 |----------|--------------|-------|
-| Go | API, Worker, Batch, CLI | `ring:backend-engineer-golang` |
+| C# | API, Worker, Batch, CLI | `ring:backend-engineer-csharp` |
 | TypeScript | API, Worker | `ring:backend-engineer-typescript` |
 | TypeScript | Frontend, BFF | `frontend-bff-engineer-typescript` |
 | React/CSS | Design, Styling | `ring:frontend-designer` |

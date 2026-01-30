@@ -78,7 +78,7 @@ The separation ensures:
 
 | Input | Type | Description | Default |
 |-------|------|-------------|---------|
-| **Helm Charts Path** | string | Local path to LerianStudio/helm repo | Fetches via WebFetch |
+| **Helm Charts Path** | string | Local path to QuelitonSouza/helm repo | Fetches via WebFetch |
 | **Database Config** | object | Multi-AZ, read replicas | Auto-calculated from TPS |
 | **Estimated Storage** | number | Storage in GB | Calculated from TPS |
 
@@ -216,16 +216,16 @@ ALB Processing: 3,888 × 0.008 = R$ 31
 Total Data Transfer: R$ 607/month
 ```
 
-### Dynamic Helm Chart Data (from LerianStudio/helm)
+### Dynamic Helm Chart Data (from QuelitonSouza/helm)
 
 **CRITICAL: Data is read at runtime, NOT hardcoded.**
 
-The skill reads actual CPU/memory values from LerianStudio/helm repository at runtime, ensuring:
+The skill reads actual CPU/memory values from QuelitonSouza/helm repository at runtime, ensuring:
 - Always current values (no stale data)
 - Smaller prompt size
 - Single source of truth
 
-**Data Source:** `git@github.com:LerianStudio/helm.git`
+**Data Source:** `git@github.com:QuelitonSouza/helm.git`
 
 **Files Read at Runtime:**
 
@@ -240,9 +240,9 @@ The skill reads actual CPU/memory values from LerianStudio/helm repository at ru
 1. **If local clone exists:** Use `Read` tool on values.yaml files
 2. **If no local clone:** Use `WebFetch` from GitHub raw URLs:
    ```
-   https://raw.githubusercontent.com/LerianStudio/helm/main/charts/midaz/values.yaml
-   https://raw.githubusercontent.com/LerianStudio/helm/main/charts/reporter/values.yaml
-   https://raw.githubusercontent.com/LerianStudio/helm/main/charts/plugin-access-manager/values.yaml
+   https://raw.githubusercontent.com/QuelitonSouza/helm/main/charts/midaz/values.yaml
+   https://raw.githubusercontent.com/QuelitonSouza/helm/main/charts/reporter/values.yaml
+   https://raw.githubusercontent.com/QuelitonSouza/helm/main/charts/plugin-access-manager/values.yaml
    ```
 
 **What to Extract per Service:**
@@ -282,9 +282,9 @@ Maps docker-compose services to AWS equivalents:
 
 **Source:** Parsed from `docker-compose.yml` in the provided repository path.
 
-### 2. Compute Resources (from LerianStudio/helm)
+### 2. Compute Resources (from QuelitonSouza/helm)
 
-Shows actual CPU/memory per service read at runtime from LerianStudio/helm:
+Shows actual CPU/memory per service read at runtime from QuelitonSouza/helm:
 
 ```
 | Service     | CPU Request | Memory  | Source            | Homolog (1 rep) | Prod (3 rep) |
@@ -299,7 +299,7 @@ Shows actual CPU/memory per service read at runtime from LerianStudio/helm:
 | frontend    | [actual]    | [actual]| reporter          | 1 pod           | 3 pods       |
 ```
 
-**Infrastructure Components (from LerianStudio/helm values.yaml):**
+**Infrastructure Components (from QuelitonSouza/helm values.yaml):**
 
 ```
 | Component  | Source            | CPU Request | Memory Request |
@@ -310,7 +310,7 @@ Shows actual CPU/memory per service read at runtime from LerianStudio/helm:
 | Valkey     | midaz/values.yaml | [actual]    | [actual]       |
 ```
 
-**Note:** Values shown as `[actual]` are read at runtime from LerianStudio/helm.
+**Note:** Values shown as `[actual]` are read at runtime from QuelitonSouza/helm.
 
 **EKS Node Sizing (calculated from actual values):**
 
@@ -681,8 +681,8 @@ Status: ✅ OK (plenty of headroom)
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│ Step 4: Read LerianStudio/helm & Collect Sharing Model           │
-│ - Read actual CPU/memory from LerianStudio/helm at runtime       │
+│ Step 4: Read QuelitonSouza/helm & Collect Sharing Model           │
+│ - Read actual CPU/memory from QuelitonSouza/helm at runtime       │
 │ - charts/midaz, charts/reporter, charts/plugin-access-manager    │
 │ - Per-component sharing model                                    │
 │ - Billing: R$ 0.10/transaction, 1M/month                         │
@@ -693,13 +693,13 @@ Status: ✅ OK (plenty of headroom)
 │ Step 5: Skill Dispatches Agent with ALL Data                     │
 │ Task(subagent_type="ring:infrastructure-cost-estimator",         │
 │      model="opus", prompt="ALL DATA PROVIDED...")                │
-│ Includes: Actual values from LerianStudio/helm, Environments     │
+│ Includes: Actual values from QuelitonSouza/helm, Environments     │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
 │ Step 6: Agent Calculates PER ENVIRONMENT                         │
-│ - Uses actual CPU/memory from LerianStudio/helm (in prompt)      │
+│ - Uses actual CPU/memory from QuelitonSouza/helm (in prompt)      │
 │ - Calculates EKS nodes from actual resources                     │
 │ - HOMOLOG: Single-AZ, 1 replica, Ohio pricing                    │
 │ - PRODUCTION: Multi-AZ, 3 replicas, São Paulo pricing            │
@@ -721,7 +721,7 @@ Status: ✅ OK (plenty of headroom)
 [ ] TPS collected?
 [ ] Total customers collected?
 [ ] Environments selected (Homolog, Production, or Both)?
-[ ] LerianStudio/helm values read at runtime?
+[ ] QuelitonSouza/helm values read at runtime?
 [ ] For EACH component: Shared or Dedicated?
 [ ] Billing unit collected?
 [ ] Price per unit collected?
@@ -739,7 +739,7 @@ If any NO → Ask user first, then dispatch.
 | **Skill orchestrates, agent calculates** | Separation of concerns: UI/collection vs computation |
 | **Per-component sharing model** | Different components have different isolation needs |
 | **Environment-aware calculations** | Real-world deployments need both Homolog and Production |
-| **Dynamic data from LerianStudio/helm (v6.0)** | Always current values, no stale hardcoded data |
+| **Dynamic data from QuelitonSouza/helm (v6.0)** | Always current values, no stale hardcoded data |
 | **Read at runtime, not hardcoded** | Single source of truth, smaller prompts |
 | **Combined environment costs** | Customer pays for both environments |
 | **TPS-based sizing** | Predictable scaling based on throughput |
@@ -754,7 +754,7 @@ If any NO → Ask user first, then dispatch.
 
 ## Example Dispatch (v6.0)
 
-**The skill reads LerianStudio/helm at runtime and passes actual values:**
+**The skill reads QuelitonSouza/helm at runtime and passes actual values:**
 
 ```yaml
 Task tool:
@@ -767,13 +767,13 @@ Task tool:
 
     Infrastructure:
     - App Repo: /workspace/midaz
-    - Helm Source: LerianStudio/helm (values read below)
+    - Helm Source: QuelitonSouza/helm (values read below)
     - TPS: 100
     - Total Customers on Platform: 5
 
     Environments to Calculate: [Homolog, Production]
 
-    Actual Resource Configurations (READ from LerianStudio/helm):
+    Actual Resource Configurations (READ from QuelitonSouza/helm):
     [SKILL INSERTS VALUES FROM charts/midaz/values.yaml]
     [SKILL INSERTS VALUES FROM charts/reporter/values.yaml]
     [SKILL INSERTS VALUES FROM charts/plugin-access-manager/values.yaml]

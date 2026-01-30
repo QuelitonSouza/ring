@@ -7,7 +7,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/lint"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/lint"
 )
 
 // LintWriter handles writing lint analysis results.

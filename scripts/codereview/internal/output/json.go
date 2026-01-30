@@ -7,7 +7,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/scope"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/scope"
 )
 
 // scopeJSON is the JSON output structure for scope results.

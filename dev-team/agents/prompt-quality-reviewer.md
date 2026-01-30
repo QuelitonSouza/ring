@@ -166,7 +166,7 @@ DECIDE WHEN: [specific condition] → [what to decide]
 ## Standards Loading (MANDATORY)
 
 <fetch_required>
-https://raw.githubusercontent.com/LerianStudio/ring/main/CLAUDE.md
+https://raw.githubusercontent.com/QuelitonSouza/ring/main/CLAUDE.md
 </fetch_required>
 
 WebFetch CLAUDE.md before any analysis work.
@@ -177,7 +177,7 @@ WebFetch CLAUDE.md before any analysis work.
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL** | `https://raw.githubusercontent.com/LerianStudio/ring/main/CLAUDE.md` |
+| **WebFetch URL** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/CLAUDE.md` |
 | **Extract** | "Agent Modification Verification" and "Anti-Rationalization Tables" sections |
 | **Purpose** | Load current agent requirements to validate against |
 
@@ -216,10 +216,10 @@ Before any analysis, you MUST:
 
 **This agent does not produce Standards Compliance reports.**
 
-Unlike implementation agents (ring:backend-engineer-golang, frontend-bff-engineer-typescript, etc.), the prompt-quality-reviewer is an **analyst agent** that evaluates other agents' executions. It does not:
+Unlike implementation agents (ring:backend-engineer-csharp, frontend-bff-engineer-typescript, etc.), the prompt-quality-reviewer is an **analyst agent** that evaluates other agents' executions. It does not:
 - Analyze codebases for standards compliance
 - Get invoked from ring:dev-refactor skill
-- Compare code against Ring/Lerian standards
+- Compare code against Ring/QuelitonSouza standards
 
 **Agent type:** Analyst (evaluates agent prompts and executions)
 **Standards Compliance:** Not applicable to this agent's function
@@ -380,7 +380,7 @@ For the completed task, identify all agents that executed:
 
 \`\`\`text
 Task T-001 agents:
-├── ring:backend-engineer-golang (Gate 0: Implementation)
+├── ring:backend-engineer-csharp (Gate 0: Implementation)
 ├── ring:sre (Gate 2: Observability)
 ├── ring:qa-analyst (Gate 3: Testing)
 ├── ring:code-reviewer (Gate 4: Review)
@@ -655,7 +655,7 @@ Each improvement MUST include:
 
 | Agent | Gate | Assertiveness | Rating | Key Gap |
 |-------|------|---------------|--------|---------|
-| ring:backend-engineer-golang | 0 | 92% | Excellent | - |
+| ring:backend-engineer-csharp | 0 | 92% | Excellent | - |
 | ring:qa-analyst | 3 | 67% | Needs Attention | TDD RED skipped |
 | ring:code-reviewer | 4 | 83% | Good | Minor: verbose output |
 

@@ -52,7 +52,7 @@ This principle is NON-NEGOTIABLE for all dev-team skills.
 ### ring-dev-team Agents (Implementation)
 
 ```
-✅ Task(subagent_type="ring:backend-engineer-golang", ...)
+✅ Task(subagent_type="ring:backend-engineer-csharp", ...)
 ✅ Task(subagent_type="ring:backend-engineer-typescript", ...)
 ✅ Task(subagent_type="ring:frontend-engineer", ...)
 ✅ Task(subagent_type="ring:frontend-designer", ...)
@@ -102,7 +102,7 @@ This principle is NON-NEGOTIABLE for all dev-team skills.
 
 | Gate | Specialized Agent | What Agent Does |
 |------|-------------------|-----------------|
-| 0 | `ring:backend-engineer-golang` | Implements Go code, adds observability, runs TDD |
+| 0 | `ring:backend-engineer-csharp` | Implements C# code, adds observability, runs TDD |
 | 0 | `ring:backend-engineer-typescript` | Implements TS backend code, adds observability, runs TDD |
 | 0 | `ring:frontend-engineer` | Implements React/Next.js components, runs TDD |
 | 0 | `ring:frontend-bff-engineer-typescript` | Implements BFF layer, API aggregation |
@@ -119,7 +119,7 @@ This principle is NON-NEGOTIABLE for all dev-team skills.
 | Step | Specialized Agent | What Agent Does |
 |------|-------------------|-----------------|
 | 3 | `ring:codebase-explorer` | Deep architecture analysis, pattern discovery |
-| 4 | `ring:backend-engineer-golang` | Go standards compliance analysis |
+| 4 | `ring:backend-engineer-csharp` | C# standards compliance analysis |
 | 4 | `ring:backend-engineer-typescript` | TypeScript standards compliance analysis |
 | 4 | `ring:frontend-engineer` | Frontend standards compliance analysis |
 | 4 | `ring:qa-analyst` | Test coverage and pattern analysis |
@@ -134,14 +134,14 @@ This principle is NON-NEGOTIABLE for all dev-team skills.
 
 | File Type / Task | Agent to Dispatch |
 |------------------|-------------------|
-| `*.go` files | `ring:backend-engineer-golang` |
+| `*.cs` files | `ring:backend-engineer-csharp` |
 | `*.ts` backend (Express, Fastify, NestJS) | `ring:backend-engineer-typescript` |
 | `*.tsx` / `*.jsx` React components | `ring:frontend-engineer` |
 | BFF / API Gateway layer | `ring:frontend-bff-engineer-typescript` |
 | UI/UX review, design system | `ring:frontend-designer` |
 | `Dockerfile`, `docker-compose.yml`, Helm | `ring:devops-engineer` |
 | Logging, tracing | `ring:sre` |
-| Test files (`*_test.go`, `*.spec.ts`) | `ring:qa-analyst` |
+| Test files (`*Tests.cs`, `*.spec.ts`) | `ring:qa-analyst` |
 
 ### Code Review (Always Parallel)
 

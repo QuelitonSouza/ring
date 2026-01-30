@@ -12,9 +12,9 @@ echo "Ring Plugin Marketplace Installer"
 echo "================================================"
 echo ""
 
-MARKETPLACE_SOURCE="lerianstudio/ring"
+MARKETPLACE_SOURCE="QuelitonSouza/ring"
 MARKETPLACE_NAME="ring"
-MARKETPLACE_JSON_URL="https://raw.githubusercontent.com/lerianstudio/ring/main/.claude-plugin/marketplace.json"
+MARKETPLACE_JSON_URL="https://raw.githubusercontent.com/QuelitonSouza/ring/main/.claude-plugin/marketplace.json"
 
 echo "📦 Adding Ring marketplace from GitHub..."
 set +e

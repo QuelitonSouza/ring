@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/callgraph"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/callgraph"
 )
 
 // createTestCallGraphResult creates a CallGraphResult for testing.

@@ -40,7 +40,7 @@ SKILL gathers ALL data (including environment selection + Helm configs) → Agen
 1. **Skill asks products:** "Which products does customer need?" (Access Manager always included)
 2. **Skill collects:** Repo path, TPS, total customers
 3. **Skill asks environment:** "Which environments to calculate?" (Homolog, Production, or Both)
-4. **Skill reads LerianStudio/helm:** Only for selected products
+4. **Skill reads QuelitonSouza/helm:** Only for selected products
 5. **Skill asks per component:** "Shared or Dedicated?" for each (VPC, EKS, PostgreSQL, Valkey, etc.)
 6. **Skill asks backup policy:** "What backup retention for Production?" (Homolog always minimal)
 7. **Skill collects billing:** Unit, price, volume
@@ -63,7 +63,7 @@ SKILL gathers ALL data (including environment selection + Helm configs) → Agen
 | **Midaz Core** | Customer choice | Per-customer | `charts/midaz` |
 | **Reporter** | Customer choice | Per-customer | `charts/reporter` |
 
-**Data source:** `git@github.com:LerianStudio/helm.git`
+**Data source:** `git@github.com:QuelitonSouza/helm.git`
 
 **Sharing Model Definitions:**
 - **SHARED** = Schema-based multi-tenancy (same instance, different schemas per customer)
@@ -99,11 +99,11 @@ Task tool:
 
     Infrastructure:
     - Repo: /path/to/repo
-    - Helm Source: LerianStudio/helm
+    - Helm Source: QuelitonSouza/helm
     - TPS: 100
     - Total Customers on Platform: 5
 
-    Actual Resource Configurations (READ from LerianStudio/helm):
+    Actual Resource Configurations (READ from QuelitonSouza/helm):
     | Service | CPU Request | Memory Request | HPA | Source |
     |---------|-------------|----------------|-----|--------|
     | onboarding | 1500m | 512Mi | 2-5 | midaz |
@@ -132,7 +132,7 @@ Task tool:
     - Expected Volume: 1,000,000/month
 ```
 
-**Skill:** `ring:infrastructure-cost-estimation` - Reads LerianStudio/helm at runtime, orchestrates data collection.
+**Skill:** `ring:infrastructure-cost-estimation` - Reads QuelitonSouza/helm at runtime, orchestrates data collection.
 
 ---
 

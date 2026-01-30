@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/fileutil"
-	"github.com/lerianstudio/ring/scripts/codereview/internal/lint"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/fileutil"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/lint"
 )
 
 // ScopeJSON represents the scope.json structure from Phase 0.

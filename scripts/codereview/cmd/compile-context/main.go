@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/context"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/context"
 )
 
 var version = "dev"

@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/fileutil"
-	"github.com/lerianstudio/ring/scripts/codereview/internal/output"
-	"github.com/lerianstudio/ring/scripts/codereview/internal/scope"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/fileutil"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/output"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/scope"
 )
 
 // version is set via ldflags during build.

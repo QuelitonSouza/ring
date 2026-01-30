@@ -23,7 +23,7 @@ This document defines the mandatory separation of responsibilities between revie
 ┌─────────────────────────────┐          ┌─────────────────────────────────┐
 │         REVIEWERS           │          │     IMPLEMENTATION AGENTS       │
 │                             │          │                                 │
-│ • ring:code-reviewer         │          │ • ring:backend-engineer-golang      │
+│ • ring:code-reviewer         │          │ • ring:backend-engineer-csharp      │
 │ • ring:business-logic-reviewer│          │ • ring:backend-engineer-typescript  │
 │ • ring:security-reviewer     │          │ • ring:frontend-engineer            │
 │ • ring:test-reviewer         │          │ • ring:devops-engineer              │

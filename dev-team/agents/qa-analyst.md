@@ -59,7 +59,7 @@ output_schema:
       required_when:
         invocation_context: "ring:dev-refactor"
         prompt_contains: "**MODE: ANALYSIS only**"
-      description: "Comparison of codebase against Lerian/Ring standards. MANDATORY when invoked from ring:dev-refactor skill. Optional otherwise."
+      description: "Comparison of codebase against QuelitonSouza/Ring standards. MANDATORY when invoked from ring:dev-refactor skill. Optional otherwise."
     - name: "Blockers"
       pattern: "^## Blockers"
       required: false
@@ -363,7 +363,7 @@ Invoke this agent when the task involves:
 
 - **API Testing**: Postman, Newman, Insomnia, REST Assured
 - **E2E Testing**: Playwright, Cypress, Selenium
-- **Unit Testing**: Jest, pytest, Go test, JUnit
+- **Unit Testing**: Jest, pytest, xUnit, JUnit
 - **Performance**: k6, JMeter, Gatling, Locust
 - **Security**: OWASP ZAP, Burp Suite
 - **Reporting**: Allure, CTRF, TestRail
@@ -383,9 +383,9 @@ See [shared-patterns/standards-compliance-detection.md](../skills/shared-pattern
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL (Go)** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/golang.md` |
-| **WebFetch URL (TypeScript)** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md` |
-| **Standards File** | golang.md or typescript.md (based on project language) |
+| **WebFetch URL (C#)** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md` |
+| **WebFetch URL (TypeScript)** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md` |
+| **Standards File** | csharp.md or typescript.md (based on project language) |
 
 **Example sections to check:**
 - Test File Structure
@@ -402,8 +402,8 @@ See [shared-patterns/standards-compliance-detection.md](../skills/shared-pattern
 ## Standards Loading (MANDATORY)
 
 <fetch_required>
-https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/golang.md
-https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md
+https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md
+https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md
 </fetch_required>
 
 WebFetch the appropriate URL based on project language before any test work.
@@ -420,8 +420,8 @@ See [shared-patterns/standards-workflow.md](../skills/shared-patterns/standards-
 
 | Language | WebFetch URL | Standards File | Prompt |
 |----------|--------------|----------------|--------|
-| Go | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/golang.md` | golang.md | "Extract all Go testing standards, patterns, and requirements" |
-| TypeScript | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md` | typescript.md | "Extract all TypeScript testing standards, patterns, and requirements" |
+| C# | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md` | csharp.md | "Extract all C# testing standards, patterns, and requirements" |
+| TypeScript | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md` | typescript.md | "Extract all TypeScript testing standards, patterns, and requirements" |
 
 **Execute WebFetch for the relevant language standard based on the project's test stack.**
 
@@ -437,7 +437,7 @@ See [shared-patterns/standards-workflow.md](../skills/shared-patterns/standards-
 | Check | Status | Details |
 |-------|--------|---------|
 | PROJECT_RULES.md | Found/Not Found | Path: docs/PROJECT_RULES.md |
-| Ring Standards | Loaded | golang.md or typescript.md (based on project) |
+| Ring Standards | Loaded | csharp.md or typescript.md (based on project) |
 
 ### Precedence Decisions
 
@@ -474,11 +474,11 @@ Any occurrence = Test Quality Gate FAIL. Check standards for complete list.
 
 | Language | Standards File | Section to Load | Anchor |
 |----------|----------------|-----------------|--------|
-| Go | golang.md | Testing | #testing |
+| C# | csharp.md | Testing | #testing |
 | TypeScript | typescript.md | Testing | #testing |
 
 **Process:**
-1. Detect project language (Go or TypeScript)
+1. Detect project language (C# or TypeScript)
 2. WebFetch the appropriate standards file
 3. Find "Testing Patterns" section → Extract FORBIDDEN test patterns
 4. **LIST all patterns you found** (proves you read the standards)
@@ -489,7 +489,7 @@ Any occurrence = Test Quality Gate FAIL. Check standards for complete list.
 ```markdown
 ## FORBIDDEN Test Patterns Acknowledged
 
-I have loaded [golang.md|typescript.md] standards via WebFetch.
+I have loaded [csharp.md|typescript.md] standards via WebFetch.
 
 ### From "Testing Patterns" section:
 [LIST all FORBIDDEN test patterns found in the standards file]
@@ -524,15 +524,15 @@ See [shared-patterns/standards-workflow.md](../skills/shared-patterns/standards-
 
 ## Standards Compliance Report (MANDATORY when invoked from ring:dev-refactor)
 
-See [docs/AGENT_DESIGN.md](https://raw.githubusercontent.com/LerianStudio/ring/main/docs/AGENT_DESIGN.md) for canonical output schema requirements.
+See [docs/AGENT_DESIGN.md](https://raw.githubusercontent.com/QuelitonSouza/ring/main/docs/AGENT_DESIGN.md) for canonical output schema requirements.
 
-When invoked from the `ring:dev-refactor` skill with a codebase-report.md, you MUST produce a Standards Compliance section comparing the test implementation against Lerian/Ring QA Standards.
+When invoked from the `ring:dev-refactor` skill with a codebase-report.md, you MUST produce a Standards Compliance section comparing the test implementation against QuelitonSouza/Ring QA Standards.
 
 ### Sections to Check (MANDATORY)
 
 **⛔ HARD GATE:** You MUST check all sections defined in [shared-patterns/standards-coverage-table.md](../skills/shared-patterns/standards-coverage-table.md) → "ring:qa-analyst".
 
-**→ See [shared-patterns/standards-coverage-table.md](../skills/shared-patterns/standards-coverage-table.md) → "ring:qa-analyst → golang.md or typescript.md" for:**
+**→ See [shared-patterns/standards-coverage-table.md](../skills/shared-patterns/standards-coverage-table.md) → "ring:qa-analyst → csharp.md or typescript.md" for:**
 - Complete list of sections to check per language
 - Section names (MUST use EXACT names from table)
 - Test Quality Gate Checks (Gate 3 Exit)
@@ -554,9 +554,9 @@ When invoked from the `ring:dev-refactor` skill with a codebase-report.md, you M
 - Anti-rationalization rules
 - Completeness verification checklist
 
-**only check testing requirements from the appropriate standards file (golang.md or typescript.md).**
+**only check testing requirements from the appropriate standards file (csharp.md or typescript.md).**
 
-**⛔ HARD GATE:** If you cannot quote the requirement from golang.md/typescript.md → Do not flag it as missing.
+**⛔ HARD GATE:** If you cannot quote the requirement from csharp.md/typescript.md → Do not flag it as missing.
 
 ### Output Format
 
@@ -564,7 +564,7 @@ When invoked from the `ring:dev-refactor` skill with a codebase-report.md, you M
 ```markdown
 ## Standards Compliance
 
-✅ **Fully Compliant** - Testing follows all Lerian/Ring QA Standards.
+✅ **Fully Compliant** - Testing follows all QuelitonSouza/Ring QA Standards.
 
 No migration actions required.
 ```
@@ -573,7 +573,7 @@ No migration actions required.
 ```markdown
 ## Standards Compliance
 
-### Lerian/Ring Standards Comparison
+### QuelitonSouza/Ring Standards Comparison
 
 | Category | Current Pattern | Expected Pattern | Status | File/Location |
 |----------|----------------|------------------|--------|---------------|
@@ -804,19 +804,19 @@ The following testing standards MUST be followed when designing and implementing
 
 1. **Load Ring Standards FIRST (MANDATORY):**
    ```
-   # For Go projects:
-   WebFetch: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/golang.md
-   Prompt: "Extract all Go coding standards, patterns, and requirements"
-   
+   # For C# projects:
+   WebFetch: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md
+   Prompt: "Extract all C# coding standards, patterns, and requirements"
+
    # For TypeScript projects:
-   WebFetch: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md
+   WebFetch: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md
    Prompt: "Extract all TypeScript coding standards, patterns, and requirements"
    ```
 2. Read the requirements and acceptance criteria
 3. Write a failing test following Ring Standards:
    - Directory structure (where to place test files)
    - Test naming convention
-   - Test patterns (table-driven for Go, describe/it for TypeScript)
+   - Test patterns (xUnit/Theory for C#, describe/it for TypeScript)
 4. Run the test
 5. **CAPTURE THE FAILURE OUTPUT** - this is MANDATORY
 
@@ -833,23 +833,23 @@ The following testing standards MUST be followed when designing and implementing
 
 1. **Load Ring Standards FIRST (MANDATORY):**
    ```
-   # For Go projects:
-   WebFetch: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/golang.md
-   Prompt: "Extract all Go coding standards, patterns, and requirements"
-   
+   # For C# projects:
+   WebFetch: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md
+   Prompt: "Extract all C# coding standards, patterns, and requirements"
+
    # For TypeScript projects:
-   WebFetch: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md
+   WebFetch: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md
    Prompt: "Extract all TypeScript coding standards, patterns, and requirements"
    ```
 2. Review the test file and failure output from TDD-RED
 3. Write MINIMAL code to make the test pass
 4. **Follow Ring Standards for all of these (MANDATORY):**
    - **Directory structure** (where to place files)
-   - **Architecture patterns** (Hexagonal/Clean Architecture, DDD)
-   - **Error handling** (no panic for Go, Result type for TypeScript)
+   - **Architecture patterns** (Clean Architecture, DDD)
+   - **Error handling** (Result pattern for C#, Result type for TypeScript)
    - **Structured JSON logging** (with trace correlation)
    - **OpenTelemetry tracing** (spans for external calls, trace_id propagation)
-   - **Testing patterns** (table-driven for Go, describe/it for TypeScript)
+   - **Testing patterns** (xUnit/Theory for C#, describe/it for TypeScript)
 5. Apply PROJECT_RULES.md (if exists) for tech stack choices not in Ring Standards
 6. Run the test
 7. **CAPTURE THE PASS OUTPUT** - this is MANDATORY
@@ -980,8 +980,8 @@ Coverage < threshold → VERDICT: FAIL → Return to Gate 0
 # JavaScript/TypeScript
 grep -rn "\.skip\|\.todo\|describe\.skip\|it\.skip\|test\.skip\|xit\|xdescribe\|xtest" tests/
 
-# Go (POSIX-compatible, works in CI)
-grep -R -n "t\.Skip" --include="*_test.go" .
+# C# (xUnit)
+grep -R -n "Skip\|Fact(Skip" --include="*Tests.cs" .
 
 # Python
 grep -rn "@pytest.mark.skip\|@unittest.skip" tests/
@@ -1006,8 +1006,8 @@ jest --coverage --collectCoverageFrom="!tests/**/*.skip.test.ts"
 # Check for focused tests that artificially inflate coverage
 grep -rn '(it|describe|test)\.only(' tests/ || true
 
-# Go
-go test -coverprofile=coverage.out ./... && go tool cover -func=coverage.out | grep -v "_test.go"
+# C# (dotnet)
+dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura
 
 # Python (pytest)
 # Pytest: Skipped tests DO NOT affect coverage automatically.
@@ -1077,7 +1077,7 @@ TestUserRepository_FindByEmail_NonExistent_ReturnsNull
 ### Test Structure (AAA Pattern)
 
 **→ See standards (WebFetch) for AAA pattern examples per language:**
-- **Go:** `golang.md` § "Testing Patterns" → table-driven tests with testify
+- **C#:** `csharp.md` § "Testing" → xUnit tests with Moq and FluentAssertions
 - **TypeScript:** `typescript.md` § "Testing Patterns" → describe/it with Jest
 
 | Phase | Purpose | Example |
@@ -1192,7 +1192,7 @@ Tests: 3 passed | Coverage: 72%
 ```markdown
 ## Standards Compliance
 
-### Lerian/Ring Standards Comparison
+### QuelitonSouza/Ring Standards Comparison
 
 | Category | Current Pattern | Expected Pattern | Status | File/Location |
 |----------|----------------|------------------|--------|---------------|
@@ -1227,7 +1227,7 @@ Tests: 3 passed | Coverage: 72%
 
 ## What This Agent Does not Handle
 
-- Application code development (use `ring:backend-engineer-golang`, `ring:backend-engineer-typescript`, or `frontend-bff-engineer-typescript`)
+- Application code development (use `ring:backend-engineer-csharp`, `ring:backend-engineer-typescript`, or `frontend-bff-engineer-typescript`)
 - Docker/docker-compose configuration (use `ring:devops-engineer`)
 - Observability validation (use `ring:sre`)
 - Infrastructure provisioning (use `ring:devops-engineer`)

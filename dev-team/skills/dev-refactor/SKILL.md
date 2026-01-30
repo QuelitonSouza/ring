@@ -14,7 +14,7 @@ skip_when: |
 
 # Dev Refactor Skill
 
-Analyzes existing codebase against Ring/Lerian standards and generates refactoring tasks compatible with ring:dev-cycle.
+Analyzes existing codebase against Ring/QuelitonSouza standards and generates refactoring tasks compatible with ring:dev-cycle.
 
 ---
 
@@ -56,7 +56,7 @@ If counts don't match → SKILL FAILURE. Go back and add missing findings.
 
 | Service Type | Hexagonal/Clean Architecture | Directory Structure |
 |--------------|------------------------------|---------------------|
-| CRUD API (with services, adapters) | ✅ APPLY | ✅ APPLY (Lerian pattern) |
+| CRUD API (with services, adapters) | ✅ APPLY | ✅ APPLY (QuelitonSouza pattern) |
 | Complex business logic | ✅ APPLY | ✅ APPLY |
 | Multiple bounded contexts | ✅ APPLY | ✅ APPLY |
 | Event-driven systems | ✅ APPLY | ✅ APPLY |
@@ -67,14 +67,14 @@ If counts don't match → SKILL FAILURE. Go back and add missing findings.
 
 ### Detection Criteria
 
-**CRUD API (Hexagonal/Lerian Pattern APPLICABLE):**
+**CRUD API (Hexagonal/QuelitonSouza Pattern APPLICABLE):**
 - Service exposes API endpoints (REST, gRPC, GraphQL)
 - Contains business logic and models
 - Has CRUD operations (Create, Read, Update, Delete)
 - Uses repositories for data access
-- → **MUST follow Hexagonal Architecture and Lerian directory pattern**
+- → **MUST follow Hexagonal Architecture and QuelitonSouza directory pattern**
 
-**Simple Service (Hexagonal/Lerian not applicable):**
+**Simple Service (Hexagonal/QuelitonSouza not applicable):**
 - CLI tools and scripts
 - Workers and background jobs
 - Simple utility functions
@@ -87,10 +87,10 @@ When dispatching specialist agents, include:
 
 ```
 ⛔ ARCHITECTURE APPLICABILITY CHECK:
-1. If service is an API with CRUD operations → APPLY Hexagonal/Lerian standards
-2. If service is CLI tool, script, or simple utility → Do not flag Hexagonal/Lerian gaps
+1. If service is an API with CRUD operations → APPLY Hexagonal/QuelitonSouza standards
+2. If service is CLI tool, script, or simple utility → Do not flag Hexagonal/QuelitonSouza gaps
 
-CRUD APIs MUST follow Hexagonal Architecture (ports/adapters) and Lerian directory pattern.
+CRUD APIs MUST follow Hexagonal Architecture (ports/adapters) and QuelitonSouza directory pattern.
 ```
 
 ---
@@ -194,20 +194,20 @@ Check for manifest files and frontend indicators:
 
 | File/Pattern | Stack | Agent |
 |--------------|-------|-------|
-| `go.mod` | Go Backend | ring:backend-engineer-golang |
+| `*.csproj` | C# Backend | ring:backend-engineer-csharp |
 | `package.json` + `src/` (no React) | TypeScript Backend | ring:backend-engineer-typescript |
 | `package.json` + React/Next.js | Frontend | ring:frontend-engineer |
 | `package.json` + BFF pattern | TypeScript BFF | frontend-bff-engineer-typescript |
 
 **Detection Logic:**
-- `go.mod` exists → Add Go backend agent
+- `*.csproj` exists → Add C# backend agent
 - `package.json` exists + `next.config.*` or React in dependencies → Add frontend agent
 - `package.json` exists + `/api/` routes or Express/Fastify → Add TypeScript backend agent
 - `package.json` exists + BFF indicators (`/bff/`, gateway patterns) → Add BFF agent
 
 If multiple stacks detected, dispatch agents for all.
 
-**TodoWrite:** Mark "Detect project stack (Go/TypeScript/Frontend)" as `completed`
+**TodoWrite:** Mark "Detect project stack (C#/TypeScript/Frontend)" as `completed`
 
 ---
 
@@ -337,26 +337,26 @@ Check 2: Was codebase-report.md created by ring:codebase-explorer?
 
 ---
 
-### For Go projects:
+### For C# projects:
 
-<parallel_dispatch agents="ring:backend-engineer-golang, ring:qa-analyst, ring:devops-engineer, ring:sre" model="opus">
+<parallel_dispatch agents="ring:backend-engineer-csharp, ring:qa-analyst, ring:devops-engineer, ring:sre" model="opus">
 All four agents MUST be dispatched in parallel via Task tool.
 Input: codebase-report.md, PROJECT_RULES.md
 </parallel_dispatch>
 
 ```yaml
 Task tool 1:
-  subagent_type: "ring:backend-engineer-golang"
+  subagent_type: "ring:backend-engineer-csharp"
   model: "opus"
-  description: "Go standards analysis"
+  description: "C# standards analysis"
   prompt: |
     **MODE: ANALYSIS only**
 
-    ⛔ MANDATORY: Check all sections in golang.md per shared-patterns/standards-coverage-table.md
+    ⛔ MANDATORY: Check all sections in csharp.md per shared-patterns/standards-coverage-table.md
 
     ⛔ FRAMEWORKS & LIBRARIES DETECTION (MANDATORY):
-    1. Read go.mod to extract all dependencies used in codebase
-    2. Load golang.md standards via WebFetch → extract all listed frameworks/libraries
+    1. Read *.csproj to extract all dependencies used in codebase
+    2. Load csharp.md standards via WebFetch → extract all listed frameworks/libraries
     3. For each category in standards (HTTP, Database, Validation, Testing, etc.):
        - Compare codebase dependency vs standards requirement
        - If codebase uses DIFFERENT library than standards → ISSUE-XXX
@@ -364,8 +364,8 @@ Task tool 1:
     4. any library not in standards that serves same purpose = ISSUE-XXX
 
     Input:
-    - Ring Standards: Load via WebFetch (golang.md)
-    - Section Index: See shared-patterns/standards-coverage-table.md → "ring:backend-engineer-golang"
+    - Ring Standards: Load via WebFetch (csharp.md)
+    - Section Index: See shared-patterns/standards-coverage-table.md → "ring:backend-engineer-csharp"
     - Codebase Report: docs/refactor/{timestamp}/codebase-report.md
     - Project Rules: docs/PROJECT_RULES.md
 
@@ -533,7 +533,7 @@ After all parallel agent tasks complete, save each agent's output to a separate 
 
 ```
 docs/refactor/{timestamp}/reports/
-├── ring:backend-engineer-golang-report.md     (if Go project)
+├── ring:backend-engineer-csharp-report.md     (if C# project)
 ├── ring:backend-engineer-typescript-report.md (if TypeScript Backend)
 ├── ring:frontend-engineer-report.md           (if Frontend)
 ├── frontend-bff-engineer-report.md       (if BFF)
@@ -577,7 +577,7 @@ docs/refactor/{timestamp}/reports/
 
 | Agent Dispatched | Report File Name |
 |------------------|------------------|
-| ring:backend-engineer-golang | `ring:backend-engineer-golang-report.md` |
+| ring:backend-engineer-csharp | `ring:backend-engineer-csharp-report.md` |
 | ring:backend-engineer-typescript | `ring:backend-engineer-typescript-report.md` |
 | ring:frontend-engineer | `ring:frontend-engineer-report.md` |
 | frontend-bff-engineer-typescript | `frontend-bff-engineer-report.md` |
@@ -808,7 +808,7 @@ If counts don't match → STOP. Go back to Step 4.1. Map missing issues.
 ### Ring Standard Reference
 **Standard:** {standards-file}.md → Section: {section-name}
 **Pattern:** {pattern-name}
-**URL:** https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/{file}.md
+**URL:** https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/{file}.md
 
 ### Required Changes
 1. {action item 1 - what to change}
@@ -893,14 +893,14 @@ Before proceeding to Step 7, verify:
 ### Findings Addressed
 | Finding | Pattern | Severity | File:Line |
 |---------|---------|----------|-----------|
-| FINDING-001 | {name} | Critical | src/handler.go:45 |
-| FINDING-003 | {name} | High | src/service.go:112 |
+| FINDING-001 | {name} | Critical | src/Handlers/Handler.cs:45 |
+| FINDING-003 | {name} | High | src/Services/Service.cs:112 |
 
 ### Ring Standards to Follow
 | Standard File | Section | URL |
 |---------------|---------|-----|
-| golang.md | Error Handling | [Link](https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/golang.md) |
-| sre.md | Structured Logging | [Link](https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/sre.md) |
+| csharp.md | Error Handling | [Link](https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md) |
+| sre.md | Structured Logging | [Link](https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/sre.md) |
 
 ### Required Actions
 1. [ ] {action from FINDING-001 - specific change to make}
@@ -955,7 +955,7 @@ CANNOT proceed without explicit user selection.
 docs/refactor/{timestamp}/
 ├── codebase-report.md  (Step 3)
 ├── reports/            (Step 4.5)
-│   ├── ring:backend-engineer-golang-report.md
+│   ├── ring:backend-engineer-csharp-report.md
 │   ├── ring:qa-analyst-report.md
 │   ├── ring:devops-engineer-report.md
 │   └── ring:sre-report.md

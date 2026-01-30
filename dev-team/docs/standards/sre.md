@@ -16,7 +16,7 @@ This file defines the specific standards for Site Reliability Engineering and ob
 | 1 | [Observability](#observability) | Logs, traces, APM tools |
 | 2 | [Logging](#logging) | Structured JSON format, log levels |
 | 3 | [Tracing](#tracing) | OpenTelemetry configuration |
-| 4 | [OpenTelemetry with lib-commons](#opentelemetry-with-lib-commons-mandatory-for-go) | Go service integration |
+| 4 | [OpenTelemetry with lib-commons](#opentelemetry-with-lib-commons-mandatory-for-csharp) | C# service integration |
 | 5 | [Structured Logging with lib-common-js](#structured-logging-with-lib-common-js-mandatory-for-typescript) | TypeScript service integration |
 | 6 | [Health Checks](#health-checks) | Liveness and readiness probes |
 
@@ -240,22 +240,22 @@ ctx := otel.GetTextMapPropagator().Extract(
 
 ---
 
-## OpenTelemetry with lib-commons (MANDATORY for Go)
+## OpenTelemetry with lib-commons (MANDATORY for C#)
 
-All Go services **MUST** integrate OpenTelemetry using `lib-commons/v2`. This ensures consistent observability patterns across all Lerian Studio services.
+All C# services **MUST** integrate OpenTelemetry using `lib-commons`. This ensures consistent observability patterns across all QuelitonSouza services.
 
-> **Reference**: See `dev-team/docs/standards/golang.md` for complete lib-commons integration patterns.
+> **Reference**: See `dev-team/docs/standards/csharp.md` for complete lib-commons integration patterns.
 
 ### Required Imports
 
 ```go
 import (
-    libCommons "github.com/LerianStudio/lib-commons/v2/commons"
-    libZap "github.com/LerianStudio/lib-commons/v2/commons/zap"           // Logger initialization (bootstrap only)
-    libLog "github.com/LerianStudio/lib-commons/v2/commons/log"           // Logger interface (services, routes, consumers)
-    libOpentelemetry "github.com/LerianStudio/lib-commons/v2/commons/opentelemetry"
-    libHTTP "github.com/LerianStudio/lib-commons/v2/commons/net/http"
-    libServer "github.com/LerianStudio/lib-commons/v2/commons/server"
+    libCommons "github.com/QuelitonSouza/lib-commons/v2/commons"
+    libZap "github.com/QuelitonSouza/lib-commons/v2/commons/zap"           // Logger initialization (bootstrap only)
+    libLog "github.com/QuelitonSouza/lib-commons/v2/commons/log"           // Logger interface (services, routes, consumers)
+    libOpentelemetry "github.com/QuelitonSouza/lib-commons/v2/commons/opentelemetry"
+    libHTTP "github.com/QuelitonSouza/lib-commons/v2/commons/net/http"
+    libServer "github.com/QuelitonSouza/lib-commons/v2/commons/server"
 )
 ```
 
@@ -474,7 +474,7 @@ When evaluating a codebase for lib-commons telemetry compliance, check these cat
 
 ## Structured Logging with lib-common-js (MANDATORY for TypeScript)
 
-All TypeScript services **MUST** integrate structured logging using `@LerianStudio/lib-common-js`. This ensures consistent observability patterns across all Lerian Studio services.
+All TypeScript services **MUST** integrate structured logging using `@QuelitonSouza/lib-common-js`. This ensures consistent observability patterns across all QuelitonSouza services.
 
 > **Note**: lib-common-js currently provides logging infrastructure. Telemetry will be added in future versions.
 
@@ -483,7 +483,7 @@ All TypeScript services **MUST** integrate structured logging using `@LerianStud
 ```json
 {
   "dependencies": {
-    "@LerianStudio/lib-common-js": "^1.0.0"
+    "@QuelitonSouza/lib-common-js": "^1.0.0"
   }
 }
 ```
@@ -491,9 +491,9 @@ All TypeScript services **MUST** integrate structured logging using `@LerianStud
 ### Required Imports
 
 ```typescript
-import { initializeLogger, Logger } from '@LerianStudio/lib-common-js/logger';
-import { loadConfigFromEnv } from '@LerianStudio/lib-common-js/config';
-import { createLoggingMiddleware } from '@LerianStudio/lib-common-js/http';
+import { initializeLogger, Logger } from '@QuelitonSouza/lib-common-js/logger';
+import { loadConfigFromEnv } from '@QuelitonSouza/lib-common-js/config';
+import { createLoggingMiddleware } from '@QuelitonSouza/lib-common-js/http';
 ```
 
 ### Logging Flow (MANDATORY)
@@ -526,8 +526,8 @@ import { createLoggingMiddleware } from '@LerianStudio/lib-common-js/http';
 
 ```typescript
 // bootstrap/config.ts
-import { initializeLogger } from '@LerianStudio/lib-common-js/logger';
-import { loadConfigFromEnv } from '@LerianStudio/lib-common-js/config';
+import { initializeLogger } from '@QuelitonSouza/lib-common-js/logger';
+import { loadConfigFromEnv } from '@QuelitonSouza/lib-common-js/config';
 
 export async function initServers(): Promise<Service> {
     // Load configuration from environment
@@ -554,7 +554,7 @@ export async function initServers(): Promise<Service> {
 
 ```typescript
 // adapters/http/routes.ts
-import { createLoggingMiddleware } from '@LerianStudio/lib-common-js/http';
+import { createLoggingMiddleware } from '@QuelitonSouza/lib-common-js/http';
 import express from 'express';
 
 export function createRouter(

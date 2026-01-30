@@ -122,7 +122,7 @@ default/agents/
 **Structure (ring-dev-team plugin):**
 ```
 dev-team/agents/
-├── ring:backend-engineer-golang.md     # Go backend specialist for financial systems
+├── ring:backend-engineer-csharp.md     # C# backend specialist for financial systems
 ├── ring:backend-engineer-typescript.md # TypeScript/Node.js backend specialist
 ├── ring:devops-engineer.md             # DevOps infrastructure specialist
 ├── frontend-bff-engineer-typescript.md # BFF & React/Next.js frontend specialist
@@ -189,7 +189,7 @@ All ring-dev-team agents include a `## Standards Compliance` section in their ou
 ```
 
 **Affected Agents:**
-- `ring:backend-engineer-golang` → loads `golang.md`
+- `ring:backend-engineer-csharp` → loads `csharp.md`
 - `ring:backend-engineer-typescript` → loads `typescript.md`
 - `ring:devops-engineer` → loads `devops.md`
 - `frontend-bff-engineer-typescript` → loads `frontend.md`
@@ -201,10 +201,10 @@ All ring-dev-team agents include a `## Standards Compliance` section in their ou
 ```markdown
 ## Standards Compliance
 
-### Lerian/Ring Standards Comparison
+### QuelitonSouza/Ring Standards Comparison
 | Category | Current Pattern | Expected Pattern | Status | File/Location |
 |----------|----------------|------------------|--------|---------------|
-| Logging | fmt.Println | lib-commons/zap | ⚠️ Non-Compliant | service/*.go |
+| Logging | Console.WriteLine | ILogger/Serilog | ⚠️ Non-Compliant | Services/*.cs |
 
 ### Compliance Summary
 - Total Violations: N

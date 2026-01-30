@@ -1,7 +1,7 @@
 # Reporter Template Technical Reference
 
 > **Last Updated**: November 23, 2025
-> **Source**: Lerian Reporter Documentation
+> **Source**: QuelitonSouza Reporter Documentation
 
 ---
 
@@ -386,4 +386,4 @@ Reporter renders templates **AS-IS**. The template structure **IS** the output s
 
 ---
 
-*Technical reference extracted from Lerian Reporter documentation*
+*Technical reference extracted from QuelitonSouza Reporter documentation*

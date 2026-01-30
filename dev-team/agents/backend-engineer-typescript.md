@@ -9,7 +9,7 @@ changelog:
   - 1.3.9: Added MANDATORY Standards Verification output section - MUST be first section to prove standards were loaded
   - 1.3.8: Added Pre-Submission Self-Check section (MANDATORY) for AI slop prevention
   - 1.3.7: Strengthened Bootstrap Pattern language - MANDATORY not conditional, REJECTED if missing
-  - 1.3.6: Added REQUIRED Bootstrap Pattern Check for new projects; renamed Midaz → Lerian pattern
+  - 1.3.6: Added REQUIRED Bootstrap Pattern Check for new projects; renamed Midaz → QuelitonSouza pattern
   - 1.3.5: Added Model Requirements section (HARD GATE - requires Claude Opus 4.5+)
   - 1.3.4: Enhanced Standards Compliance mode detection with robust pattern matching (case-insensitive, partial markers, explicit requests, fail-safe behavior)
   - 1.3.3: Added required_when condition to Standards Compliance for ring:dev-refactor gate enforcement
@@ -47,7 +47,7 @@ output_schema:
       required_when:
         invocation_context: "ring:dev-refactor"
         prompt_contains: "**MODE: ANALYSIS only**"
-      description: "Comparison of codebase against Lerian/Ring standards. MANDATORY when invoked from ring:dev-refactor skill. Optional otherwise."
+      description: "Comparison of codebase against QuelitonSouza/Ring standards. MANDATORY when invoked from ring:dev-refactor skill. Optional otherwise."
     - name: "Blockers"
       pattern: "^## Blockers"
       required: false
@@ -334,7 +334,7 @@ See [shared-patterns/standards-compliance-detection.md](../skills/shared-pattern
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md` |
+| **WebFetch URL** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md` |
 | **Standards File** | typescript.md |
 
 **Example sections from typescript.md to check:**
@@ -354,7 +354,7 @@ See [shared-patterns/standards-compliance-detection.md](../skills/shared-pattern
 ## Standards Loading (MANDATORY)
 
 <fetch_required>
-https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md
+https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md
 </fetch_required>
 
 MUST WebFetch the URL above before any implementation work.
@@ -369,7 +369,7 @@ See [shared-patterns/standards-workflow.md](../skills/shared-patterns/standards-
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md` |
+| **WebFetch URL** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md` |
 | **Standards File** | typescript.md |
 | **Prompt** | "Extract all TypeScript coding standards, patterns, and requirements" |
 
@@ -622,7 +622,7 @@ After WebFetch completes, you MUST be able to cite specific patterns:
 
 ## Architecture Patterns
 
-You have deep expertise in Clean Architecture and Hexagonal Architecture. The **Lerian pattern** (simplified hexagonal without explicit DDD folders) is MANDATORY for all TypeScript services.
+You have deep expertise in Clean Architecture and Hexagonal Architecture. The **QuelitonSouza pattern** (simplified hexagonal without explicit DDD folders) is MANDATORY for all TypeScript services.
 
 **→ For directory structure and architecture patterns, see Ring TypeScript Standards (fetched via WebFetch) → Directory Structure section.**
 
@@ -641,7 +641,7 @@ You have deep expertise in TDD. **TDD is MANDATORY when invoked by ring:dev-cycl
 
 1. **Load Ring Standards FIRST (MANDATORY):**
    ```
-   WebFetch: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md
+   WebFetch: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md
    Prompt: "Extract all TypeScript coding standards, patterns, and requirements"
    ```
 2. Read the requirements and acceptance criteria
@@ -675,7 +675,7 @@ FAIL  src/auth/auth.service.test.ts
 
 1. **Load Ring Standards FIRST (MANDATORY):**
    ```
-   WebFetch: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/typescript.md
+   WebFetch: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/typescript.md
    Prompt: "Extract all TypeScript coding standards, patterns, and requirements"
    ```
 2. Review the test file and failure output from TDD-RED
@@ -827,9 +827,9 @@ When reporting issues in existing code:
 
 ## Standards Compliance Report (MANDATORY when invoked from ring:dev-refactor)
 
-See [docs/AGENT_DESIGN.md](https://raw.githubusercontent.com/LerianStudio/ring/main/docs/AGENT_DESIGN.md) for canonical output schema requirements.
+See [docs/AGENT_DESIGN.md](https://raw.githubusercontent.com/QuelitonSouza/ring/main/docs/AGENT_DESIGN.md) for canonical output schema requirements.
 
-When invoked from the `ring:dev-refactor` skill with a codebase-report.md, you MUST produce a Standards Compliance section comparing the codebase against Lerian/Ring TypeScript Standards.
+When invoked from the `ring:dev-refactor` skill with a codebase-report.md, you MUST produce a Standards Compliance section comparing the codebase against QuelitonSouza/Ring TypeScript Standards.
 
 ### Sections to Check (MANDATORY)
 
@@ -878,7 +878,7 @@ When invoked from the `ring:dev-refactor` skill with a codebase-report.md, you M
 ```markdown
 ## Standards Compliance
 
-✅ **Fully Compliant** - Codebase follows all Lerian/Ring TypeScript Standards.
+✅ **Fully Compliant** - Codebase follows all QuelitonSouza/Ring TypeScript Standards.
 
 No migration actions required.
 ```
@@ -887,7 +887,7 @@ No migration actions required.
 ```markdown
 ## Standards Compliance
 
-### Lerian/Ring Standards Comparison
+### QuelitonSouza/Ring Standards Comparison
 
 | Category | Current Pattern | Expected Pattern | Status | File/Location |
 |----------|----------------|------------------|--------|---------------|
@@ -900,13 +900,13 @@ No migration actions required.
 1. **Logging Migration**
    - Replace: `console.log()` / `console.error()`
    - With: `const logger = createLogger({ service: 'my-service' })`
-   - Import: `import { createLogger } from '@lerianstudio/lib-commons-js'`
+   - Import: `import { createLogger } from '@QuelitonSouza/lib-commons-js'`
    - Files affected: [list]
 
 2. **Error Handling Migration**
    - Replace: Custom error classes or plain `Error`
    - With: `throw new AppError('message', { code: 'ERR_CODE', statusCode: 400 })`
-   - Import: `import { AppError, isAppError } from '@lerianstudio/lib-commons-js'`
+   - Import: `import { AppError, isAppError } from '@QuelitonSouza/lib-commons-js'`
    - Files affected: [list]
 ```
 

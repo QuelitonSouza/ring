@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/callgraph"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/callgraph"
 )
 
 // ImpactLevel represents the risk level of a function based on caller count.

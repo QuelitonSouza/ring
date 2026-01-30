@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/callgraph"
-	"github.com/lerianstudio/ring/scripts/codereview/internal/testutil"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/callgraph"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/testutil"
 )
 
 var setupTestDir = testutil.SetupTestDir

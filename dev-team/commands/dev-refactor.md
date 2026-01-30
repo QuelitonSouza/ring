@@ -93,11 +93,11 @@ The skill defines all steps including: stack detection, ring:codebase-explorer d
 
 | Dimension | What's Checked | Standards Reference |
 |-----------|----------------|---------------------|
-| **Architecture** | DDD patterns, layer separation, dependency direction, directory structure | `golang.md` § Architecture |
-| **Code Quality** | Naming conventions, error handling, forbidden practices, security | `golang.md` § Error Handling |
-| **Instrumentation** | Service method tracing, span naming, error classification, context propagation | `golang.md` § Distributed Tracing |
-| **Testing** | Coverage percentage, test patterns, naming, missing tests | `golang.md` § Testing |
-| **DevOps** | Dockerfile, docker-compose, env management, Helm charts | `golang.md` § DevOps |
+| **Architecture** | DDD patterns, layer separation, dependency direction, directory structure | `csharp.md` § Architecture |
+| **Code Quality** | Naming conventions, error handling, forbidden practices, security | `csharp.md` § Error Handling |
+| **Instrumentation** | Service method tracing, span naming, error classification, context propagation | `csharp.md` § Distributed Tracing |
+| **Testing** | Coverage percentage, test patterns, naming, missing tests | `csharp.md` § Testing |
+| **DevOps** | Dockerfile, docker-compose, env management, Helm charts | `csharp.md` § DevOps |
 
 **Analysis vs Execution:**
 - **Analysis (always):** All five dimensions analyzed, all severities (Critical, High, Medium, Low) tracked
@@ -115,9 +115,9 @@ When analyzing services for instrumentation compliance, verify:
 4. **Error classification**:
    - Business errors → `HandleSpanBusinessErrorEvent` (span stays OK)
    - Technical errors → `HandleSpanError` (span marked ERROR)
-5. **Structured logging**: Use logger from context, not `log.Printf`
+5. **Structured logging**: Use logger from context, not `Console.WriteLine`
 
-**Full details and code templates**: See `docs/standards/golang.md` § "Distributed Tracing Architecture"
+**Full details and code templates**: See `docs/standards/csharp.md` § "Distributed Tracing Architecture"
 
 ## Output
 

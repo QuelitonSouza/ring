@@ -101,7 +101,7 @@ Architecture diagrams or component design, technology choices (languages, framew
 - ❌ "Integrate with Access Manager" (architecture → TRD)
 - ❌ "OAuth2 flow" (protocol choice → TRD)
 
-**Note:** The TRD (Gate 3) will translate these business requirements into authentication/authorization architecture patterns. For Go services, refer to `golang.md` → Access Manager Integration section during TRD creation.
+**Note:** The TRD (Gate 3) will translate these business requirements into authentication/authorization architecture patterns. For C# services, refer to `csharp.md` → Access Manager Integration section during TRD creation.
 
 ---
 

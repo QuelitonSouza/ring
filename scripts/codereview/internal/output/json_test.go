@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/scope"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/scope"
 )
 
 // createTestScopeResult creates a ScopeResult for testing.

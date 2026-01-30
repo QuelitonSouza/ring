@@ -9,7 +9,7 @@ description = "Multi-platform installer for Ring AI skills library"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
-    {name = "Lerian Studio", email = "contact@lerian.studio"}
+    {name = "QuelitonSouza", email = "contact@quelitonsouza.dev"}
 ]
 maintainers = [
     {name = "Fred Amaral", email = "fred@fredamaral.com.br"}
@@ -52,10 +52,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/lerianstudio/ring"
-Documentation = "https://github.com/lerianstudio/ring#readme"
-Repository = "https://github.com/lerianstudio/ring"
-Issues = "https://github.com/lerianstudio/ring/issues"
+Homepage = "https://github.com/QuelitonSouza/ring"
+Documentation = "https://github.com/QuelitonSouza/ring#readme"
+Repository = "https://github.com/QuelitonSouza/ring"
+Issues = "https://github.com/QuelitonSouza/ring/issues"
 
 [project.scripts]
 ring-installer = "ring_installer.__main__:main"

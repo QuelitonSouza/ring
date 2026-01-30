@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/fileutil"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/fileutil"
 )
 
 // highImpactCallerThreshold is the minimum number of callers for a function

@@ -102,7 +102,7 @@ Task(subagent_type="ring:codebase-explorer", model="opus", ...)  # REQUIRED
 
 **Rationale:** The ring:codebase-explorer agent does not enforce coding standards or compliance requirements. Its role is discovery and analysis, not validation. It explores codebases as-is without applying normative rules.
 
-**Exception:** When exploring to prepare for standards enforcement (e.g., "Analyze codebase before applying Lerian standards"), the agent MUST note current state patterns that may conflict with standards in the RECOMMENDATIONS section.
+**Exception:** When exploring to prepare for standards enforcement (e.g., "Analyze codebase before applying QuelitonSouza standards"), the agent MUST note current state patterns that may conflict with standards in the RECOMMENDATIONS section.
 
 ## Exploration Methodology
 

@@ -10,9 +10,9 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/lint"
-	"github.com/lerianstudio/ring/scripts/codereview/internal/output"
-	"github.com/lerianstudio/ring/scripts/codereview/internal/scope"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/lint"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/output"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/scope"
 )
 
 func main() {

@@ -33,7 +33,7 @@ Canonical source for preventing agents from hallucinating requirements beyond wh
 | "Missing `make proto`" | not in devops.md Makefile Standards | Hallucinated requirement |
 | "Missing `make mocks`" | not in devops.md Makefile Standards | Hallucinated requirement |
 | "Missing `make migrate-up/down`" | not in devops.md Makefile Standards | Hallucinated requirement |
-| "Should use gRPC" | not in golang.md Frameworks | Hallucinated requirement |
+| "Should use gRPC" | not in csharp.md Frameworks | Hallucinated requirement |
 | "Needs GraphQL schema" | not in typescript.md | Hallucinated requirement |
 
 **Solution:** Agents MUST extract requirements only from WebFetch result, never from general knowledge.
@@ -107,15 +107,6 @@ Each agent MUST:
 | `make migrate-*` | Verify in devops.md "Makefile Standards" section |
 | `make install` | Verify in devops.md "Makefile Standards" section |
 | `make clean` | Verify in devops.md "Makefile Standards" section |
-
-#### ring:backend-engineer-golang → golang.md
-
-| Common Hallucination | Action |
-|---------------------|--------|
-| gRPC requirement | Verify in golang.md "Frameworks & Libraries" section |
-| GraphQL requirement | Verify in golang.md "Frameworks & Libraries" section |
-| Gin instead of Fiber | Check actual HTTP framework in golang.md |
-| GORM instead of pgx | Check actual ORM/driver in golang.md |
 
 #### ring:backend-engineer-typescript → typescript.md
 

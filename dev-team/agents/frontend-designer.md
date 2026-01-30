@@ -50,7 +50,7 @@ output_schema:
       required_when:
         invocation_context: "ring:dev-refactor"
         prompt_contains: "**MODE: ANALYSIS only**"
-      description: "Comparison of codebase against Lerian/Ring standards. MANDATORY when invoked from ring:dev-refactor skill. Optional otherwise."
+      description: "Comparison of codebase against QuelitonSouza/Ring standards. MANDATORY when invoked from ring:dev-refactor skill. Optional otherwise."
     - name: "Blockers"
       pattern: "^## Blockers"
       required: false
@@ -827,7 +827,7 @@ See [shared-patterns/standards-compliance-detection.md](../skills/shared-pattern
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/frontend.md` |
+| **WebFetch URL** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/frontend.md` |
 | **Standards File** | frontend.md |
 
 ### Sections to Check (MANDATORY)
@@ -862,7 +862,7 @@ See [shared-patterns/standards-compliance-detection.md](../skills/shared-pattern
 ## Standards Loading (MANDATORY)
 
 <fetch_required>
-https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/frontend.md
+https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/frontend.md
 </fetch_required>
 
 MUST WebFetch the URL above before any design work.
@@ -877,7 +877,7 @@ See [shared-patterns/standards-workflow.md](../skills/shared-patterns/standards-
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/frontend.md` |
+| **WebFetch URL** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/frontend.md` |
 | **Standards File** | frontend.md |
 | **Prompt** | "Extract all frontend design standards, patterns, and requirements" |
 
@@ -1173,7 +1173,7 @@ If any condition is true, STOP immediately and ask user for clarification.
 
 ## Standards Compliance
 
-### Lerian/Ring Standards Comparison
+### QuelitonSouza/Ring Standards Comparison
 
 | Category | Current Pattern | Expected Pattern | Status | File/Location |
 |----------|----------------|------------------|--------|---------------|
@@ -1194,7 +1194,7 @@ If any condition is true, STOP immediately and ask user for clarification.
 **This agent does not write code.** For implementation, hand off specifications to:
 - `frontend-bff-engineer-typescript` - BFF layer for frontend
 - `frontend-bff-engineer-typescript` - BFF layer implementation (API Routes)
-- `ring:backend-engineer-golang` - Backend API development (Go)
+- `ring:backend-engineer-csharp` - Backend API development (C#)
 - `ring:backend-engineer-typescript` - Backend API development (TypeScript)
 - `ring:devops-engineer` - Docker/CI-CD configuration
 - `ring:qa-analyst` - Testing strategy and QA automation

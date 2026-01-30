@@ -6,7 +6,7 @@ across multiple AI platforms including Claude Code, Factory AI, Cursor, and Clin
 """
 
 __version__ = "0.1.0"
-__author__ = "Lerian Studio"
+__author__ = "QuelitonSouza"
 __license__ = "Apache-2.0"
 
 from ring_installer.adapters import (

@@ -1,11 +1,11 @@
 ---
 name: ring:using-dev-team
 description: |
-  8 specialist developer agents for backend (Go/TypeScript/C#), DevOps, frontend,
+  7 specialist developer agents for backend (C#/TypeScript), DevOps, frontend,
   design, QA, and SRE. Dispatch when you need deep technology expertise.
 
 trigger: |
-  - Need deep expertise for specific technology (Go, TypeScript, C#)
+  - Need deep expertise for specific technology (C#, TypeScript)
   - Building infrastructure/CI-CD → ring:devops-engineer
   - Frontend with design focus → ring:frontend-designer
   - Test strategy needed → ring:qa-analyst
@@ -22,9 +22,9 @@ related:
 
 # Using Ring Developer Specialists
 
-The ring-dev-team plugin provides 8 specialized developer agents. Use them via `Task tool with subagent_type:`.
+The ring-dev-team plugin provides 7 specialized developer agents. Use them via `Task tool with subagent_type:`.
 
-See [CLAUDE.md](https://raw.githubusercontent.com/LerianStudio/ring/main/CLAUDE.md) and [ring:using-ring](https://raw.githubusercontent.com/LerianStudio/ring/main/default/skills/using-ring/SKILL.md) for canonical workflow requirements and ORCHESTRATOR principle. This skill introduces dev-team-specific agents.
+See [CLAUDE.md](https://raw.githubusercontent.com/QuelitonSouza/ring/main/CLAUDE.md) and [ring:using-ring](https://raw.githubusercontent.com/QuelitonSouza/ring/main/default/skills/using-ring/SKILL.md) for canonical workflow requirements and ORCHESTRATOR principle. This skill introduces dev-team-specific agents.
 
 **Remember:** Follow the **ORCHESTRATOR principle** from `ring:using-ring`. Dispatch agents to handle complexity; don't operate tools directly.
 
@@ -33,7 +33,7 @@ See [CLAUDE.md](https://raw.githubusercontent.com/LerianStudio/ring/main/CLAUDE.
 ## Blocker Criteria - STOP and Report
 
 <block_condition>
-- Technology Stack decision needed (Go vs TypeScript vs C#)
+- Technology Stack decision needed (C# vs TypeScript)
 - Architecture decision needed (monolith vs microservices)
 - Infrastructure decision needed (cloud provider)
 - Testing strategy decision needed (unit vs E2E)
@@ -45,7 +45,7 @@ If any condition applies, STOP and ask user.
 
 | Decision Type | Examples | Action |
 |--------------|----------|--------|
-| **Technology Stack** | Go vs TypeScript vs C# for new service | STOP. Check existing patterns. Ask user. |
+| **Technology Stack** | C# vs TypeScript for new service | STOP. Check existing patterns. Ask user. |
 | **Architecture** | Monolith vs microservices | STOP. This is a business decision. Ask user. |
 | **Infrastructure** | Cloud provider choice | STOP. Check existing infrastructure. Ask user. |
 | **Testing Strategy** | Unit vs E2E vs both | STOP. Check QA requirements. Ask user. |
@@ -59,7 +59,7 @@ If any condition applies, STOP and ask user.
 See [shared-patterns/shared-anti-rationalization.md](../shared-patterns/shared-anti-rationalization.md) for universal anti-rationalizations (including Specialist Dispatch section).
 
 **Self-sufficiency bias check:** If you're tempted to implement directly, ask:
-1. Is there a specialist for this? (Check the 8 specialists below)
+1. Is there a specialist for this? (Check the 7 specialists below)
 2. Would a specialist follow standards I might miss?
 3. Am I avoiding dispatch because it feels like "overhead"?
 
@@ -115,7 +115,7 @@ See [shared-patterns/shared-pressure-resistance.md](../shared-patterns/shared-pr
 **Emergency Dispatch Template:**
 ```
 Task tool:
-  subagent_type: "ring:backend-engineer-golang"
+  subagent_type: "ring:backend-engineer-csharp"
   model: "opus"
   prompt: "URGENT PRODUCTION INCIDENT: [brief context]. [Your specific request]"
 ```
@@ -130,7 +130,7 @@ See [shared-patterns/shared-pressure-resistance.md](../shared-patterns/shared-pr
 
 ---
 
-## 8 Developer Specialists
+## 7 Developer Specialists
 
 <dispatch_required agent="{specialist}" model="opus">
 Use Task tool to dispatch appropriate specialist based on technology need.
@@ -138,7 +138,6 @@ Use Task tool to dispatch appropriate specialist based on technology need.
 
 | Agent | Specializations | Use When |
 |-------|-----------------|----------|
-| **`ring:backend-engineer-golang`** | Go microservices, PostgreSQL/MongoDB, Kafka/RabbitMQ, OAuth2/JWT, gRPC, concurrency | Go services, DB optimization, auth/authz, concurrency issues |
 | **`ring:backend-engineer-csharp`** | C# / ASP.NET Core, EF Core / Dapper, PostgreSQL/MongoDB, MassTransit, OAuth2/JWT | C# services, .NET API development, EF Core optimization, Clean Architecture |
 | **`ring:backend-engineer-typescript`** | TypeScript/Node.js, Express/Fastify/NestJS, Prisma/TypeORM, async patterns, Jest/Vitest | TS backends, JS→TS migration, NestJS design, full-stack TS |
 | **`ring:devops-engineer`** | Docker/Compose, Terraform/Helm, cloud infra, secrets management | Containerization, local dev setup, IaC provisioning, Helm charts |
@@ -163,7 +162,7 @@ Task tool:
 
 ### Use Developer Specialists for:
 - ✅ **Deep technical expertise needed** – Architecture decisions, complex implementations
-- ✅ **Technology-specific guidance** – "How do I optimize this Go service?"
+- ✅ **Technology-specific guidance** – "How do I optimize this C# service?"
 - ✅ **Specialized domains** – Infrastructure, SRE, testing strategy
 - ✅ **Building from scratch** – New service, new pipeline, new testing framework
 
@@ -183,12 +182,12 @@ If you need multiple specialists (e.g., backend engineer + DevOps engineer), dis
 
 ```
 ✅ CORRECT:
-Task #1: ring:backend-engineer-golang
+Task #1: ring:backend-engineer-csharp
 Task #2: ring:devops-engineer
 (Both run in parallel)
 
 ❌ WRONG:
-Task #1: ring:backend-engineer-golang
+Task #1: ring:backend-engineer-csharp
 (Wait for response)
 Task #2: ring:devops-engineer
 (Sequential = 2x slower)
@@ -204,16 +203,16 @@ Remember:
 - **Combine with ring:using-ring principle** – Skills + Specialists = complete workflow
 
 ### Good Example (ORCHESTRATOR):
-> "I need a Go service. Let me dispatch `ring:backend-engineer-golang` to design it."
+> "I need a C# service. Let me dispatch `ring:backend-engineer-csharp` to design it."
 
 ### Bad Example (OPERATOR):
-> "I'll manually read Go best practices and design the service myself."
+> "I'll manually read C# best practices and design the service myself."
 
 ---
 
 ## Available in This Plugin
 
-**Agents:** See "8 Developer Specialists" table above.
+**Agents:** See "7 Developer Specialists" table above.
 
 **Skills:** `ring:using-dev-team` (this), `ring:dev-cycle` (6-gate workflow), `ring:dev-refactor` (codebase analysis)
 

@@ -33,7 +33,7 @@ When creating or modifying any agent in `*/agents/*.md`:
 ### 4. Unified Ring Namespace (always)
 All Ring components use the unified `ring:` prefix. Plugin differentiation is handled internally.
 - ✅ `ring:code-reviewer`
-- ✅ `ring:backend-engineer-golang`
+- ✅ `ring:backend-engineer-csharp`
 - ❌ `<missing ring prefix>` (FORBIDDEN: omitting the `ring:` prefix)
 - ❌ `ring-default:ring:code-reviewer` (deprecated plugin-specific prefix)
 
@@ -63,7 +63,7 @@ Before committing changes to dev-team/docs/standards/*.md:
     - Add/remove row: `| N | [Section Name](#anchor) | Description |`
     - Update numbering if needed
 [ ] 3. Did you update `dev-team/skills/shared-patterns/standards-coverage-table.md`?
-    - Find the agent's section index (e.g., "ring:backend-engineer-golang → golang.md")
+    - Find the agent's section index (e.g., "ring:backend-engineer-csharp → csharp.md")
     - Add/remove the section row
 [ ] 4. Do the section counts match?
     - Count `## ` headers in standards file (excluding meta-sections)
@@ -85,7 +85,6 @@ If any checkbox is no → Fix before committing.
 
 | Standards File | Agents That Use It |
 |----------------|-------------------|
-| `golang.md` | `ring:backend-engineer-golang`, `ring:qa-analyst` |
 | `csharp.md` | `ring:backend-engineer-csharp`, `ring:qa-analyst` |
 | `typescript.md` | `ring:backend-engineer-typescript`, `frontend-bff-engineer-typescript`, `ring:qa-analyst` |
 | `frontend.md` | `ring:frontend-engineer`, `ring:frontend-designer` |
@@ -98,7 +97,6 @@ If any checkbox is no → Fix before committing.
 
 | Agent | Standards File | Section Count |
 |-------|----------------|---------------|
-| `ring:backend-engineer-golang` | golang.md | See coverage table |
 | `ring:backend-engineer-csharp` | csharp.md | See coverage table |
 | `ring:backend-engineer-typescript` | typescript.md | See coverage table |
 | `frontend-bff-engineer-typescript` | typescript.md | See coverage table |
@@ -106,7 +104,7 @@ If any checkbox is no → Fix before committing.
 | `ring:frontend-designer` | frontend.md | See coverage table |
 | `ring:devops-engineer` | devops.md | See coverage table |
 | `ring:sre` | sre.md | See coverage table |
-| `ring:qa-analyst` | golang.md or typescript.md | See coverage table |
+| `ring:qa-analyst` | csharp.md or typescript.md | See coverage table |
 
 **⛔ If section counts in skills don't match this table → Update the skill.**
 
@@ -121,7 +119,7 @@ When invoking agents via Task tool:
 
 **Examples:**
 - ✅ `Task(subagent_type="ring:code-reviewer", model="opus", ...)`
-- ✅ `Task(subagent_type="ring:backend-engineer-golang", model="opus", ...)`
+- ✅ `Task(subagent_type="ring:backend-engineer-csharp", model="opus", ...)`
 - ❌ `Task(subagent_type="ring:code-reviewer", ...)` - Missing model parameter
 - ❌ `Task(subagent_type="ring:code-reviewer", model="sonnet", ...)` - Wrong model
 
@@ -220,12 +218,12 @@ AI models naturally attempt to be "helpful" by making autonomous decisions. This
 | "[Common excuse AI might generate]" | [Why this thinking is incorrect] | **[MANDATORY action in bold]** |
 ```
 
-**Example from ring:backend-engineer-golang.md:**
+**Example from ring:backend-engineer-csharp.md:**
 ```markdown
 | Rationalization | Why It's WRONG | Required Action |
 |-----------------|----------------|-----------------|
-| "Codebase already uses lib-commons" | Partial usage ≠ full compliance. Check everything. | **Verify all categories** |
-| "Already follows Lerian standards" | Assumption ≠ verification. Prove it with evidence. | **Verify all categories** |
+| "Codebase already uses lib-commons-csharp" | Partial usage ≠ full compliance. Check everything. | **Verify all categories** |
+| "Already follows QuelitonSouza standards" | Assumption ≠ verification. Prove it with evidence. | **Verify all categories** |
 | "Only checking what seems relevant" | You don't decide relevance. The checklist does. | **Verify all categories** |
 | "Code looks correct, skip verification" | Looking correct ≠ being correct. Verify. | **Verify all categories** |
 | "Previous refactor already checked this" | Each refactor is independent. Check again. | **Verify all categories** |
@@ -423,7 +421,7 @@ Ring is a comprehensive skills library and workflow system for AI agents that en
 
 **Active Plugins:**
 - **ring-default**: 25 core skills, 12 slash commands, 7 specialized agents
-- **ring-dev-team**: 9 development skills, 5 slash commands, 10 developer agents (Backend Go, Backend TypeScript, Backend C#, DevOps, Frontend TypeScript, Frontend Designer, QA, SRE)
+- **ring-dev-team**: 9 development skills, 5 slash commands, 9 developer agents (Backend C#, Backend TypeScript, DevOps, Frontend TypeScript, Frontend Designer, QA, SRE)
 - **ring-pm-team**: 10 product planning skills, 3 research agents, 2 slash commands
 - **ring-pmo-team**: 8 PMO skills, 3 slash commands, 5 PMO agents (Portfolio Manager, Resource Planner, Risk Analyst, Governance Specialist, Executive Reporter)
 - **ring-finops-team**: 6 regulatory skills, 2 FinOps agents
@@ -432,7 +430,7 @@ Ring is a comprehensive skills library and workflow system for AI agents that en
 **Note:** Plugin versions are managed in `.claude-plugin/marketplace.json`
 
 **Total: 65 skills (25 + 9 + 10 + 8 + 6 + 7) across 6 plugins**
-**Total: 30 agents (7 + 10 + 3 + 5 + 2 + 3) across 6 plugins**
+**Total: 29 agents (7 + 9 + 3 + 5 + 2 + 3) across 6 plugins**
 **Total: 25 commands (12 + 5 + 2 + 3 + 0 + 3) across 6 plugins**
 
 The architecture uses markdown-based skill definitions with YAML frontmatter, auto-discovered at session start via hooks, and executed through Claude Code's native Skill/Task tools.
@@ -443,7 +441,7 @@ The architecture uses markdown-based skill definitions with YAML frontmatter, au
 
 See [README.md](README.md#installation) for detailed installation instructions.
 
-**Quick install:** `curl -fsSL https://raw.githubusercontent.com/lerianstudio/ring/main/install-ring.sh | bash`
+**Quick install:** `curl -fsSL https://raw.githubusercontent.com/QuelitonSouza/ring/main/install-ring.sh | bash`
 
 ---
 
@@ -454,7 +452,7 @@ See [README.md](README.md#installation) for detailed installation instructions.
 | Plugin | Path | Contents |
 |--------|------|----------|
 | ring-default | `default/` | 25 skills, 7 agents, 12 commands |
-| ring-dev-team | `dev-team/` | 9 skills, 10 agents, 5 commands |
+| ring-dev-team | `dev-team/` | 9 skills, 9 agents, 5 commands |
 | ring-pm-team | `pm-team/` | 10 skills, 3 agents, 2 commands |
 | ring-pmo-team | `pmo-team/` | 8 skills, 5 agents, 3 commands |
 | ring-finops-team | `finops-team/` | 6 skills, 2 agents |
@@ -529,7 +527,7 @@ See [docs/WORKFLOWS.md](docs/WORKFLOWS.md) for detailed instructions.
 - **always use the unified ring: namespace**: `ring:{component}`
 - **Examples:**
   - ✅ Correct: `ring:code-reviewer`
-  - ✅ Correct: `ring:backend-engineer-golang`
+  - ✅ Correct: `ring:backend-engineer-csharp`
   - ❌ Wrong: `<missing ring prefix>` (FORBIDDEN: omitting the `ring:` prefix)
   - ❌ Wrong: `ring-default:ring:code-reviewer` (deprecated plugin-specific prefix)
 - **Rationale:** Unified namespace simplifies invocation; plugin routing is handled internally
@@ -591,13 +589,13 @@ The system loads at SessionStart (from `default/` plugin):
 - Active plugins: 6 (`ring-default`, `ring-dev-team`, `ring-pm-team`, `ring-pmo-team`, `ring-finops-team`, `ring-tw-team`)
 - Plugin versions: See `.claude-plugin/marketplace.json`
 - Core plugin: `default/` (25 skills, 7 agents, 12 commands)
-- Developer agents: `dev-team/` (9 skills, 10 agents, 5 commands)
+- Developer agents: `dev-team/` (9 skills, 9 agents, 5 commands)
 - Product planning: `pm-team/` (10 skills, 3 agents, 2 commands)
 - PMO specialists: `pmo-team/` (8 skills, 5 agents, 3 commands)
 - FinOps regulatory: `finops-team/` (6 skills, 2 agents)
 - Technical writing: `tw-team/` (7 skills, 3 agents, 3 commands)
 - Current git branch: `main`
-- Remote: `github.com/LerianStudio/ring`
+- Remote: `github.com/QuelitonSouza/ring`
 
 ---
 

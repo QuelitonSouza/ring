@@ -6,9 +6,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/callgraph"
-	"github.com/lerianstudio/ring/scripts/codereview/internal/fileutil"
-	"github.com/lerianstudio/ring/scripts/codereview/internal/output"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/callgraph"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/fileutil"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/output"
 )
 
 type languagesPayload struct {

@@ -1,6 +1,6 @@
 {
   "name": "ring",
-  "description": "Lerian Studio plugin marketplace: Core software engineering skills (TDD, debugging, code review), specialized developer agents (Backend, DevOps, Frontend, QA, SRE), product planning workflows (9-gate pre-dev system), FinOps/regulatory compliance for Brazilian financial systems (BACEN, RFB), and technical writing specialists for documentation.",
+  "description": "QuelitonSouza plugin marketplace: Core software engineering skills (TDD, debugging, code review), specialized developer agents (Backend, DevOps, Frontend, QA, SRE), product planning workflows (9-gate pre-dev system), FinOps/regulatory compliance for Brazilian financial systems (BACEN, RFB), and technical writing specialists for documentation.",
   "owner": {
     "name": "Fred Amaral",
     "email": "fred@fredamaral.com.br"
@@ -8,11 +8,11 @@
   "plugins": [
     {
       "name": "ring-default",
-      "description": "Core skills library for the Lerian Team: TDD, debugging, collaboration patterns, and proven techniques. Features parallel 3-reviewer code review system (Foundation, Correctness, Safety), systematic debugging, and workflow orchestration. 21 essential skills for software engineering excellence.",
+      "description": "Core skills library for the QuelitonSouza Team: TDD, debugging, collaboration patterns, and proven techniques. Features parallel 3-reviewer code review system (Foundation, Correctness, Safety), systematic debugging, and workflow orchestration. 21 essential skills for software engineering excellence.",
       "version": "0.38.0",
       "source": "./default",
-      "homepage": "https://github.com/lerianstudio/ring/tree/default",
-      "repository": "https://github.com/lerianstudio/ring/tree/default",
+      "homepage": "https://github.com/QuelitonSouza/ring/tree/default",
+      "repository": "https://github.com/QuelitonSouza/ring/tree/default",
       "license": "MIT",
       "keywords": [
         "skills",
@@ -32,13 +32,13 @@
       "description": "7 specialized developer agents + 10 development skills + 5 slash commands: 6-gate development cycle (implementation->devops->SRE->testing->review->validation), integrated with PM team output. Go/TypeScript Backend specialists, DevOps Engineer, Frontend TypeScript specialist, Frontend Designer, QA Analyst, and SRE. Complete development team coverage with TDD, observability, and security best practices.",
       "version": "0.48.2",
       "source": "./dev-team",
-      "homepage": "https://github.com/lerianstudio/ring/tree/dev-team",
-      "repository": "https://github.com/lerianstudio/ring/tree/dev-team",
+      "homepage": "https://github.com/QuelitonSouza/ring/tree/dev-team",
+      "repository": "https://github.com/QuelitonSouza/ring/tree/dev-team",
       "license": "MIT",
       "keywords": [
         "agents",
         "developers",
-        "golang",
+        "csharp",
         "backend",
         "devops",
         "frontend",
@@ -56,8 +56,8 @@
       "description": "Product team pre-development workflow: 10 skills + 3 research agents. 9-gate planning system with research-first approach (Gate 0) before PRD creation. Includes parallel research agents (repo-research-analyst, best-practices-researcher, framework-docs-researcher) and full planning gates (PRD, feature map, TRD, API, data model, dependencies, tasks, subtasks).",
       "version": "0.10.0",
       "source": "./pm-team",
-      "homepage": "https://github.com/lerianstudio/ring/tree/pm-team",
-      "repository": "https://github.com/lerianstudio/ring/tree/pm-team",
+      "homepage": "https://github.com/QuelitonSouza/ring/tree/pm-team",
+      "repository": "https://github.com/QuelitonSouza/ring/tree/pm-team",
       "license": "MIT",
       "keywords": [
         "skills",
@@ -78,8 +78,8 @@
       "description": "PMO (Project Management Office) specialists for portfolio-level oversight: 5 agents (portfolio-manager, resource-planner, risk-analyst, governance-specialist, executive-reporter), 8 skills for portfolio planning, resource allocation, risk management, and executive reporting. Complements ring-pm-team (single feature) with portfolio-level coordination.",
       "version": "0.2.0",
       "source": "./pmo-team",
-      "homepage": "https://github.com/lerianstudio/ring/tree/pmo-team",
-      "repository": "https://github.com/lerianstudio/ring/tree/pmo-team",
+      "homepage": "https://github.com/QuelitonSouza/ring/tree/pmo-team",
+      "repository": "https://github.com/QuelitonSouza/ring/tree/pmo-team",
       "license": "MIT",
       "keywords": [
         "pmo",
@@ -97,8 +97,8 @@
       "version": "0.8.0",
       "description": "FinOps and Brazilian regulatory compliance skills for financial systems",
       "source": "./finops-team",
-      "homepage": "https://github.com/lerianstudio/ring/tree/tw-team",
-      "repository": "https://github.com/lerianstudio/ring/tree/tw-team",
+      "homepage": "https://github.com/QuelitonSouza/ring/tree/tw-team",
+      "repository": "https://github.com/QuelitonSouza/ring/tree/tw-team",
       "license": "MIT",
       "keywords": [
         "finops",
@@ -114,8 +114,8 @@
       "description": "Technical writing specialists for functional and API documentation. 3 specialized agents (functional-writer, api-writer, docs-reviewer) and 7 documentation skills covering voice/tone, structure, API field descriptions, and quality review. Enforces clear, consistent documentation standards.",
       "version": "0.3.7",
       "source": "./tw-team",
-      "homepage": "https://github.com/lerianstudio/ring/tree/tw-team",
-      "repository": "https://github.com/lerianstudio/ring/tree/tw-team",
+      "homepage": "https://github.com/QuelitonSouza/ring/tree/tw-team",
+      "repository": "https://github.com/QuelitonSouza/ring/tree/tw-team",
       "license": "MIT",
       "keywords": [
         "technical-writing",

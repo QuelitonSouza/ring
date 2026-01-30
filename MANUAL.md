@@ -192,7 +192,7 @@ Use when you need expert depth in specific domains:
 
 | Agent | Specialization | Technologies |
 |-------|----------------|--------------|
-| `ring:backend-engineer-golang` | Go microservices & APIs | Fiber, gRPC, PostgreSQL, MongoDB, Kafka, OAuth2 |
+| `ring:backend-engineer-csharp` | C# microservices & APIs | ASP.NET Core, gRPC, PostgreSQL, MongoDB, Kafka, OAuth2 |
 | `ring:backend-engineer-typescript` | TypeScript/Node.js backend | Express, NestJS, Prisma, TypeORM, GraphQL |
 | `ring:devops-engineer` | Infrastructure & CI/CD | Docker, Kubernetes, Terraform, GitHub Actions |
 | `ring:frontend-bff-engineer-typescript` | BFF & React/Next.js frontend | Next.js API Routes, Clean Architecture, DDD, React |
@@ -339,7 +339,7 @@ These enforce quality standards:
 | General code quality review | 3 parallel reviewers via `/ring:codereview` |
 | Implementation planning | `ring:write-plan` |
 | Deep codebase analysis | `ring:codebase-explorer` |
-| Go backend expertise | `ring:backend-engineer-golang` |
+| C# backend expertise | `ring:backend-engineer-csharp` |
 | TypeScript/Node.js backend | `ring:backend-engineer-typescript` |
 | Infrastructure/DevOps | `ring:devops-engineer` |
 | React/Next.js frontend & BFF | `ring:frontend-bff-engineer-typescript` |
@@ -424,4 +424,4 @@ Consolidated report
 
 - **How to use Claude Code?** → Ask about Claude Code features, MCP servers, slash commands
 - **How to use Ring?** → Check skill names in this manual or in `ring:using-ring` skill
-- **Feature/bug tracking?** → https://github.com/lerianstudio/ring/issues
+- **Feature/bug tracking?** → https://github.com/QuelitonSouza/ring/issues

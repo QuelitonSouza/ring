@@ -17,8 +17,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/lerianstudio/ring/scripts/codereview/internal/fileutil"
-	"github.com/lerianstudio/ring/scripts/codereview/internal/git"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/fileutil"
+	"github.com/QuelitonSouza/ring/scripts/codereview/internal/git"
 )
 
 // scopeJSON represents the structure of scope.json from Phase 0.

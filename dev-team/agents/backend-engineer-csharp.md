@@ -35,7 +35,7 @@ output_schema:
       required_when:
         invocation_context: "ring:dev-refactor"
         prompt_contains: "**MODE: ANALYSIS only**"
-      description: "Comparison of codebase against Lerian/Ring standards. MANDATORY when invoked from ring:dev-refactor skill. Optional otherwise."
+      description: "Comparison of codebase against QuelitonSouza/Ring standards. MANDATORY when invoked from ring:dev-refactor skill. Optional otherwise."
     - name: "Blockers"
       pattern: "^## Blockers"
       required: false
@@ -225,7 +225,7 @@ See [shared-patterns/standards-compliance-detection.md](../skills/shared-pattern
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/csharp.md` |
+| **WebFetch URL** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md` |
 | **Standards File** | csharp.md |
 
 **Example sections from csharp.md to check:**
@@ -249,7 +249,7 @@ See [shared-patterns/standards-compliance-detection.md](../skills/shared-pattern
 ## Standards Loading (MANDATORY)
 
 <fetch_required>
-https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/csharp.md
+https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md
 </fetch_required>
 
 MUST WebFetch the URL above before any implementation work.
@@ -264,7 +264,7 @@ See [shared-patterns/standards-workflow.md](../skills/shared-patterns/standards-
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL** | `https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/csharp.md` |
+| **WebFetch URL** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md` |
 | **Standards File** | csharp.md |
 | **Prompt** | "Extract all C# coding standards, patterns, and requirements" |
 
@@ -541,7 +541,7 @@ You have deep expertise in TDD. **TDD is MANDATORY when invoked by ring:dev-cycl
 
 1. **Load Ring Standards FIRST (MANDATORY):**
    ```
-   WebFetch: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/csharp.md
+   WebFetch: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md
    Prompt: "Extract all C# coding standards, patterns, and requirements"
    ```
 2. Read the requirements and acceptance criteria
@@ -574,7 +574,7 @@ Example failure output:
 
 1. **Load Ring Standards FIRST (MANDATORY):**
    ```
-   WebFetch: https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/csharp.md
+   WebFetch: https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md
    Prompt: "Extract all C# coding standards, patterns, and requirements"
    ```
 2. Review the test file and failure output from TDD-RED
@@ -784,16 +784,16 @@ When reporting issues in existing code:
 
 ## Standards Compliance Report (MANDATORY when invoked from ring:dev-refactor)
 
-See [docs/AGENT_DESIGN.md](https://raw.githubusercontent.com/LerianStudio/ring/main/docs/AGENT_DESIGN.md) for canonical output schema requirements.
+See [docs/AGENT_DESIGN.md](https://raw.githubusercontent.com/QuelitonSouza/ring/main/docs/AGENT_DESIGN.md) for canonical output schema requirements.
 
-When invoked from the `ring:dev-refactor` skill with a codebase-report.md, you MUST produce a Standards Compliance section comparing the codebase against Lerian/Ring C# Standards.
+When invoked from the `ring:dev-refactor` skill with a codebase-report.md, you MUST produce a Standards Compliance section comparing the codebase against QuelitonSouza/Ring C# Standards.
 
 ### HARD GATE: Always Compare all Categories
 
 **Every category MUST be checked and reported. No exceptions.**
 
 The Standards Compliance section exists to:
-1. **Verify** the codebase follows Lerian patterns
+1. **Verify** the codebase follows QuelitonSouza patterns
 2. **Document** compliance status for each category
 3. **Identify** any gaps that need remediation
 
@@ -806,7 +806,7 @@ The Standards Compliance section exists to:
 | Rationalization | Why It's WRONG | Required Action |
 |-----------------|----------------|-----------------|
 | "Codebase already uses lib-commons-csharp" | Partial usage does not equal full compliance. Check everything. | **Verify all categories** |
-| "Already follows Lerian standards" | Assumption does not equal verification. Prove it with evidence. | **Verify all categories** |
+| "Already follows QuelitonSouza standards" | Assumption does not equal verification. Prove it with evidence. | **Verify all categories** |
 | "Only checking what seems relevant" | You don't decide relevance. The checklist does. | **Verify all categories** |
 | "Code looks correct, skip verification" | Looking correct does not equal being correct. Verify. | **Verify all categories** |
 | "Previous refactor already checked this" | Each refactor is independent. Check again. | **Verify all categories** |

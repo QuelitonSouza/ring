@@ -308,7 +308,7 @@ When documenting refactoring issues, agents MUST provide a Code Transformation C
 For EACH issue, output MUST include:
 
 - [ ] **Before (Current Code)** - Actual code extracted from the project with `file:line` reference
-- [ ] **After (Ring Standards)** - Transformed code following Ring/Lerian standards
+- [ ] **After (Ring Standards)** - Transformed code following Ring/QuelitonSouza standards
 - [ ] **Standard References table** - Pattern, Source file, Section name, Line range
 - [ ] **Why This Transformation Matters** - Problem, Standard violated, Impact
 
@@ -346,14 +346,14 @@ For EACH issue, output MUST include:
 **⛔ DO NOT hardcode line numbers.** Standards files change over time.
 
 **REQUIRED:** Derive exact `:{line_range}` values at runtime by:
-1. Reading the current standards file (e.g., `golang.md`, `typescript.md`)
+1. Reading the current standards file (e.g., `csharp.md`, `typescript.md`)
 2. Searching for the relevant section header
 3. Citing the actual line numbers from the live file
 
 **Example derivation:**
 ```
-Agent reads golang.md → Finds "## Configuration Loading" at line 99
-Agent cites: "Configuration Loading (golang.md:99-230)"
+Agent reads csharp.md → Finds "## Configuration Loading" at line 99
+Agent cites: "Configuration Loading (csharp.md:99-230)"
 ```
 
 ### Anti-Rationalization
@@ -395,8 +395,8 @@ The more assertive and explicit the language, the less room for AI to rationaliz
 ## Required Resources
 
 <fetch_required>
-https://raw.githubusercontent.com/LerianStudio/ring/main/dev-team/docs/standards/golang.md
-https://raw.githubusercontent.com/LerianStudio/ring/main/CLAUDE.md
+https://raw.githubusercontent.com/QuelitonSouza/ring/main/dev-team/docs/standards/csharp.md
+https://raw.githubusercontent.com/QuelitonSouza/ring/main/CLAUDE.md
 </fetch_required>
 
 MUST fetch all URLs above before starting the task.
@@ -414,7 +414,7 @@ If any condition is true, STOP immediately and report blocker.
 ---
 
 <forbidden>
-- fmt.Println() in Go code
+- Console.WriteLine() in C# code
 - console.log() in TypeScript
 - Direct source code editing by orchestrator
 </forbidden>
@@ -423,7 +423,7 @@ Any occurrence = IMMEDIATE REJECTION.
 
 ---
 
-<dispatch_required agent="ring:backend-engineer-golang" model="opus">
+<dispatch_required agent="ring:backend-engineer-csharp" model="opus">
 Implement user authentication endpoint with JWT validation.
 </dispatch_required>
 
@@ -431,7 +431,7 @@ MUST use Task tool with specified agent and model.
 
 ---
 
-<parallel_dispatch agents="ring:backend-engineer-golang, ring:qa-analyst, ring:devops-engineer, ring:sre" model="opus">
+<parallel_dispatch agents="ring:backend-engineer-csharp, ring:qa-analyst, ring:devops-engineer, ring:sre" model="opus">
 Analyze codebase against Ring standards. All agents receive same context:
 - Codebase Report: docs/refactor/{timestamp}/codebase-report.md
 - Project Rules: docs/PROJECT_RULES.md

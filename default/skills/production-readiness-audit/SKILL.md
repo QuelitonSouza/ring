@@ -1697,30 +1697,30 @@ require (
 
 **Reference Implementation (BAD):**
 ```go
-// BAD: Using replace for production
-replace github.com/some/lib => ../local-lib
+// BAD: Using local project reference for production
+<ProjectReference Include="..\local-lib\local-lib.csproj" />
 
 // BAD: Unpinned versions
-require github.com/some/lib latest
+<PackageReference Include="Some.Library" Version="*" />
 
 // BAD: Very old versions with known CVEs
-require github.com/dgrijalva/jwt-go v3.2.0  // Has CVE, use golang-jwt
+<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.0.0" />  // Has CVE, use latest
 ```
 
 **Check For:**
-1. All dependencies pinned (no "latest")
-2. No local replace directives in production
+1. All dependencies pinned (no wildcard versions)
+2. No local project references in production builds
 3. Known vulnerable packages identified
-4. Unused dependencies (not imported anywhere)
+4. Unused dependencies (not referenced anywhere)
 5. Major version mismatches
-6. Deprecated packages (e.g., dgrijalva/jwt-go → golang-jwt)
-7. go.sum exists and is committed
+6. Deprecated packages (e.g., old JWT libraries)
+7. packages.lock.json exists and is committed
 
 **Known Vulnerable Packages to Flag:**
-- github.com/dgrijalva/jwt-go (use golang-jwt/jwt)
-- github.com/pkg/sftp < v1.13.5
-- golang.org/x/crypto < recent
-- golang.org/x/net < recent
+- System.IdentityModel.Tokens.Jwt < v7.0.0
+- System.Text.Json < recent
+- Microsoft.AspNetCore.* < recent
+- Newtonsoft.Json < v13.0.3
 
 **Severity Ratings:**
 - CRITICAL: Known CVE in dependency

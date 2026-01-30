@@ -148,7 +148,7 @@ See [shared-patterns/standards-workflow.md](../skills/shared-patterns/standards-
 
 | Setting | Value |
 |---------|-------|
-| **WebFetch URL** | `https://raw.githubusercontent.com/LerianStudio/ring/main/ops-team/docs/standards/security.md` |
+| **WebFetch URL** | `https://raw.githubusercontent.com/QuelitonSouza/ring/main/ops-team/docs/standards/security.md` |
 | **Standards File** | security.md |
 | **Prompt** | "Extract all security standards, compliance requirements, and vulnerability management processes" |
 
