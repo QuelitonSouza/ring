@@ -9,7 +9,7 @@
     {
       "name": "ring-default",
       "description": "Core skills library for the Lerian Team: TDD, debugging, collaboration patterns, and proven techniques. Features parallel 3-reviewer code review system (Foundation, Correctness, Safety), systematic debugging, and workflow orchestration. 21 essential skills for software engineering excellence.",
-      "version": "0.39.0",
+      "version": "0.40.0",
       "source": "./default",
       "homepage": "https://github.com/QuelitonSouza/ring/tree/default",
       "repository": "https://github.com/QuelitonSouza/ring/tree/default",
@@ -133,7 +133,7 @@
     {
       "name": "ring-frontend-team",
       "description": "Frontend design and UX principles: UX psychology (Hick's Law, Fitts' Law, Gestalt), color systems (60-30-10 rule), typography scales, visual hierarchy, and anti-AI-patterns. 1 skill with 3 reference files for design thinking and decision-making.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "source": "./frontend-team",
       "homepage": "https://github.com/QuelitonSouza/ring/tree/frontend-team",
       "repository": "https://github.com/QuelitonSouza/ring/tree/frontend-team",
@@ -152,7 +152,7 @@
     {
       "name": "ring-seo-team",
       "description": "SEO fundamentals and optimization: E-E-A-T framework, Core Web Vitals (LCP, INP, CLS), technical SEO, Schema markup, and AI content guidelines. 1 comprehensive skill for search engine visibility.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "source": "./seo-team",
       "homepage": "https://github.com/QuelitonSouza/ring/tree/seo-team",
       "repository": "https://github.com/QuelitonSouza/ring/tree/seo-team",
@@ -168,5 +168,5 @@
       ]
     }
   ],
-  "version": "0.203.0"
+  "version": "0.204.0"
 }
