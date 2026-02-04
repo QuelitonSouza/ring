@@ -31,3 +31,4 @@ scripts/codereview/coverage.*
 scripts/codereview/*-test
 
 node_modules/
+antigravity-kit/
