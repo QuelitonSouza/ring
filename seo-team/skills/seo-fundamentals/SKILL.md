@@ -1,5 +1,5 @@
 ---
-name: ring:seo-team
+name: ring:seo-fundamentals
 description: |
   Fundamentos de SEO, E-E-A-T, Core Web Vitals e princípios de algoritmos Google.
   Otimização técnica e de conteúdo para mecanismos de busca.
@@ -19,7 +19,7 @@ sequence:
   before: [ring:writing-plans]
 
 related:
-  similar: [ring:frontend-team]
+  similar: [ring:frontend-design]
 ---
 
 # SEO Fundamentals

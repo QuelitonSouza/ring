@@ -1,5 +1,5 @@
 ---
-name: ring:frontend-team
+name: ring:frontend-design
 description: |
   Design thinking e decisões de UI/UX para frontend web. Princípios de psicologia UX,
   sistemas de cores, tipografia e hierarquia visual. Ensina princípios, não valores fixos.
