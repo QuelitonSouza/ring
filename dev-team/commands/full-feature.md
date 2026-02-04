@@ -20,7 +20,7 @@ Workflow completo para desenvolvimento de features - da ideia ao merge.
 ├─────────────────────────────────────────────────────────────┤
 │  2. WRITE-PLAN  →  Criar plano de execução detalhado       │
 ├─────────────────────────────────────────────────────────────┤
-│  3. GIT-WORKTREE  →  Criar branch isolada (opcional)       │
+│  3. NEW-BRANCH  →  Criar nova branch (pergunta antes)     │
 ├─────────────────────────────────────────────────────────────┤
 │  4. DEV-CYCLE  →  Implementar com TDD (6 gates)            │
 ├─────────────────────────────────────────────────────────────┤
@@ -95,20 +95,32 @@ Ações:
 
 ---
 
-## Fase 3: Git Worktree (Opcional)
+## Fase 3: Nova Branch (Perguntar Antes)
 
-**Skill:** `ring:using-git-worktrees`
+**Ação:** Perguntar ao usuário
+
+```yaml
+AskUserQuestion:
+  questions:
+    - question: "Deseja criar uma nova branch para esta feature?"
+      header: "Git Branch"
+      options:
+        - label: "Sim, criar nova branch"
+          description: "Cria branch feature/[nome-da-feature]"
+        - label: "Não, usar branch atual"
+          description: "Continuar na branch atual"
+```
 
 ```
-Perguntar: "Deseja trabalhar em branch isolada?"
+Se "Sim, criar nova branch":
+1. git checkout -b feature/[nome-da-feature]
+2. Confirmar: "Branch feature/X criada."
 
-Se SIM:
-1. Criar worktree em diretório separado
-2. Configurar branch para a feature
-3. Mudar para o novo diretório
+Se "Não, usar branch atual":
+1. Informar: "Continuando na branch [branch-atual]."
 ```
 
-**Gate de Saída:** Worktree pronto (ou skip)
+**Gate de Saída:** Usuário confirmou branch de trabalho
 
 ---
 
@@ -204,7 +216,7 @@ Dependendo do contexto, invocar:
 | Checkpoint | Pergunta |
 |------------|----------|
 | Após Fase 1 | "Design aprovado. Prosseguir para plano?" |
-| Após Fase 2 | "Plano criado. Usar git worktree?" |
+| Após Fase 2 | "Plano criado. Criar nova branch?" |
 | Após Fase 4 | "Dev cycle completo. Iniciar verificação?" |
 | Após Fase 6 | "Review aprovado. Fazer merge?" |
 
@@ -216,8 +228,8 @@ Dependendo do contexto, invocar:
 # Skip brainstorm (quando já sabe o que quer)
 /ring:full-feature --skip-brainstorm "Implementar X"
 
-# Skip worktree (trabalhar na branch atual)
-/ring:full-feature --no-worktree "Implementar X"
+# Skip pergunta de branch (usar branch atual)
+/ring:full-feature --current-branch "Implementar X"
 
 # Modo rápido (features simples)
 /ring:full-feature --quick "Adicionar campo email ao User"
@@ -232,7 +244,7 @@ Este workflow DEVE carregar as skills em sequência:
 ```
 1. ring:brainstorming
 2. ring:writing-plans
-3. ring:using-git-worktrees (se não --no-worktree)
+3. [Perguntar sobre nova branch]
 4. ring:dev-cycle
 5. ring:verification-before-completion
 6. ring:requesting-code-review
