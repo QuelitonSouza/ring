@@ -2,7 +2,6 @@
 name: ring:write-commit
 description: Generate a single commit message based on staged/unstaged changes
 argument-hint: ""
-model: haiku
 ---
 
 Generate a professional, technical commit message in English based on the current code changes. Returns a single, ready-to-use message.
