@@ -133,7 +133,7 @@
     {
       "name": "ring-frontend-team",
       "description": "Frontend design and UX principles: UX psychology (Hick's Law, Fitts' Law, Gestalt), color systems (60-30-10 rule), typography scales, motion/animation (easing, micro-interactions, reduced-motion), component patterns with accessibility (WCAG/POUR, ARIA, keyboard nav), and responsive mobile-first design. 3 skills with reference files for design thinking and decision-making.",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "source": "./frontend-team",
       "homepage": "https://github.com/QuelitonSouza/ring/tree/frontend-team",
       "repository": "https://github.com/QuelitonSouza/ring/tree/frontend-team",
@@ -175,7 +175,7 @@
     {
       "name": "ring-writing-team",
       "description": "PT-BR writing quality skills: a Humanizer that detects and removes 'cara de IA' (AI tells - clichés, em-dash overuse, robotic phrasing, literal English calques) from Portuguese text while preserving meaning and inventing no facts. 1 skill with an exhaustive AI-tell catalog and before/after rewrite patterns.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "source": "./writing-team",
       "homepage": "https://github.com/QuelitonSouza/ring/tree/writing-team",
       "repository": "https://github.com/QuelitonSouza/ring/tree/writing-team",
@@ -194,7 +194,7 @@
     {
       "name": "ring-skills-team",
       "description": "Meta-skill for the Claude Code skill system: when to create a skill vs CLAUDE.md vs command vs hook, how skills auto-activate by context (progressive disclosure), where to find existing skills (skills.sh, anthropics/skills, Ring marketplace) before building, Windows install scopes, and SKILL.md anatomy. 1 skill + anatomy reference.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "source": "./skills-team",
       "homepage": "https://github.com/QuelitonSouza/ring/tree/skills-team",
       "repository": "https://github.com/QuelitonSouza/ring/tree/skills-team",
@@ -210,5 +210,5 @@
       ]
     }
   ],
-  "version": "0.208.0"
+  "version": "0.209.0"
 }
