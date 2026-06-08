@@ -417,21 +417,25 @@ If any checkbox is no → Agent is INCOMPLETE. Add missing sections.
 
 ## Repository Overview
 
-Ring is a comprehensive skills library and workflow system for AI agents that enforces proven software engineering practices through mandatory workflows, parallel code review, and systematic pre-development planning. Currently implemented as a Claude Code plugin marketplace with **6 active plugins**, the skills are agent-agnostic and reusable across different AI systems.
+Ring is a comprehensive skills library and workflow system for AI agents that enforces proven software engineering practices through mandatory workflows, parallel code review, and systematic pre-development planning. Currently implemented as a Claude Code plugin marketplace with **10 active plugins**, the skills are agent-agnostic and reusable across different AI systems.
 
 **Active Plugins:**
-- **ring-default**: 25 core skills, 12 slash commands, 7 specialized agents
-- **ring-dev-team**: 9 development skills, 5 slash commands, 9 developer agents (Backend C#, Backend TypeScript, DevOps, Frontend TypeScript, Frontend Designer, QA, SRE)
+- **ring-default**: 25 core skills, 13 slash commands, 7 specialized agents
+- **ring-dev-team**: 9 development skills, 6 slash commands, 9 developer agents (Backend C#, Backend TypeScript, DevOps, Frontend TypeScript, Frontend Designer, QA, SRE)
 - **ring-pm-team**: 10 product planning skills, 3 research agents, 2 slash commands
 - **ring-pmo-team**: 8 PMO skills, 3 slash commands, 5 PMO agents (Portfolio Manager, Resource Planner, Risk Analyst, Governance Specialist, Executive Reporter)
-- **ring-finops-team**: 6 regulatory skills, 2 FinOps agents
+- **ring-finops-team**: 7 regulatory skills, 3 FinOps agents
 - **ring-tw-team**: 7 technical writing skills, 3 slash commands, 3 documentation agents (Functional Writer, API Writer, Docs Reviewer)
+- **ring-frontend-team**: 3 frontend skills (design + motion, components/accessibility, responsive) — PT-BR
+- **ring-seo-team**: 1 SEO fundamentals skill — PT-BR
+- **ring-writing-team**: 1 writing skill (Humanizer — removes "AI tells" from PT-BR text)
+- **ring-skills-team**: 1 meta-skill (creating and finding Claude Code skills) — PT-BR
 
 **Note:** Plugin versions are managed in `.claude-plugin/marketplace.json`
 
-**Total: 65 skills (25 + 9 + 10 + 8 + 6 + 7) across 6 plugins**
-**Total: 29 agents (7 + 9 + 3 + 5 + 2 + 3) across 6 plugins**
-**Total: 25 commands (12 + 5 + 2 + 3 + 0 + 3) across 6 plugins**
+**Total: 72 skills (25 + 9 + 10 + 8 + 7 + 7 + 3 + 1 + 1 + 1) across 10 plugins**
+**Total: 30 agents (7 + 9 + 3 + 5 + 3 + 3) across 10 plugins**
+**Total: 27 commands (13 + 6 + 2 + 3 + 0 + 3) across 10 plugins**
 
 The architecture uses markdown-based skill definitions with YAML frontmatter, auto-discovered at session start via hooks, and executed through Claude Code's native Skill/Task tools.
 
@@ -447,18 +451,22 @@ See [README.md](README.md#installation) for detailed installation instructions.
 
 ## Architecture
 
-**Monorepo Structure** - 6 plugin collections:
+**Monorepo Structure** - 10 plugin collections:
 
 | Plugin | Path | Contents |
 |--------|------|----------|
-| ring-default | `default/` | 25 skills, 7 agents, 12 commands |
-| ring-dev-team | `dev-team/` | 9 skills, 9 agents, 5 commands |
+| ring-default | `default/` | 25 skills, 7 agents, 13 commands |
+| ring-dev-team | `dev-team/` | 9 skills, 9 agents, 6 commands |
 | ring-pm-team | `pm-team/` | 10 skills, 3 agents, 2 commands |
 | ring-pmo-team | `pmo-team/` | 8 skills, 5 agents, 3 commands |
-| ring-finops-team | `finops-team/` | 6 skills, 2 agents |
+| ring-finops-team | `finops-team/` | 7 skills, 3 agents |
 | ring-tw-team | `tw-team/` | 7 skills, 3 agents, 3 commands |
+| ring-frontend-team | `frontend-team/` | 3 skills (PT-BR) |
+| ring-seo-team | `seo-team/` | 1 skill (PT-BR) |
+| ring-writing-team | `writing-team/` | 1 skill (PT-BR) |
+| ring-skills-team | `skills-team/` | 1 skill (PT-BR) |
 
-Each plugin contains: `skills/`, `agents/`, `commands/`, `hooks/`
+Each plugin contains a `skills/` directory; most also have `agents/`, `commands/`, and `hooks/`. The PT-BR plugins (frontend-team, seo-team, writing-team, skills-team) are skills-only.
 
 See [README.md](README.md#architecture) for full directory structure.
 
@@ -586,14 +594,18 @@ The system loads at SessionStart (from `default/` plugin):
 
 **Monorepo Context:**
 - Repository: Monorepo marketplace with multiple plugin collections
-- Active plugins: 6 (`ring-default`, `ring-dev-team`, `ring-pm-team`, `ring-pmo-team`, `ring-finops-team`, `ring-tw-team`)
+- Active plugins: 10 (`ring-default`, `ring-dev-team`, `ring-pm-team`, `ring-pmo-team`, `ring-finops-team`, `ring-tw-team`, `ring-frontend-team`, `ring-seo-team`, `ring-writing-team`, `ring-skills-team`)
 - Plugin versions: See `.claude-plugin/marketplace.json`
-- Core plugin: `default/` (25 skills, 7 agents, 12 commands)
-- Developer agents: `dev-team/` (9 skills, 9 agents, 5 commands)
+- Core plugin: `default/` (25 skills, 7 agents, 13 commands)
+- Developer agents: `dev-team/` (9 skills, 9 agents, 6 commands)
 - Product planning: `pm-team/` (10 skills, 3 agents, 2 commands)
 - PMO specialists: `pmo-team/` (8 skills, 5 agents, 3 commands)
-- FinOps regulatory: `finops-team/` (6 skills, 2 agents)
+- FinOps regulatory: `finops-team/` (7 skills, 3 agents)
 - Technical writing: `tw-team/` (7 skills, 3 agents, 3 commands)
+- Frontend design (PT-BR): `frontend-team/` (3 skills)
+- SEO (PT-BR): `seo-team/` (1 skill)
+- Writing/Humanizer (PT-BR): `writing-team/` (1 skill)
+- Skills meta (PT-BR): `skills-team/` (1 skill)
 - Current git branch: `main`
 - Remote: `github.com/QuelitonSouza/ring`
 
