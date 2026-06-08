@@ -41,6 +41,22 @@ A **skill** is a reference guide for proven techniques, patterns, or tools. Skil
 
 **Skills are NOT:** Narratives about how you solved a problem once
 
+## How Skills Save Context (Progressive Disclosure)
+
+Skills are cheap to have and expensive only when used. At startup, an agent loads ONLY each skill's `description` into context — never the full body. The complete SKILL.md (and any reference files) loads ONLY when the description matches the current task. This two-stage load is *progressive disclosure*, and it is WHY a sharp description and a lean body both matter.
+
+| Stage | What loads | Cost | Optimize via |
+|-------|-----------|------|--------------|
+| **Always (every session)** | `description` only | A few tokens per skill | Make the trigger sharp — see Agent Search Optimization |
+| **On match (task-relevant)** | Full SKILL.md body | Hundreds-to-thousands of tokens | Keep the body lean — see Token Efficiency |
+| **On demand (when implementing)** | Reference files (`*.md`) | Loaded only when linked | Split heavy reference out of SKILL.md |
+
+**The two failure modes:**
+- A **vague description** means the skill never activates — the body, however good, is dead weight that no agent ever reads.
+- A **bloated body** wastes the context budget of every task that *does* match — you paid the discovery cost but drowned the signal.
+
+Sharp trigger + lean body = the skill shows up exactly when needed and costs almost nothing the rest of the time.
+
 ## TDD Mapping for Skills
 
 | TDD Concept | Skill Creation |
@@ -71,6 +87,20 @@ The entire skill creation process follows RED-GREEN-REFACTOR.
 - Standard practices well-documented elsewhere
 - Project-specific conventions (put in CLAUDE.md)
 
+## Before Creating: Search Existing Skills
+
+**SEARCH FIRST.** Authoring a duplicate skill wastes effort and pollutes discovery — two skills with overlapping triggers compete and neither activates cleanly. Before writing anything, confirm no existing skill already covers the need.
+
+| Source | Where to look | What you'll find |
+|--------|---------------|------------------|
+| **Ring marketplace** | This repo's plugin skill directories (`default/`, `dev-team/`, etc.) | First-party skills already maintained here |
+| **Anthropic official** | github.com/anthropics/skills | Vetted, broadly-applicable skills worth reusing or adapting |
+| **Community directory** | skills.sh | Community-published skills covering niche needs |
+
+**If a match exists** → reuse it, or extend it (remember the Iron Law applies to edits too). **If none exists** → use `anthropic-skills:skill-creator` to scaffold the new skill, then follow the RED-GREEN-REFACTOR cycle below.
+
+> A Portuguese-language companion skill, `ring:criando-skills`, covers the skill-system overview and install paths for PT-BR teams.
+
 ## Skill Types
 
 ### Technique
@@ -91,7 +121,7 @@ API docs, syntax guides, tool documentation (office docs)
 ## SKILL.md Structure
 
 **Frontmatter (YAML):**
-- Only two fields supported: `name` and `description`
+- Upstream Anthropic format requires two fields: `name` and `description`. Ring skills also use optional `trigger`, `skip_when`, `related`, and `sequence` fields (see the PT-BR exemplars under `frontend-team/`).
 - Max 1024 characters total
 - `name`: Use letters, numbers, and hyphens only (no parentheses, special chars)
 - `description`: Third-person, includes BOTH what it does AND when to use it
