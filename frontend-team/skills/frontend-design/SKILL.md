@@ -33,6 +33,7 @@ related:
 |---------|--------|------------|
 | [ux-psychology.md](ux-psychology.md) | 🔴 **OBRIGATÓRIO** | Sempre leia primeiro! |
 | [design-systems.md](design-systems.md) | ⚪ Opcional | Cores, tipografia, efeitos |
+| [motion-design.md](motion-design.md) | ⚪ Opcional | Animações, micro-interações, transições |
 
 ---
 
@@ -213,6 +214,17 @@ Para CADA tarefa de design:
    └── "Isso é diferente dos meus defaults?"
    └── "Eu teria orgulho disso?"
 ```
+
+---
+
+## 8. Skills Relacionadas (frontend-team)
+
+Para frentes específicas, combine esta skill com as demais do plugin `frontend-team`:
+
+| Skill | Quando Usar |
+|-------|-------------|
+| `ring:componentes-acessibilidade` | Padrões de componentes + acessibilidade (ARIA, foco, teclado) |
+| `ring:design-responsivo` | Design responsivo mobile-first (breakpoints, fluidez, touch) |
 
 ---
 
