@@ -417,7 +417,7 @@ If any checkbox is no → Agent is INCOMPLETE. Add missing sections.
 
 ## Repository Overview
 
-Ring is a comprehensive skills library and workflow system for AI agents that enforces proven software engineering practices through mandatory workflows, parallel code review, and systematic pre-development planning. Currently implemented as a Claude Code plugin marketplace with **10 active plugins**, the skills are agent-agnostic and reusable across different AI systems.
+Ring is a comprehensive skills library and workflow system for AI agents that enforces proven software engineering practices through mandatory workflows, parallel code review, and systematic pre-development planning. Currently implemented as a Claude Code plugin marketplace with **11 active plugins**, the skills are agent-agnostic and reusable across different AI systems.
 
 **Active Plugins:**
 - **ring-default**: 25 core skills, 13 slash commands, 7 specialized agents
@@ -430,12 +430,13 @@ Ring is a comprehensive skills library and workflow system for AI agents that en
 - **ring-seo-team**: 1 SEO fundamentals skill — PT-BR
 - **ring-writing-team**: 1 writing skill (Humanizer — removes "AI tells" from PT-BR text)
 - **ring-skills-team**: 1 meta-skill (creating and finding Claude Code skills) — PT-BR
+- **ring-media-team**: 1 skill (narrated web-demo videos — Playwright + edge-tts + ffmpeg, with bundled scripts) — PT-BR
 
 **Note:** Plugin versions are managed in `.claude-plugin/marketplace.json`
 
-**Total: 72 skills (25 + 9 + 10 + 8 + 7 + 7 + 3 + 1 + 1 + 1) across 10 plugins**
-**Total: 30 agents (7 + 9 + 3 + 5 + 3 + 3) across 10 plugins**
-**Total: 27 commands (13 + 6 + 2 + 3 + 0 + 3) across 10 plugins**
+**Total: 73 skills (25 + 9 + 10 + 8 + 7 + 7 + 3 + 1 + 1 + 1 + 1) across 11 plugins**
+**Total: 30 agents (7 + 9 + 3 + 5 + 3 + 3) across 11 plugins**
+**Total: 27 commands (13 + 6 + 2 + 3 + 0 + 3) across 11 plugins**
 
 The architecture uses markdown-based skill definitions with YAML frontmatter, auto-discovered at session start via hooks, and executed through Claude Code's native Skill/Task tools.
 
@@ -451,7 +452,7 @@ See [README.md](README.md#installation) for detailed installation instructions.
 
 ## Architecture
 
-**Monorepo Structure** - 10 plugin collections:
+**Monorepo Structure** - 11 plugin collections:
 
 | Plugin | Path | Contents |
 |--------|------|----------|
@@ -465,8 +466,9 @@ See [README.md](README.md#installation) for detailed installation instructions.
 | ring-seo-team | `seo-team/` | 1 skill (PT-BR) |
 | ring-writing-team | `writing-team/` | 1 skill (PT-BR) |
 | ring-skills-team | `skills-team/` | 1 skill (PT-BR) |
+| ring-media-team | `media-team/` | 1 skill + bundled scripts (PT-BR) |
 
-Each plugin contains a `skills/` directory; most also have `agents/`, `commands/`, and `hooks/`. The PT-BR plugins (frontend-team, seo-team, writing-team, skills-team) are skills-only.
+Each plugin contains a `skills/` directory; most also have `agents/`, `commands/`, and `hooks/`. The PT-BR plugins (frontend-team, seo-team, writing-team, skills-team, media-team) are skills-only (media-team bundles executable scripts inside its skill).
 
 See [README.md](README.md#architecture) for full directory structure.
 
@@ -594,7 +596,7 @@ The system loads at SessionStart (from `default/` plugin):
 
 **Monorepo Context:**
 - Repository: Monorepo marketplace with multiple plugin collections
-- Active plugins: 10 (`ring-default`, `ring-dev-team`, `ring-pm-team`, `ring-pmo-team`, `ring-finops-team`, `ring-tw-team`, `ring-frontend-team`, `ring-seo-team`, `ring-writing-team`, `ring-skills-team`)
+- Active plugins: 11 (`ring-default`, `ring-dev-team`, `ring-pm-team`, `ring-pmo-team`, `ring-finops-team`, `ring-tw-team`, `ring-frontend-team`, `ring-seo-team`, `ring-writing-team`, `ring-skills-team`, `ring-media-team`)
 - Plugin versions: See `.claude-plugin/marketplace.json`
 - Core plugin: `default/` (25 skills, 7 agents, 13 commands)
 - Developer agents: `dev-team/` (9 skills, 9 agents, 6 commands)
@@ -606,6 +608,7 @@ The system loads at SessionStart (from `default/` plugin):
 - SEO (PT-BR): `seo-team/` (1 skill)
 - Writing/Humanizer (PT-BR): `writing-team/` (1 skill)
 - Skills meta (PT-BR): `skills-team/` (1 skill)
+- Media/video (PT-BR): `media-team/` (1 skill + bundled scripts)
 - Current git branch: `main`
 - Remote: `github.com/QuelitonSouza/ring`
 
