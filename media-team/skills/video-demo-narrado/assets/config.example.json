@@ -1,0 +1,41 @@
+{
+  "_AVISO": "EXEMPLO. Credenciais FAKE. O config.json REAL vive na pasta de trabalho FORA do repo e NUNCA deve ser commitado (contem credenciais de teste reais).",
+  "projeto": "Acme Pay Demo",
+  "voz": "pt-BR-AntonioNeural",
+  "rate": "-2%",
+  "dimensoes": {
+    "master": [1920, 1080],
+    "short": [1080, 1920]
+  },
+  "duracaoAlvo": {
+    "master": 210,
+    "short": 75
+  },
+  "dadosSensiveis": "desfocar",
+  "segmentos": [
+    {
+      "seg": "hero",
+      "url": "https://acmepay.example.com",
+      "descricao": "Landing page publica: proposta de valor, precos e CTA de cadastro.",
+      "twofa": false
+    },
+    {
+      "seg": "client",
+      "url": "https://acmepay.example.com/app",
+      "descricao": "Painel do cliente: saldo, vendas, geracao de cobranca por link.",
+      "loginUrl": "https://acmepay.example.com/entrar",
+      "user": "demo-cliente@example.com",
+      "pass": "FAKE-troque-na-pasta-de-trabalho",
+      "twofa": true
+    },
+    {
+      "seg": "admin",
+      "url": "https://acmepay.example.com/admin",
+      "descricao": "Painel administrativo: transacoes em tempo real e relatorios.",
+      "loginUrl": "https://acmepay.example.com/admin/login",
+      "user": "demo-admin@example.com",
+      "pass": "FAKE-troque-na-pasta-de-trabalho",
+      "twofa": true
+    }
+  ]
+}

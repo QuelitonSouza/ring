@@ -1,0 +1,50 @@
+[
+  {
+    "id": "01",
+    "seg": "hero",
+    "text": "Esse e o Acme Pay, a forma mais simples de receber pagamentos sem complicacao.",
+    "short": true
+  },
+  {
+    "id": "02",
+    "seg": "hero",
+    "text": "Logo na pagina inicial voce ve tudo que importa: precos transparentes e zero taxa escondida.",
+    "short": false
+  },
+  {
+    "id": "03",
+    "seg": "hero",
+    "text": "Criar uma conta leva menos de um minuto. E o melhor: o primeiro mes e gratis.",
+    "short": true
+  },
+  {
+    "id": "04",
+    "seg": "client",
+    "text": "Agora vamos entrar na area do cliente para ver o dia a dia de quem usa o Acme Pay.",
+    "short": false
+  },
+  {
+    "id": "05",
+    "seg": "client",
+    "text": "Depois do login, o painel mostra o saldo, as ultimas vendas e os recebimentos previstos.",
+    "short": true
+  },
+  {
+    "id": "06",
+    "seg": "client",
+    "text": "Com um clique voce gera uma cobranca por link, pronta para enviar no WhatsApp.",
+    "short": true
+  },
+  {
+    "id": "07",
+    "seg": "admin",
+    "text": "Na area administrativa, o gestor acompanha todas as transacoes em tempo real.",
+    "short": false
+  },
+  {
+    "id": "08",
+    "seg": "admin",
+    "text": "Acme Pay. Comece a receber hoje mesmo em acmepay.example.com.",
+    "short": true
+  }
+]

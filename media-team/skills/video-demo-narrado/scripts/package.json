@@ -1,0 +1,22 @@
+{
+  "name": "ring-video-demo-narrado-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Scripts (.mjs) da skill ring:video-demo-narrado. edge-tts (Python) e ffmpeg/ffprobe sao dependencias EXTERNAS e devem estar no PATH (nao sao instalados por npm). No Windows use 'py -m edge_tts'.",
+  "scripts": {
+    "postinstall": "playwright install chromium",
+    "explore": "node explore.mjs",
+    "tts": "node gen_tts.mjs",
+    "capture": "node capture.mjs",
+    "compose": "node compose.mjs",
+    "final": "node compose_final.mjs",
+    "vertical": "node make_vertical.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.49.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
