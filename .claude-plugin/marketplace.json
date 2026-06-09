@@ -212,7 +212,7 @@
     {
       "name": "ring-media-team",
       "description": "Narrated screen-recording video demos of web systems: explores the live UI with Playwright, generates a PT-BR script, synthesizes male neural narration (edge-tts), records segments (with login + 2FA support), and composes burned-in synced subtitles with ffmpeg. Delivers a 16:9 YouTube master (~3-4min) and a derived 9:16 TikTok/Instagram vertical (~1-2min). 1 skill with bundled scripts and references.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "source": "./media-team",
       "homepage": "https://github.com/QuelitonSouza/ring/tree/media-team",
       "repository": "https://github.com/QuelitonSouza/ring/tree/media-team",
@@ -233,5 +233,5 @@
       ]
     }
   ],
-  "version": "0.209.0"
+  "version": "0.210.0"
 }
