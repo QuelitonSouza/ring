@@ -20,7 +20,7 @@ sequence:
   before: [ring:writing-plans]
 
 related:
-  similar: [ring:frontend-design]
+  similar: [ring:frontend-design, ring:impeccable-design]
 ---
 
 # Componentes & Acessibilidade

@@ -426,7 +426,7 @@ Ring is a comprehensive skills library and workflow system for AI agents that en
 - **ring-pmo-team**: 8 PMO skills, 3 slash commands, 5 PMO agents (Portfolio Manager, Resource Planner, Risk Analyst, Governance Specialist, Executive Reporter)
 - **ring-finops-team**: 7 regulatory skills, 3 FinOps agents
 - **ring-tw-team**: 7 technical writing skills, 3 slash commands, 3 documentation agents (Functional Writer, API Writer, Docs Reviewer)
-- **ring-frontend-team**: 3 frontend skills (design + motion, components/accessibility, responsive) — PT-BR
+- **ring-frontend-team**: 4 frontend skills (design + motion, components/accessibility, responsive, impeccable anti-slop review) — PT-BR
 - **ring-seo-team**: 1 SEO fundamentals skill — PT-BR
 - **ring-writing-team**: 1 writing skill (Humanizer — removes "AI tells" from PT-BR text)
 - **ring-skills-team**: 1 meta-skill (creating and finding Claude Code skills) — PT-BR
@@ -462,7 +462,7 @@ See [README.md](README.md#installation) for detailed installation instructions.
 | ring-pmo-team | `pmo-team/` | 8 skills, 5 agents, 3 commands |
 | ring-finops-team | `finops-team/` | 7 skills, 3 agents |
 | ring-tw-team | `tw-team/` | 7 skills, 3 agents, 3 commands |
-| ring-frontend-team | `frontend-team/` | 3 skills (PT-BR) |
+| ring-frontend-team | `frontend-team/` | 4 skills (PT-BR) |
 | ring-seo-team | `seo-team/` | 1 skill (PT-BR) |
 | ring-writing-team | `writing-team/` | 1 skill (PT-BR) |
 | ring-skills-team | `skills-team/` | 1 skill (PT-BR) |
@@ -604,7 +604,7 @@ The system loads at SessionStart (from `default/` plugin):
 - PMO specialists: `pmo-team/` (8 skills, 5 agents, 3 commands)
 - FinOps regulatory: `finops-team/` (7 skills, 3 agents)
 - Technical writing: `tw-team/` (7 skills, 3 agents, 3 commands)
-- Frontend design (PT-BR): `frontend-team/` (3 skills)
+- Frontend design (PT-BR): `frontend-team/` (4 skills)
 - SEO (PT-BR): `seo-team/` (1 skill)
 - Writing/Humanizer (PT-BR): `writing-team/` (1 skill)
 - Skills meta (PT-BR): `skills-team/` (1 skill)

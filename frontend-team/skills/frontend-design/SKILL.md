@@ -223,8 +223,11 @@ Para frentes específicas, combine esta skill com as demais do plugin `frontend-
 
 | Skill | Quando Usar |
 |-------|-------------|
+| `ring:impeccable-design` | **Revisar/refinar** uma tela já gerada — detectar "cara de IA" (slop) e polir até production-ready |
 | `ring:componentes-acessibilidade` | Padrões de componentes + acessibilidade (ARIA, foco, teclado) |
 | `ring:design-responsivo` | Design responsivo mobile-first (breakpoints, fluidez, touch) |
+
+> Fluxo: **esta skill decide** o design → `ring:impeccable-design` revisa e refina → as duas acima aprofundam a11y e responsividade.
 
 ---
 
