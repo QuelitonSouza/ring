@@ -421,7 +421,7 @@ Ring is a comprehensive skills library and workflow system for AI agents that en
 
 **Active Plugins:**
 - **ring-default**: 25 core skills, 13 slash commands, 7 specialized agents
-- **ring-dev-team**: 9 development skills, 6 slash commands, 9 developer agents (Backend C#, Backend TypeScript, DevOps, Frontend TypeScript, Frontend Designer, QA, SRE)
+- **ring-dev-team**: 15 development skills, 6 slash commands, 15 developer agents (Backend C#, Backend TypeScript, DevOps, Frontend TypeScript, Frontend Designer, QA, SRE + 6 reviewers: code, security, perf, test, dead-code, logic). Modular C#/.NET standards in `dev-team/docs/standards/csharp/`; Helm + Docker/VPS deploy standards
 - **ring-pm-team**: 10 product planning skills, 3 research agents, 2 slash commands
 - **ring-pmo-team**: 8 PMO skills, 3 slash commands, 5 PMO agents (Portfolio Manager, Resource Planner, Risk Analyst, Governance Specialist, Executive Reporter)
 - **ring-finops-team**: 7 regulatory skills, 3 FinOps agents

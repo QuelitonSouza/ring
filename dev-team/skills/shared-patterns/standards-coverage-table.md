@@ -247,6 +247,11 @@ These sections describe HOW to use the standards, not WHAT the standards are.
 
 ### ring:backend-engineer-csharp → csharp.md
 
+> **Modular expansion:** `csharp.md` is the concise baseline. Deep, task-specific standards live in the
+> modular folder `dev-team/docs/standards/csharp/` (16 modules — see `csharp/index.md`). When auditing a
+> task that touches caching, idempotency, messaging, multi-tenancy, security/auth, EF migrations, or
+> testing, load the matching module from `csharp/` in addition to the sections below.
+
 | # | Section to Check | Anchor | Key Subsections |
 |---|------------------|--------|-----------------|
 | 1 | Version | `#version` | .NET 8+, C# 12 |

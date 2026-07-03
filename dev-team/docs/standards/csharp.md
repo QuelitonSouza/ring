@@ -5,6 +5,12 @@
 
 This file defines the specific standards for C# / ASP.NET Core development at QuelitonSouza.
 
+> **📚 EXPANDED / MODULAR STANDARDS:** For deep, task-specific guidance, see the modular set in
+> [`csharp/index.md`](csharp/index.md) — 16 modules covering architecture, api-patterns, domain,
+> caching, idempotency, messaging, multi-tenant, security, bootstrap/observability, EF migration-safety,
+> quality, compliance, and unit/integration/property testing. This file is the concise baseline;
+> the `csharp/` folder is the detailed reference. Load only the modules you need.
+
 > **Reference**: Always consult `docs/PROJECT_RULES.md` for common project standards.
 
 ---
