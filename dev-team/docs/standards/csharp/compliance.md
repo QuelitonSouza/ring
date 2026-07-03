@@ -26,16 +26,26 @@ checklist that references every other module in this directory.
 Every requirement is owned by exactly one module. When checking compliance, load the owning module
 for the authoritative pattern.
 
-| Concern | Module | Key Sections |
-|---------|--------|--------------|
-| AuthN/AuthZ, secrets, SQL safety, rate limiting, CORS, headers, Data Protection | [security.md](security.md) | Authentication, Authorization, Secret Management, SQL Safety, Rate Limiting, CORS |
-| `Program.cs`, DI, Options, logging, OpenTelemetry, health checks, connections, shutdown | [bootstrap.md](bootstrap.md) | Initialization Order, OpenTelemetry, Health Checks, Graceful Shutdown |
-| EF Core migrations, expand-contract, zero-downtime | [migration-safety.md](migration-safety.md) | Expand-Contract, Dangerous Operations, ACKNOWLEDGE |
-| Analyzers, `.editorconfig`, warnings-as-errors, nullable, coverage, containers | [quality.md](quality.md) | Build Quality Gates, Forbidden Runtime Patterns, Code Coverage |
+| Concern | Module | Key Sections | Applies |
+|---------|--------|--------------|---------|
+| AuthN/AuthZ, secrets, SQL safety, rate limiting, CORS, headers, Data Protection | [security.md](security.md) | Authentication, Authorization, Secret Management, SQL Safety, Rate Limiting, CORS | Always |
+| `Program.cs`, DI, Options, logging, OpenTelemetry, health checks, connections, shutdown | [bootstrap.md](bootstrap.md) | Initialization Order, OpenTelemetry, Health Checks, Graceful Shutdown | Always |
+| EF Core migrations, expand-contract, zero-downtime | [migration-safety.md](migration-safety.md) | Expand-Contract, Dangerous Operations, ACKNOWLEDGE | When SQL migrations present |
+| Analyzers, `.editorconfig`, warnings-as-errors, nullable, coverage, containers | [quality.md](quality.md) | Build Quality Gates, Forbidden Runtime Patterns, Code Coverage | Always |
+| Caching strategy, invalidation, stampede protection, graceful degradation | [caching.md](caching.md) | Cache-Aside, Key/TTL Conventions, Stampede Protection, Degradation | When the service caches |
+| Idempotency-Key, dedup store, safe retries, in-flight duplicates | [idempotency.md](idempotency.md) | Idempotency-Key, Dedup Store, 409 Handling | When mutating endpoints must be safe to retry |
+| Message contracts, idempotent consumers, retry/DLQ, transactional outbox | [messaging.md](messaging.md) | Contracts, Retry & DLQ, Outbox/Inbox | When the service publishes/consumes messages |
+| Tenant resolution, EF global query filters, per-tenant isolation, propagation | [multi-tenant.md](multi-tenant.md) | Tenant Resolution, Query Filters, Isolation | When the service is multi-tenant |
+| Unit/integration/property test coverage, anti-patterns, 85% threshold | [testing-unit.md](testing-unit.md), [testing-integration.md](testing-integration.md), [testing-property.md](testing-property.md) | Coverage Threshold, AAA, Testcontainers, Invariants | Always (integration/property as applicable) |
 
-> **Note:** Architecture, domain modeling, API patterns, and core language conventions are covered by
-> the sibling modules referenced in [index.md](index.md) (`core.md`, `architecture.md`, `domain.md`,
-> `api-patterns.md`). This module does not restate them.
+> **Note:** Core language conventions, architecture layering, domain modeling, and API patterns are
+> covered by the sibling modules referenced in [index.md](index.md) (`core.md`, `architecture.md`,
+> `domain.md`, `api-patterns.md`) and enforced in the Cross-Cutting checklist below. This module does
+> not restate their patterns.
+>
+> **Conditional modules** (caching, idempotency, messaging, multi-tenant) apply only when the service
+> uses that capability. If it does not, mark the category **N/A** in the compliance report with a brief
+> reason — never silently skip it.
 
 ---
 
@@ -190,4 +200,25 @@ Before submitting C# code, verify all of the following. Each item links to its o
 - [ ] Clean Architecture layering respected; Domain has zero external dependencies (`architecture.md`)
 - [ ] Domain entities always-valid via factory/constructor validation; `Result<T>` for expected errors (`domain.md`)
 - [ ] Error codes use the service prefix; responses use `ProblemDetails` / RFC 7807 (`domain.md`, `api-patterns.md`)
-- [ ] Tests use xUnit `Theory`/`InlineData` with edge cases beyond the happy path
+
+### Testing ([testing-unit.md](testing-unit.md), [testing-integration.md](testing-integration.md), [testing-property.md](testing-property.md))
+
+- [ ] Unit tests use xUnit `Theory`/`InlineData` with edge cases beyond the happy path; FluentAssertions; AAA
+- [ ] Changed-code coverage meets the threshold (default 85%); no tests asserting only mock behavior
+- [ ] Integration tests use `WebApplicationFactory` + Testcontainers for real dependencies (when the service has I/O boundaries)
+- [ ] Property-based tests cover key invariants where applicable (FsCheck/CsCheck)
+
+### Conditional modules (mark N/A with a reason when the capability is not used)
+
+**Caching ([caching.md](caching.md))** — *when the service caches*
+- [ ] Cache-aside via `IMemoryCache`/`IDistributedCache`/`HybridCache`; documented key naming + TTLs
+- [ ] Stampede protection on hot keys; graceful degradation when the cache is unavailable
+
+**Idempotency ([idempotency.md](idempotency.md))** — *when mutating endpoints must be retry-safe*
+- [ ] `Idempotency-Key` honored with a dedup store; cached response replayed; 409 for in-flight duplicates
+
+**Messaging ([messaging.md](messaging.md))** — *when the service publishes/consumes messages*
+- [ ] Immutable record contracts; consumers idempotent; two-layer retry + DLQ; transactional outbox for dual writes
+
+**Multi-tenancy ([multi-tenant.md](multi-tenant.md))** — *when the service is multi-tenant*
+- [ ] Tenant resolved after auth; EF global query filters enforce isolation; tenant flows through cache keys + message headers

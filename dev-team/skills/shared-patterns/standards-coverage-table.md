@@ -281,6 +281,231 @@ These sections describe HOW to use the standards, not WHAT the standards are.
 
 ---
 
+### ring:backend-engineer-csharp → csharp/ (modular standards)
+
+**These modular sections are checked IN ADDITION TO the baseline `csharp.md` sections above** — never as a replacement. When a task touches a capability covered by a module below, every section of that module MUST appear as a row in the coverage table with an explicit status. Conditional modules (**caching**, **idempotency**, **messaging**, **multi-tenant**) are marked `N/A` with a stated reason when the service does not use that capability — never skipped silently. `csharp/index.md` (its "Section Index (Full)") is the maintenance source of truth for this list; keep the two in sync per the FOUR-FILE UPDATE RULE.
+
+**core.md**
+
+| # | Section to Check | Anchor |
+|---|------------------|--------|
+| 1 | Version | `csharp/core.md#version` |
+| 2 | Nullable Reference Types (MANDATORY) | `csharp/core.md#nullable-reference-types-mandatory` |
+| 3 | Project Configuration (MANDATORY) | `csharp/core.md#project-configuration-mandatory` |
+| 4 | Code Analysis & `.editorconfig` | `csharp/core.md#code-analysis--editorconfig` |
+| 5 | Naming Conventions | `csharp/core.md#naming-conventions` |
+| 6 | Records, Classes & Structs | `csharp/core.md#records-classes--structs` |
+| 7 | Project Layout | `csharp/core.md#project-layout` |
+| 8 | Configuration (Options Pattern) (MANDATORY) | `csharp/core.md#configuration-options-pattern-mandatory` |
+| 9 | Async/Await Conventions (MANDATORY) | `csharp/core.md#asyncawait-conventions-mandatory` |
+
+**architecture.md**
+
+| # | Section to Check | Anchor |
+|---|------------------|--------|
+| 1 | Clean Architecture (MANDATORY) | `csharp/architecture.md#clean-architecture-mandatory` |
+| 2 | The Dependency Rule (MANDATORY) | `csharp/architecture.md#the-dependency-rule-mandatory` |
+| 3 | Hexagonal (Ports & Adapters) | `csharp/architecture.md#hexagonal-ports--adapters` |
+| 4 | Directory Structure | `csharp/architecture.md#directory-structure` |
+| 5 | Dependency Injection (MANDATORY) | `csharp/architecture.md#dependency-injection-mandatory` |
+| 6 | CQRS with MediatR (CONDITIONAL) | `csharp/architecture.md#cqrs-with-mediatr-conditional` |
+
+**api-patterns.md**
+
+| # | Section to Check | Anchor |
+|---|------------------|--------|
+| 1 | Minimal APIs vs Controllers | `csharp/api-patterns.md#minimal-apis-vs-controllers` |
+| 2 | JSON Naming Convention (camelCase) (MANDATORY) | `csharp/api-patterns.md#json-naming-convention-camelcase-mandatory` |
+| 3 | ProblemDetails / RFC 7807 (MANDATORY) | `csharp/api-patterns.md#problemdetails--rfc-7807-mandatory` |
+| 4 | HTTP Status Code Consistency (MANDATORY) | `csharp/api-patterns.md#http-status-code-consistency-mandatory` |
+| 5 | API Versioning (MANDATORY) | `csharp/api-patterns.md#api-versioning-mandatory` |
+| 6 | Model Binding & Validation | `csharp/api-patterns.md#model-binding--validation` |
+| 7 | Pagination Patterns | `csharp/api-patterns.md#pagination-patterns` |
+| 8 | OpenAPI Documentation | `csharp/api-patterns.md#openapi-documentation` |
+
+**domain.md**
+
+| # | Section to Check | Anchor |
+|---|------------------|--------|
+| 1 | Always-Valid Domain Model (MANDATORY) | `csharp/domain.md#always-valid-domain-model-mandatory` |
+| 2 | Value Objects (MANDATORY) | `csharp/domain.md#value-objects-mandatory` |
+| 3 | Aggregates & Aggregate Roots | `csharp/domain.md#aggregates--aggregate-roots` |
+| 4 | Domain Events | `csharp/domain.md#domain-events` |
+| 5 | Error Codes Convention (MANDATORY) | `csharp/domain.md#error-codes-convention-mandatory` |
+| 6 | Error Handling: Result Pattern (MANDATORY) | `csharp/domain.md#error-handling-result-pattern-mandatory` |
+| 7 | Persistence Transformation (MANDATORY) | `csharp/domain.md#persistence-transformation-mandatory` |
+
+**caching.md** — CONDITIONAL: mark all rows `N/A` (reason: service does not use caching) when no cache provider is configured.
+
+| # | Section to Check | Anchor |
+|---|------------------|--------|
+| 1 | Cache Provider Selection | `csharp/caching.md#cache-provider-selection` |
+| 2 | Caching Strategy Patterns (MANDATORY) | `csharp/caching.md#caching-strategy-patterns-mandatory` |
+| 3 | HybridCache (.NET 9+) | `csharp/caching.md#hybridcache-net-9` |
+| 4 | Stampede Protection (MANDATORY) | `csharp/caching.md#stampede-protection-mandatory` |
+| 5 | Cache Invalidation | `csharp/caching.md#cache-invalidation` |
+| 6 | Key Naming and TTL | `csharp/caching.md#key-naming-and-ttl` |
+| 7 | Graceful Degradation (MANDATORY) | `csharp/caching.md#graceful-degradation-mandatory` |
+| 8 | Anti-Rationalization Table | `csharp/caching.md#anti-rationalization-table` |
+| 9 | Checklist | `csharp/caching.md#checklist` |
+
+**idempotency.md** — CONDITIONAL: mark all rows `N/A` (reason: no write APIs requiring idempotency) when the service exposes no idempotent write endpoints.
+
+| # | Section to Check | Anchor |
+|---|------------------|--------|
+| 1 | Idempotency Patterns (MANDATORY for Write APIs) | `csharp/idempotency.md#idempotency-patterns-mandatory-for-write-apis` |
+| 2 | Configuration | `csharp/idempotency.md#configuration` |
+| 3 | HTTP Headers | `csharp/idempotency.md#http-headers` |
+| 4 | Dedup Store | `csharp/idempotency.md#dedup-store` |
+| 5 | Middleware Implementation | `csharp/idempotency.md#middleware-implementation` |
+| 6 | Request Flow | `csharp/idempotency.md#request-flow` |
+| 7 | Key Scope (Ask Before Implementing) | `csharp/idempotency.md#key-scope-ask-before-implementing` |
+| 8 | Which Endpoints Need Idempotency | `csharp/idempotency.md#which-endpoints-need-idempotency` |
+| 9 | Anti-Rationalization Table | `csharp/idempotency.md#anti-rationalization-table` |
+| 10 | Checklist | `csharp/idempotency.md#checklist` |
+
+**messaging.md** — CONDITIONAL: mark all rows `N/A` (reason: no async messaging / message broker) when the service uses no MassTransit / RabbitMQ / Azure Service Bus.
+
+| # | Section to Check | Anchor |
+|---|------------------|--------|
+| 1 | Transport Selection | `csharp/messaging.md#transport-selection` |
+| 2 | Bus Configuration | `csharp/messaging.md#bus-configuration` |
+| 3 | Message Contracts | `csharp/messaging.md#message-contracts` |
+| 4 | Consumers | `csharp/messaging.md#consumers` |
+| 5 | Producers (Publish vs Send) | `csharp/messaging.md#producers-publish-vs-send` |
+| 6 | Retry, Redelivery, and DLQ (MANDATORY) | `csharp/messaging.md#retry-redelivery-and-dlq-mandatory` |
+| 7 | Transactional Outbox (MANDATORY for dual writes) | `csharp/messaging.md#transactional-outbox-mandatory-for-dual-writes` |
+| 8 | Observability | `csharp/messaging.md#observability` |
+| 9 | Anti-Rationalization Table | `csharp/messaging.md#anti-rationalization-table` |
+| 10 | Checklist | `csharp/messaging.md#checklist` |
+
+**multi-tenant.md** — CONDITIONAL: mark all rows `N/A` (reason: single-tenant service) when the service is not multi-tenant.
+
+| # | Section to Check | Anchor |
+|---|------------------|--------|
+| 1 | When to Use Multi-Tenancy (CONDITIONAL) | `csharp/multi-tenant.md#when-to-use-multi-tenancy-conditional` |
+| 2 | Isolation Strategies | `csharp/multi-tenant.md#isolation-strategies` |
+| 3 | Tenant Context | `csharp/multi-tenant.md#tenant-context` |
+| 4 | Tenant Resolution Middleware (MANDATORY) | `csharp/multi-tenant.md#tenant-resolution-middleware-mandatory` |
+| 5 | Auth-Before-Tenant Ordering (MANDATORY) | `csharp/multi-tenant.md#auth-before-tenant-ordering-mandatory` |
+| 6 | EF Core Global Query Filters | `csharp/multi-tenant.md#ef-core-global-query-filters` |
+| 7 | Per-Tenant Connection Strings | `csharp/multi-tenant.md#per-tenant-connection-strings` |
+| 8 | Tenant-Aware Caching | `csharp/multi-tenant.md#tenant-aware-caching` |
+| 9 | Tenant Propagation in Messaging | `csharp/multi-tenant.md#tenant-propagation-in-messaging` |
+| 10 | Anti-Rationalization Table | `csharp/multi-tenant.md#anti-rationalization-table` |
+| 11 | Checklist | `csharp/multi-tenant.md#checklist` |
+
+**security.md**
+
+| # | Section to Check | Anchor |
+|---|------------------|--------|
+| 1 | Authentication (JWT Bearer / OIDC) (MANDATORY) | `csharp/security.md#authentication-jwt-bearer--oidc-mandatory` |
+| 2 | Authorization (Policies & Roles) (MANDATORY) | `csharp/security.md#authorization-policies--roles-mandatory` |
+| 3 | Secret Management (MANDATORY) | `csharp/security.md#secret-management-mandatory` |
+| 4 | Secret Redaction in Logs (MANDATORY) | `csharp/security.md#secret-redaction-in-logs-mandatory` |
+| 5 | SQL Safety (MANDATORY) | `csharp/security.md#sql-safety-mandatory` |
+| 6 | Input Validation (MANDATORY) | `csharp/security.md#input-validation-mandatory` |
+| 7 | Security Headers (MANDATORY) | `csharp/security.md#security-headers-mandatory` |
+| 8 | Rate Limiting (MANDATORY) | `csharp/security.md#rate-limiting-mandatory` |
+| 9 | CORS Configuration (MANDATORY) | `csharp/security.md#cors-configuration-mandatory` |
+| 10 | Data Protection (MANDATORY) | `csharp/security.md#data-protection-mandatory` |
+
+**bootstrap.md**
+
+| # | Section to Check | Anchor |
+|---|------------------|--------|
+| 1 | Program.cs Initialization Order (MANDATORY) | `csharp/bootstrap.md#programcs-initialization-order-mandatory` |
+| 2 | Configuration & Options Pattern (MANDATORY) | `csharp/bootstrap.md#configuration--options-pattern-mandatory` |
+| 3 | Dependency Injection (MANDATORY) | `csharp/bootstrap.md#dependency-injection-mandatory` |
+| 4 | Structured Logging (MANDATORY) | `csharp/bootstrap.md#structured-logging-mandatory` |
+| 5 | OpenTelemetry (Traces, Metrics, Logs) (MANDATORY) | `csharp/bootstrap.md#opentelemetry-traces-metrics-logs-mandatory` |
+| 6 | Health Checks (MANDATORY) | `csharp/bootstrap.md#health-checks-mandatory` |
+| 7 | Connection Management (MANDATORY) | `csharp/bootstrap.md#connection-management-mandatory` |
+| 8 | Graceful Shutdown (MANDATORY) | `csharp/bootstrap.md#graceful-shutdown-mandatory` |
+
+**migration-safety.md**
+
+| # | Section to Check | Anchor |
+|---|------------------|--------|
+| 1 | Principles | `csharp/migration-safety.md#principles` |
+| 2 | Dangerous Operations Detection | `csharp/migration-safety.md#dangerous-operations-detection` |
+| 3 | Expand-Contract Pattern (MANDATORY) | `csharp/migration-safety.md#expand-contract-pattern-mandatory` |
+| 4 | Reviewing Generated Migrations (MANDATORY) | `csharp/migration-safety.md#reviewing-generated-migrations-mandatory` |
+| 5 | ACKNOWLEDGE Convention | `csharp/migration-safety.md#acknowledge-convention` |
+| 6 | Multi-Tenant Considerations | `csharp/migration-safety.md#multi-tenant-considerations` |
+| 7 | Verification Commands | `csharp/migration-safety.md#verification-commands` |
+
+**quality.md**
+
+| # | Section to Check | Anchor |
+|---|------------------|--------|
+| 1 | Build Quality Gates (MANDATORY) | `csharp/quality.md#build-quality-gates-mandatory` |
+| 2 | Roslyn Analyzers (MANDATORY) | `csharp/quality.md#roslyn-analyzers-mandatory` |
+| 3 | .editorconfig & StyleCop (MANDATORY) | `csharp/quality.md#editorconfig--stylecop-mandatory` |
+| 4 | Forbidden Runtime Patterns (CRITICAL) | `csharp/quality.md#forbidden-runtime-patterns-critical` |
+| 5 | Startup Configuration Validation (MANDATORY) | `csharp/quality.md#startup-configuration-validation-mandatory` |
+| 6 | Code Coverage (MANDATORY) | `csharp/quality.md#code-coverage-mandatory` |
+| 7 | Container Security (CONDITIONAL) | `csharp/quality.md#container-security-conditional` |
+
+**compliance.md**
+
+| # | Section to Check | Anchor |
+|---|------------------|--------|
+| 1 | Module Map | `csharp/compliance.md#module-map` |
+| 2 | Standards Compliance Output Format | `csharp/compliance.md#standards-compliance-output-format` |
+| 3 | Master Checklist | `csharp/compliance.md#master-checklist` |
+
+**testing-unit.md**
+
+| # | Section to Check | Anchor |
+|---|------------------|--------|
+| 1 | Test Framework & Libraries (MANDATORY) | `csharp/testing-unit.md#test-framework--libraries-mandatory` |
+| 2 | AAA Pattern (MANDATORY) | `csharp/testing-unit.md#aaa-pattern-mandatory` |
+| 3 | Test Naming Convention (MANDATORY) | `csharp/testing-unit.md#test-naming-convention-mandatory` |
+| 4 | Theory / InlineData / MemberData (MANDATORY) | `csharp/testing-unit.md#theory--inlinedata--memberdata-mandatory` |
+| 5 | Edge Case Coverage (MANDATORY) | `csharp/testing-unit.md#edge-case-coverage-mandatory` |
+| 6 | Assertion Requirements (MANDATORY) | `csharp/testing-unit.md#assertion-requirements-mandatory` |
+| 7 | Mocking (MANDATORY) | `csharp/testing-unit.md#mocking-mandatory` |
+| 8 | Async Test Patterns (MANDATORY) | `csharp/testing-unit.md#async-test-patterns-mandatory` |
+| 9 | Coverage Threshold (MANDATORY) | `csharp/testing-unit.md#coverage-threshold-mandatory` |
+| 10 | Unit Test Scope & Boundaries (MANDATORY) | `csharp/testing-unit.md#unit-test-scope--boundaries-mandatory` |
+| 11 | TDD RED → GREEN (MANDATORY) | `csharp/testing-unit.md#tdd-red--green-mandatory` |
+| 12 | Unit Test Quality Gate (MANDATORY) | `csharp/testing-unit.md#unit-test-quality-gate-mandatory` |
+| 13 | Output Format (Gate 0 - Unit Testing) | `csharp/testing-unit.md#output-format-gate-0---unit-testing` |
+| 14 | Anti-Rationalization Table (Unit Testing) | `csharp/testing-unit.md#anti-rationalization-table-unit-testing` |
+
+**testing-integration.md**
+
+| # | Section to Check | Anchor |
+|---|------------------|--------|
+| 1 | Test Pyramid | `csharp/testing-integration.md#test-pyramid` |
+| 2 | Project & Naming Convention (MANDATORY) | `csharp/testing-integration.md#project--naming-convention-mandatory` |
+| 3 | WebApplicationFactory (MANDATORY) | `csharp/testing-integration.md#webapplicationfactory-mandatory` |
+| 4 | Testcontainers for .NET (MANDATORY) | `csharp/testing-integration.md#testcontainers-for-net-mandatory` |
+| 5 | Shared Fixtures & Collections (MANDATORY) | `csharp/testing-integration.md#shared-fixtures--collections-mandatory` |
+| 6 | Test Isolation (MANDATORY) | `csharp/testing-integration.md#test-isolation-mandatory` |
+| 7 | Fixture Centralization (MANDATORY) | `csharp/testing-integration.md#fixture-centralization-mandatory` |
+| 8 | Guardrails (Anti-Patterns) (MANDATORY) | `csharp/testing-integration.md#guardrails-anti-patterns-mandatory` |
+| 9 | Test Failure Analysis (No Greenwashing) | `csharp/testing-integration.md#test-failure-analysis-no-greenwashing` |
+| 10 | Integration Test Quality Gate (MANDATORY) | `csharp/testing-integration.md#integration-test-quality-gate-mandatory` |
+| 11 | Output Format (Gate 0 - Integration Testing) | `csharp/testing-integration.md#output-format-gate-0---integration-testing` |
+| 12 | Anti-Rationalization Table (Integration Testing) | `csharp/testing-integration.md#anti-rationalization-table-integration-testing` |
+
+**testing-property.md**
+
+| # | Section to Check | Anchor |
+|---|------------------|--------|
+| 1 | What Is Property-Based Testing | `csharp/testing-property.md#what-is-property-based-testing` |
+| 2 | Library & Setup (MANDATORY) | `csharp/testing-property.md#library--setup-mandatory` |
+| 3 | Property Test Pattern (MANDATORY) | `csharp/testing-property.md#property-test-pattern-mandatory` |
+| 4 | Common Properties | `csharp/testing-property.md#common-properties` |
+| 5 | Custom Generators & Arbitraries | `csharp/testing-property.md#custom-generators--arbitraries` |
+| 6 | Property Test Quality Gate (MANDATORY) | `csharp/testing-property.md#property-test-quality-gate-mandatory` |
+| 7 | Output Format (Gate 0 - Property-Based Testing) | `csharp/testing-property.md#output-format-gate-0---property-based-testing` |
+| 8 | Anti-Rationalization Table (Property Testing) | `csharp/testing-property.md#anti-rationalization-table-property-testing` |
+
+---
+
 ### ring:backend-engineer-typescript → typescript.md
 
 | # | Section to Check | Anchor | Key Subsections |
