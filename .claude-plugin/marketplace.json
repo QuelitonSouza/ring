@@ -133,7 +133,7 @@
     {
       "name": "ring-frontend-team",
       "description": "Frontend design and UX principles: UX psychology (Hick's Law, Fitts' Law, Gestalt), color systems (60-30-10 rule), typography scales, motion/animation (easing, micro-interactions, reduced-motion), component patterns with accessibility (WCAG/POUR, ARIA, keyboard nav), responsive mobile-first design, and Impeccable-based anti-slop review (detect AI-generated 'slop', critique by severity, polish to production quality). 4 skills with reference files for design thinking and decision-making.",
-      "version": "0.5.0",
+      "version": "0.6.0",
       "source": "./frontend-team",
       "homepage": "https://github.com/QuelitonSouza/ring/tree/frontend-team",
       "repository": "https://github.com/QuelitonSouza/ring/tree/frontend-team",
@@ -236,5 +236,5 @@
       ]
     }
   ],
-  "version": "0.210.0"
+  "version": "0.211.0"
 }
