@@ -28,6 +28,7 @@
       ]
     },
     {
+      "name": "ring-dev-team",
       "description": "15 developer agents (incl. 6 specialized reviewers: code, security, perf, test, dead-code, logic) + 15 development skills + 5 slash commands: 6-gate development cycle (implementation->devops->SRE->testing->review->validation), integrated with PM team output. C#/.NET and TypeScript backend specialists, DevOps, Frontend, QA, SRE. Modular C#/.NET standards (architecture, caching, idempotency, messaging, multi-tenant, security, EF migrations, testing), plus Helm (Kubernetes) and Docker/VPS deploy standards, dependency-security audit, Dockerfile hardening, health checks and k6 load testing. TDD, observability, and security best practices.",
       "version": "0.52.0",
       "source": "./dev-team",
